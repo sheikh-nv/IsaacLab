@@ -1,0 +1,927 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Duplicating a scene efficiently &#8212; Isaac Lab documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/tutorials/02_cloner';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Using a task-space controller" href="03_ik_controller.html" />
+    <link rel="prev" title="Adding a robotic arm to the scene" href="01_arms.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Oct 11, 2024"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/NVIDIA-logo-white.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../_static/NVIDIA-logo-black.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">Isaac Lab documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/isaac-sim/IsaacLab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-4.2.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" title="Stars" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" class="icon-link-image" alt="Stars"/></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../setup/installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/developer.html">Developer’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/sample.html">Running existing scripts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../features/actuators.html">Actuators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/motion_generators.html">Motion Generators</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials (beginner)</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_empty.html">Creating an empty scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_arms.html">Adding a robotic arm to the scene</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Duplicating a scene efficiently</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_ik_controller.html">Using a task-space controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_gym_env.html">Running an RL environment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Source API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.actuators.group.html">omni.isaac.orbit.actuators.group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.actuators.model.html">omni.isaac.orbit.actuators.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.devices.html">omni.isaac.orbit.devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.markers.html">omni.isaac.orbit.markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.objects.articulated.html">omni.isaac.orbit.objects.articulated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.objects.rigid.html">omni.isaac.orbit.objects.rigid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.robots.html">omni.isaac.orbit.robots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.utils.html">omni.isaac.orbit.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.utils.assets.html">omni.isaac.orbit.utils.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.utils.kit.html">omni.isaac.orbit.utils.kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.utils.math.html">omni.isaac.orbit.utils.math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.utils.mdp.html">omni.isaac.orbit.utils.mdp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit_envs.isaac_env.html">omni.isaac.orbit_envs.isaac_env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit_envs.utils.html">omni.isaac.orbit_envs.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit_envs.utils.data_collector.html">omni.isaac.orbit_envs.utils.data_collector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit_envs.utils.wrappers.html">omni.isaac.orbit_envs.utils.wrappers</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../refs/contributing.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/troubleshooting.html">Tricks and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/changelog.html">Extensions Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/roadmap.html">Development Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<h2>Versions</h2>
+<ul>
+  <li><a href="../../../main/index.html">main</a></li>
+  <li><a href="../../../v1.2.0/index.html">v1.2.0</a></li>
+  <li><a href="../../../v1.1.0/index.html">v1.1.0</a></li>
+  <li><a href="../../../v1.0.0/index.html">v1.0.0</a></li>
+  <li><a href="../../../v0.3.1/index.html">v0.3.1</a></li>
+  <li><a href="../../../v0.3.0/index.html">v0.3.0</a></li>
+  <li><a href="../../../v0.2.0/index.html">v0.2.0</a></li>
+  <li><a href="02_cloner.html">v0.1.0</a></li>
+</ul>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/edit/main/source/tutorials/02_cloner.rst" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/issues/new?title=Issue%20on%20page%20%2Fsource/tutorials/02_cloner.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/source/tutorials/02_cloner.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Duplicating a scene efficiently</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code">The Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code-explained">The Code Explained</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-the-simulation-stage">Configuring the simulation stage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloning-the-scene">Cloning the scene</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-collision-filtering">Applying collision filtering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code-execution">The Code Execution</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="duplicating-a-scene-efficiently">
+<h1>Duplicating a scene efficiently<a class="headerlink" href="#duplicating-a-scene-efficiently" title="Permalink to this heading">#</a></h1>
+<p>In the previous tutorial, we needed to spawn each individual prim manually to create multiple robots in the scene.
+This operation can be cumbersome and slow when defining a large scene which needs to duplicated a large number of
+times, such for reinforement learning. In this tutorial we will look at duplicating the scene with the cloner APIs
+provided by Isaac Sim.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A more descriptive tutorial on the cloner APIs can be found in the <a class="reference external" href="https://docs.omniverse.nvidia.com/app_isaacsim/app_isaacsim/tutorial_gym_cloner.html">cloner API tutorial</a>. We introduce its main
+concepts in this tutorial for convenience.</p>
+</div>
+<section id="the-code">
+<h2>The Code<a class="headerlink" href="#the-code" title="Permalink to this heading">#</a></h2>
+<p>The tutorial corresponds to the <code class="docutils literal notranslate"><span class="pre">play_cloner.py</span></code> script in the <code class="docutils literal notranslate"><span class="pre">orbit/source/standalone/demo</span></code> directory.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="c1"># Copyright (c) 2022, NVIDIA CORPORATION &amp; AFFILIATES, ETH Zurich, and University of Toronto</span>
+<span class="linenos">  2</span><span class="c1"># All rights reserved.</span>
+<span class="linenos">  3</span><span class="c1">#</span>
+<span class="linenos">  4</span><span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+<span class="linenos">  5</span>
+<span class="linenos">  6</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">  7</span><span class="sd">This script demonstrates how to use the cloner API from Isaac Sim.</span>
+<span class="linenos">  8</span>
+<span class="linenos">  9</span><span class="sd">Reference: https://docs.omniverse.nvidia.com/app_isaacsim/app_isaacsim/tutorial_gym_cloner.html</span>
+<span class="linenos"> 10</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 11</span>
+<span class="linenos"> 12</span><span class="sd">&quot;&quot;&quot;Launch Isaac Sim Simulator first.&quot;&quot;&quot;</span>
+<span class="linenos"> 13</span>
+<span class="linenos"> 14</span>
+<span class="linenos"> 15</span><span class="kn">import</span> <span class="nn">argparse</span>
+<span class="linenos"> 16</span>
+<span class="linenos"> 17</span><span class="kn">from</span> <span class="nn">omni.isaac.kit</span> <span class="kn">import</span> <span class="n">SimulationApp</span>
+<span class="linenos"> 18</span>
+<span class="linenos"> 19</span><span class="c1"># add argparse arguments</span>
+<span class="linenos"> 20</span><span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="s2">&quot;Welcome to Orbit: Omniverse Robotics Environments!&quot;</span><span class="p">)</span>
+<span class="linenos"> 21</span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--headless&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Force display off at all times.&quot;</span><span class="p">)</span>
+<span class="linenos"> 22</span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--robot&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;franka_panda&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Name of the robot.&quot;</span><span class="p">)</span>
+<span class="linenos"> 23</span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--num_robots&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of robots to spawn.&quot;</span><span class="p">)</span>
+<span class="linenos"> 24</span><span class="n">args_cli</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+<span class="linenos"> 25</span>
+<span class="linenos"> 26</span><span class="c1"># launch omniverse app</span>
+<span class="linenos"> 27</span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;headless&quot;</span><span class="p">:</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">headless</span><span class="p">}</span>
+<span class="linenos"> 28</span><span class="n">simulation_app</span> <span class="o">=</span> <span class="n">SimulationApp</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<span class="linenos"> 29</span>
+<span class="linenos"> 30</span>
+<span class="linenos"> 31</span><span class="sd">&quot;&quot;&quot;Rest everything follows.&quot;&quot;&quot;</span>
+<span class="linenos"> 32</span>
+<span class="linenos"> 33</span>
+<span class="linenos"> 34</span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="linenos"> 35</span>
+<span class="linenos"> 36</span><span class="kn">import</span> <span class="nn">omni.isaac.core.utils.prims</span> <span class="k">as</span> <span class="nn">prim_utils</span>
+<span class="hll"><span class="linenos"> 37</span><span class="kn">from</span> <span class="nn">omni.isaac.cloner</span> <span class="kn">import</span> <span class="n">GridCloner</span>
+</span><span class="linenos"> 38</span><span class="kn">from</span> <span class="nn">omni.isaac.core.simulation_context</span> <span class="kn">import</span> <span class="n">SimulationContext</span>
+<span class="linenos"> 39</span><span class="kn">from</span> <span class="nn">omni.isaac.core.utils.carb</span> <span class="kn">import</span> <span class="n">set_carb_setting</span>
+<span class="linenos"> 40</span><span class="kn">from</span> <span class="nn">omni.isaac.core.utils.viewports</span> <span class="kn">import</span> <span class="n">set_camera_view</span>
+<span class="linenos"> 41</span>
+<span class="linenos"> 42</span><span class="kn">import</span> <span class="nn">omni.isaac.orbit.utils.kit</span> <span class="k">as</span> <span class="nn">kit_utils</span>
+<span class="linenos"> 43</span><span class="kn">from</span> <span class="nn">omni.isaac.orbit.robots.config.franka</span> <span class="kn">import</span> <span class="n">FRANKA_PANDA_ARM_WITH_PANDA_HAND_CFG</span>
+<span class="linenos"> 44</span><span class="kn">from</span> <span class="nn">omni.isaac.orbit.robots.config.universal_robots</span> <span class="kn">import</span> <span class="n">UR10_CFG</span>
+<span class="linenos"> 45</span><span class="kn">from</span> <span class="nn">omni.isaac.orbit.robots.single_arm</span> <span class="kn">import</span> <span class="n">SingleArmManipulator</span>
+<span class="linenos"> 46</span><span class="kn">from</span> <span class="nn">omni.isaac.orbit.utils.assets</span> <span class="kn">import</span> <span class="n">ISAAC_NUCLEUS_DIR</span>
+<span class="linenos"> 47</span>
+<span class="linenos"> 48</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 49</span><span class="sd">Main</span>
+<span class="linenos"> 50</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 51</span>
+<span class="linenos"> 52</span>
+<span class="linenos"> 53</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos"> 54</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Spawns the Franka robot and clones it using Isaac Gym Cloner API.&quot;&quot;&quot;</span>
+<span class="linenos"> 55</span>
+<span class="linenos"> 56</span>    <span class="c1"># Load kit helper</span>
+<span class="linenos"> 57</span>    <span class="n">sim</span> <span class="o">=</span> <span class="n">SimulationContext</span><span class="p">(</span><span class="n">physics_dt</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">rendering_dt</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda:0&quot;</span><span class="p">)</span>
+<span class="linenos"> 58</span>    <span class="c1"># Set main camera</span>
+<span class="linenos"> 59</span>    <span class="n">set_camera_view</span><span class="p">([</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<span class="linenos"> 60</span>
+<span class="hll"><span class="linenos"> 61</span>    <span class="c1"># Enable flatcache which avoids passing data over to USD structure</span>
+</span><span class="hll"><span class="linenos"> 62</span>    <span class="c1"># this speeds up the read-write operation of GPU buffers</span>
+</span><span class="hll"><span class="linenos"> 63</span>    <span class="k">if</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_physics_context</span><span class="p">()</span><span class="o">.</span><span class="n">use_gpu_pipeline</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos"> 64</span>        <span class="n">sim</span><span class="o">.</span><span class="n">get_physics_context</span><span class="p">()</span><span class="o">.</span><span class="n">enable_flatcache</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos"> 65</span>    <span class="c1"># Enable hydra scene-graph instancing</span>
+</span><span class="hll"><span class="linenos"> 66</span>    <span class="c1"># this is needed to visualize the scene when flatcache is enabled</span>
+</span><span class="hll"><span class="linenos"> 67</span>    <span class="n">set_carb_setting</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">_settings</span><span class="p">,</span> <span class="s2">&quot;/persistent/omnihydra/useSceneGraphInstancing&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</span><span class="linenos"> 68</span>
+<span class="hll"><span class="linenos"> 69</span>    <span class="c1"># Create interface to clone the scene</span>
+</span><span class="hll"><span class="linenos"> 70</span>    <span class="n">cloner</span> <span class="o">=</span> <span class="n">GridCloner</span><span class="p">(</span><span class="n">spacing</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos"> 71</span>    <span class="n">cloner</span><span class="o">.</span><span class="n">define_base_env</span><span class="p">(</span><span class="s2">&quot;/World/envs&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos"> 72</span>    <span class="c1"># Everything under the namespace &quot;/World/envs/env_0&quot; will be cloned</span>
+</span><span class="hll"><span class="linenos"> 73</span>    <span class="n">prim_utils</span><span class="o">.</span><span class="n">define_prim</span><span class="p">(</span><span class="s2">&quot;/World/envs/env_0&quot;</span><span class="p">)</span>
+</span><span class="linenos"> 74</span>
+<span class="linenos"> 75</span>    <span class="c1"># Spawn things into stage</span>
+<span class="linenos"> 76</span>    <span class="c1"># Ground-plane</span>
+<span class="linenos"> 77</span>    <span class="n">kit_utils</span><span class="o">.</span><span class="n">create_ground_plane</span><span class="p">(</span><span class="s2">&quot;/World/defaultGroundPlane&quot;</span><span class="p">,</span> <span class="n">z_position</span><span class="o">=-</span><span class="mf">1.05</span><span class="p">)</span>
+<span class="linenos"> 78</span>    <span class="c1"># Lights-1</span>
+<span class="linenos"> 79</span>    <span class="n">prim_utils</span><span class="o">.</span><span class="n">create_prim</span><span class="p">(</span>
+<span class="linenos"> 80</span>        <span class="s2">&quot;/World/Light/GreySphere&quot;</span><span class="p">,</span>
+<span class="linenos"> 81</span>        <span class="s2">&quot;SphereLight&quot;</span><span class="p">,</span>
+<span class="linenos"> 82</span>        <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span>
+<span class="linenos"> 83</span>        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;radius&quot;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s2">&quot;intensity&quot;</span><span class="p">:</span> <span class="mf">600.0</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)},</span>
+<span class="linenos"> 84</span>    <span class="p">)</span>
+<span class="linenos"> 85</span>    <span class="c1"># Lights-2</span>
+<span class="linenos"> 86</span>    <span class="n">prim_utils</span><span class="o">.</span><span class="n">create_prim</span><span class="p">(</span>
+<span class="linenos"> 87</span>        <span class="s2">&quot;/World/Light/WhiteSphere&quot;</span><span class="p">,</span>
+<span class="linenos"> 88</span>        <span class="s2">&quot;SphereLight&quot;</span><span class="p">,</span>
+<span class="linenos"> 89</span>        <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span>
+<span class="linenos"> 90</span>        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;radius&quot;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s2">&quot;intensity&quot;</span><span class="p">:</span> <span class="mf">600.0</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)},</span>
+<span class="linenos"> 91</span>    <span class="p">)</span>
+<span class="linenos"> 92</span>    <span class="c1"># -- Table</span>
+<span class="linenos"> 93</span>    <span class="n">table_usd_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ISAAC_NUCLEUS_DIR</span><span class="si">}</span><span class="s2">/Props/Mounts/SeattleLabTable/table_instanceable.usd&quot;</span>
+<span class="hll"><span class="linenos"> 94</span>    <span class="n">prim_utils</span><span class="o">.</span><span class="n">create_prim</span><span class="p">(</span><span class="s2">&quot;/World/envs/env_0/Table&quot;</span><span class="p">,</span> <span class="n">usd_path</span><span class="o">=</span><span class="n">table_usd_path</span><span class="p">)</span>
+</span><span class="linenos"> 95</span>    <span class="c1"># -- Robot</span>
+<span class="linenos"> 96</span>    <span class="c1"># resolve robot config from command-line arguments</span>
+<span class="linenos"> 97</span>    <span class="k">if</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">robot</span> <span class="o">==</span> <span class="s2">&quot;franka_panda&quot;</span><span class="p">:</span>
+<span class="linenos"> 98</span>        <span class="n">robot_cfg</span> <span class="o">=</span> <span class="n">FRANKA_PANDA_ARM_WITH_PANDA_HAND_CFG</span>
+<span class="linenos"> 99</span>    <span class="k">elif</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">robot</span> <span class="o">==</span> <span class="s2">&quot;ur10&quot;</span><span class="p">:</span>
+<span class="linenos">100</span>        <span class="n">robot_cfg</span> <span class="o">=</span> <span class="n">UR10_CFG</span>
+<span class="linenos">101</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">102</span>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Robot </span><span class="si">{</span><span class="n">args_cli</span><span class="o">.</span><span class="n">robot</span><span class="si">}</span><span class="s2"> is not supported. Valid: franka_panda, ur10&quot;</span><span class="p">)</span>
+<span class="linenos">103</span>    <span class="c1"># spawn robot</span>
+<span class="linenos">104</span>    <span class="n">robot</span> <span class="o">=</span> <span class="n">SingleArmManipulator</span><span class="p">(</span><span class="n">cfg</span><span class="o">=</span><span class="n">robot_cfg</span><span class="p">)</span>
+<span class="hll"><span class="linenos">105</span>    <span class="n">robot</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s2">&quot;/World/envs/env_0/Robot&quot;</span><span class="p">,</span> <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+</span><span class="linenos">106</span>
+<span class="hll"><span class="linenos">107</span>    <span class="c1"># Clone the scene</span>
+</span><span class="hll"><span class="linenos">108</span>    <span class="n">num_envs</span> <span class="o">=</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">num_robots</span>
+</span><span class="hll"><span class="linenos">109</span>    <span class="n">cloner</span><span class="o">.</span><span class="n">define_base_env</span><span class="p">(</span><span class="s2">&quot;/World/envs&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">110</span>    <span class="n">envs_prim_paths</span> <span class="o">=</span> <span class="n">cloner</span><span class="o">.</span><span class="n">generate_paths</span><span class="p">(</span><span class="s2">&quot;/World/envs/env&quot;</span><span class="p">,</span> <span class="n">num_paths</span><span class="o">=</span><span class="n">num_envs</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">111</span>    <span class="n">envs_positions</span> <span class="o">=</span> <span class="n">cloner</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span>
+</span><span class="hll"><span class="linenos">112</span>        <span class="n">source_prim_path</span><span class="o">=</span><span class="s2">&quot;/World/envs/env_0&quot;</span><span class="p">,</span> <span class="n">prim_paths</span><span class="o">=</span><span class="n">envs_prim_paths</span><span class="p">,</span> <span class="n">replicate_physics</span><span class="o">=</span><span class="kc">True</span>
+</span><span class="hll"><span class="linenos">113</span>    <span class="p">)</span>
+</span><span class="hll"><span class="linenos">114</span>    <span class="c1"># convert environment positions to torch tensor</span>
+</span><span class="hll"><span class="linenos">115</span>    <span class="n">envs_positions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">envs_positions</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">sim</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">116</span>    <span class="c1"># filter collisions within each environment instance</span>
+</span><span class="hll"><span class="linenos">117</span>    <span class="n">physics_scene_path</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_physics_context</span><span class="p">()</span><span class="o">.</span><span class="n">prim_path</span>
+</span><span class="hll"><span class="linenos">118</span>    <span class="n">cloner</span><span class="o">.</span><span class="n">filter_collisions</span><span class="p">(</span>
+</span><span class="hll"><span class="linenos">119</span>        <span class="n">physics_scene_path</span><span class="p">,</span> <span class="s2">&quot;/World/collisions&quot;</span><span class="p">,</span> <span class="n">envs_prim_paths</span><span class="p">,</span> <span class="n">global_paths</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;/World/defaultGroundPlane&quot;</span><span class="p">]</span>
+</span><span class="hll"><span class="linenos">120</span>    <span class="p">)</span>
+</span><span class="linenos">121</span>
+<span class="linenos">122</span>    <span class="c1"># Play the simulator</span>
+<span class="linenos">123</span>    <span class="n">sim</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="linenos">124</span>    <span class="c1"># Acquire handles</span>
+<span class="linenos">125</span>    <span class="c1"># Initialize handles</span>
+<span class="hll"><span class="linenos">126</span>    <span class="n">robot</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="s2">&quot;/World/envs/env_.*/Robot&quot;</span><span class="p">)</span>
+</span><span class="linenos">127</span>    <span class="c1"># Reset states</span>
+<span class="linenos">128</span>    <span class="n">robot</span><span class="o">.</span><span class="n">reset_buffers</span><span class="p">()</span>
+<span class="linenos">129</span>
+<span class="linenos">130</span>    <span class="c1"># Now we are ready!</span>
+<span class="linenos">131</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[INFO]: Setup complete...&quot;</span><span class="p">)</span>
+<span class="linenos">132</span>
+<span class="linenos">133</span>    <span class="c1"># dummy actions</span>
+<span class="linenos">134</span>    <span class="n">actions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">robot</span><span class="o">.</span><span class="n">count</span><span class="p">,</span> <span class="n">robot</span><span class="o">.</span><span class="n">num_actions</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">robot</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+<span class="linenos">135</span>    <span class="n">has_gripper</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">meta_info</span><span class="o">.</span><span class="n">tool_num_dof</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="linenos">136</span>
+<span class="linenos">137</span>    <span class="c1"># Define simulation stepping</span>
+<span class="linenos">138</span>    <span class="n">sim_dt</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_physics_dt</span><span class="p">()</span>
+<span class="linenos">139</span>    <span class="c1"># episode counter</span>
+<span class="linenos">140</span>    <span class="n">sim_time</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="linenos">141</span>    <span class="n">ep_step_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">142</span>    <span class="c1"># Simulate physics</span>
+<span class="linenos">143</span>    <span class="k">while</span> <span class="n">simulation_app</span><span class="o">.</span><span class="n">is_running</span><span class="p">():</span>
+<span class="linenos">144</span>        <span class="c1"># If simulation is stopped, then exit.</span>
+<span class="linenos">145</span>        <span class="k">if</span> <span class="n">sim</span><span class="o">.</span><span class="n">is_stopped</span><span class="p">():</span>
+<span class="linenos">146</span>            <span class="k">break</span>
+<span class="linenos">147</span>        <span class="c1"># If simulation is paused, then skip.</span>
+<span class="linenos">148</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">sim</span><span class="o">.</span><span class="n">is_playing</span><span class="p">():</span>
+<span class="linenos">149</span>            <span class="n">sim</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">render</span><span class="o">=</span><span class="ow">not</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">headless</span><span class="p">)</span>
+<span class="linenos">150</span>            <span class="k">continue</span>
+<span class="linenos">151</span>        <span class="c1"># reset</span>
+<span class="linenos">152</span>        <span class="k">if</span> <span class="n">ep_step_count</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">153</span>            <span class="n">sim_time</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="linenos">154</span>            <span class="n">ep_step_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">155</span>            <span class="c1"># reset dof state</span>
+<span class="linenos">156</span>            <span class="n">dof_pos</span><span class="p">,</span> <span class="n">dof_vel</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">get_default_dof_state</span><span class="p">()</span>
+<span class="linenos">157</span>            <span class="n">robot</span><span class="o">.</span><span class="n">set_dof_state</span><span class="p">(</span><span class="n">dof_pos</span><span class="p">,</span> <span class="n">dof_vel</span><span class="p">)</span>
+<span class="linenos">158</span>            <span class="n">robot</span><span class="o">.</span><span class="n">reset_buffers</span><span class="p">()</span>
+<span class="linenos">159</span>            <span class="c1"># reset command</span>
+<span class="linenos">160</span>            <span class="n">actions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">robot</span><span class="o">.</span><span class="n">count</span><span class="p">,</span> <span class="n">robot</span><span class="o">.</span><span class="n">num_actions</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">robot</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+<span class="linenos">161</span>            <span class="c1"># reset gripper</span>
+<span class="linenos">162</span>            <span class="k">if</span> <span class="n">has_gripper</span><span class="p">:</span>
+<span class="linenos">163</span>                <span class="n">actions</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="linenos">164</span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[INFO]: Resetting robots state...&quot;</span><span class="p">)</span>
+<span class="linenos">165</span>        <span class="c1"># change the gripper action</span>
+<span class="linenos">166</span>        <span class="k">if</span> <span class="n">ep_step_count</span> <span class="o">%</span> <span class="mi">200</span> <span class="ow">and</span> <span class="n">has_gripper</span><span class="p">:</span>
+<span class="linenos">167</span>            <span class="c1"># flip command for the gripper</span>
+<span class="linenos">168</span>            <span class="n">actions</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">actions</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="linenos">169</span>        <span class="c1"># apply actions</span>
+<span class="linenos">170</span>        <span class="n">robot</span><span class="o">.</span><span class="n">apply_action</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
+<span class="linenos">171</span>        <span class="c1"># perform step</span>
+<span class="linenos">172</span>        <span class="n">sim</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="linenos">173</span>        <span class="c1"># update sim-time</span>
+<span class="linenos">174</span>        <span class="n">sim_time</span> <span class="o">+=</span> <span class="n">sim_dt</span>
+<span class="linenos">175</span>        <span class="n">ep_step_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="linenos">176</span>        <span class="c1"># note: to deal with timeline events such as stopping, we need to check if the simulation is playing</span>
+<span class="linenos">177</span>        <span class="k">if</span> <span class="n">sim</span><span class="o">.</span><span class="n">is_playing</span><span class="p">():</span>
+<span class="linenos">178</span>            <span class="c1"># update buffers</span>
+<span class="linenos">179</span>            <span class="n">robot</span><span class="o">.</span><span class="n">update_buffers</span><span class="p">(</span><span class="n">sim_dt</span><span class="p">)</span>
+<span class="linenos">180</span>
+<span class="linenos">181</span>
+<span class="linenos">182</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="linenos">183</span>    <span class="c1"># Run the main function</span>
+<span class="linenos">184</span>    <span class="n">main</span><span class="p">()</span>
+<span class="linenos">185</span>    <span class="c1"># Close the simulator</span>
+<span class="linenos">186</span>    <span class="n">simulation_app</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="the-code-explained">
+<h2>The Code Explained<a class="headerlink" href="#the-code-explained" title="Permalink to this heading">#</a></h2>
+<section id="configuring-the-simulation-stage">
+<h3>Configuring the simulation stage<a class="headerlink" href="#configuring-the-simulation-stage" title="Permalink to this heading">#</a></h3>
+<p>Cloning a scene to a large number of instances can lead to slow accessibility of the physics buffers from Python. This
+is because in Omniverse, all read and write happens through the intermediate USD layer. Thus, whenever a physics
+step happens. the data is first written into the USD buffers from the physics tensor buffers, and then available
+to the users. Thus, to avoid this overhead, we can configure the simulation stage to write the data directly into
+the tensors accessed by the users. This is performed by enabling the
+<a class="reference external" href="https://docs.omniverse.nvidia.com/prod_extensions/prod_extensions/ext_physics.html#physx-short-flatcache-also-known-as-fabric-rename-in-next-release">PhysX flatcache</a>.</p>
+<p>However, once flatcache is enabled, the rendering is not updated since it still reads from the USD buffers, which are
+no longer being updated. Thus, we also need to enable scene graph instancing to render the scene.</p>
+<p>These are done by setting the following flags:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">61</span>    <span class="c1"># Enable flatcache which avoids passing data over to USD structure</span>
+<span class="linenos">62</span>    <span class="c1"># this speeds up the read-write operation of GPU buffers</span>
+<span class="linenos">63</span>    <span class="k">if</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_physics_context</span><span class="p">()</span><span class="o">.</span><span class="n">use_gpu_pipeline</span><span class="p">:</span>
+<span class="linenos">64</span>        <span class="n">sim</span><span class="o">.</span><span class="n">get_physics_context</span><span class="p">()</span><span class="o">.</span><span class="n">enable_flatcache</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">65</span>    <span class="c1"># Enable hydra scene-graph instancing</span>
+<span class="linenos">66</span>    <span class="c1"># this is needed to visualize the scene when flatcache is enabled</span>
+<span class="linenos">67</span>    <span class="n">set_carb_setting</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">_settings</span><span class="p">,</span> <span class="s2">&quot;/persistent/omnihydra/useSceneGraphInstancing&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="cloning-the-scene">
+<h3>Cloning the scene<a class="headerlink" href="#cloning-the-scene" title="Permalink to this heading">#</a></h3>
+<p>The basic <code class="xref py py-class docutils literal notranslate"><span class="pre">Cloner</span></code> class clones all the prims under a source prim path and puts them under the specified paths.
+It provides a method to generate the paths for the cloned prims based on the number of clones. The generated paths
+follow the pattern of the source prim path with a number appended to the end. For example, if the source prim path is
+<cite>/World/envs/env_0</cite>, the generated paths will be <cite>/World/envs/env_0</cite>, <cite>/World/envs/env_1</cite>, <cite>/World/envs/env_2</cite>, etc.
+These are then passed to the <code class="xref py py-meth docutils literal notranslate"><span class="pre">clone()</span></code> method to clone the scene.</p>
+<p>In this tutorial, we use the <code class="xref py py-class docutils literal notranslate"><span class="pre">GridCloner</span></code> class which clones the scene in a grid pattern. The grid spacing
+defines the distance between the cloned scenes. We define the base environment path to be <cite>/World/envs</cite>, which is
+the parent prim of all the cloned scenes. The source prim path is then defined to be <cite>/World/envs/env_0</cite>. All the
+prims under this prim path are cloned.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">69</span>    <span class="c1"># Create interface to clone the scene</span>
+<span class="linenos">70</span>    <span class="n">cloner</span> <span class="o">=</span> <span class="n">GridCloner</span><span class="p">(</span><span class="n">spacing</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="linenos">71</span>    <span class="n">cloner</span><span class="o">.</span><span class="n">define_base_env</span><span class="p">(</span><span class="s2">&quot;/World/envs&quot;</span><span class="p">)</span>
+<span class="linenos">72</span>    <span class="c1"># Everything under the namespace &quot;/World/envs/env_0&quot; will be cloned</span>
+<span class="linenos">73</span>    <span class="n">prim_utils</span><span class="o">.</span><span class="n">define_prim</span><span class="p">(</span><span class="s2">&quot;/World/envs/env_0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Unlike the previous tutorial, in this tutorial, we only spawn one environment and clone it to multiple instances.
+We spawn the table and the robot under the source prim path.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 92</span>    <span class="c1"># -- Table</span>
+<span class="linenos"> 93</span>    <span class="n">table_usd_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ISAAC_NUCLEUS_DIR</span><span class="si">}</span><span class="s2">/Props/Mounts/SeattleLabTable/table_instanceable.usd&quot;</span>
+<span class="linenos"> 94</span>    <span class="n">prim_utils</span><span class="o">.</span><span class="n">create_prim</span><span class="p">(</span><span class="s2">&quot;/World/envs/env_0/Table&quot;</span><span class="p">,</span> <span class="n">usd_path</span><span class="o">=</span><span class="n">table_usd_path</span><span class="p">)</span>
+<span class="linenos"> 95</span>    <span class="c1"># -- Robot</span>
+<span class="linenos"> 96</span>    <span class="c1"># resolve robot config from command-line arguments</span>
+<span class="linenos"> 97</span>    <span class="k">if</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">robot</span> <span class="o">==</span> <span class="s2">&quot;franka_panda&quot;</span><span class="p">:</span>
+<span class="linenos"> 98</span>        <span class="n">robot_cfg</span> <span class="o">=</span> <span class="n">FRANKA_PANDA_ARM_WITH_PANDA_HAND_CFG</span>
+<span class="linenos"> 99</span>    <span class="k">elif</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">robot</span> <span class="o">==</span> <span class="s2">&quot;ur10&quot;</span><span class="p">:</span>
+<span class="linenos">100</span>        <span class="n">robot_cfg</span> <span class="o">=</span> <span class="n">UR10_CFG</span>
+<span class="linenos">101</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">102</span>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Robot </span><span class="si">{</span><span class="n">args_cli</span><span class="o">.</span><span class="n">robot</span><span class="si">}</span><span class="s2"> is not supported. Valid: franka_panda, ur10&quot;</span><span class="p">)</span>
+<span class="linenos">103</span>    <span class="c1"># spawn robot</span>
+<span class="linenos">104</span>    <span class="n">robot</span> <span class="o">=</span> <span class="n">SingleArmManipulator</span><span class="p">(</span><span class="n">cfg</span><span class="o">=</span><span class="n">robot_cfg</span><span class="p">)</span>
+<span class="linenos">105</span>    <span class="n">robot</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s2">&quot;/World/envs/env_0/Robot&quot;</span><span class="p">,</span> <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">generate_paths()</span></code> method generates the paths for the cloned prims. The generated paths are then passed to
+the <code class="xref py py-meth docutils literal notranslate"><span class="pre">clone()</span></code> method to clone the source scene. It returns the positions of the cloned scenes relative to
+the simulation world origin.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">107</span>    <span class="c1"># Clone the scene</span>
+<span class="linenos">108</span>    <span class="n">num_envs</span> <span class="o">=</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">num_robots</span>
+<span class="linenos">109</span>    <span class="n">cloner</span><span class="o">.</span><span class="n">define_base_env</span><span class="p">(</span><span class="s2">&quot;/World/envs&quot;</span><span class="p">)</span>
+<span class="linenos">110</span>    <span class="n">envs_prim_paths</span> <span class="o">=</span> <span class="n">cloner</span><span class="o">.</span><span class="n">generate_paths</span><span class="p">(</span><span class="s2">&quot;/World/envs/env&quot;</span><span class="p">,</span> <span class="n">num_paths</span><span class="o">=</span><span class="n">num_envs</span><span class="p">)</span>
+<span class="linenos">111</span>    <span class="n">envs_positions</span> <span class="o">=</span> <span class="n">cloner</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span>
+<span class="linenos">112</span>        <span class="n">source_prim_path</span><span class="o">=</span><span class="s2">&quot;/World/envs/env_0&quot;</span><span class="p">,</span> <span class="n">prim_paths</span><span class="o">=</span><span class="n">envs_prim_paths</span><span class="p">,</span> <span class="n">replicate_physics</span><span class="o">=</span><span class="kc">True</span>
+<span class="linenos">113</span>    <span class="p">)</span>
+<span class="linenos">114</span>    <span class="c1"># convert environment positions to torch tensor</span>
+<span class="linenos">115</span>    <span class="n">envs_positions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">envs_positions</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">sim</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+<span class="linenos">116</span>    <span class="c1"># filter collisions within each environment instance</span>
+<span class="linenos">117</span>    <span class="n">physics_scene_path</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_physics_context</span><span class="p">()</span><span class="o">.</span><span class="n">prim_path</span>
+<span class="linenos">118</span>    <span class="n">cloner</span><span class="o">.</span><span class="n">filter_collisions</span><span class="p">(</span>
+<span class="linenos">119</span>        <span class="n">physics_scene_path</span><span class="p">,</span> <span class="s2">&quot;/World/collisions&quot;</span><span class="p">,</span> <span class="n">envs_prim_paths</span><span class="p">,</span> <span class="n">global_paths</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;/World/defaultGroundPlane&quot;</span><span class="p">]</span>
+<span class="linenos">120</span>    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="applying-collision-filtering">
+<h3>Applying collision filtering<a class="headerlink" href="#applying-collision-filtering" title="Permalink to this heading">#</a></h3>
+<p>Collisions between the cloned environments is filtered by using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">filter_collisions()</span></code> method. This
+is done by specifying the physics scene path, the collision prim path, the cloned prim paths, and the global prim paths.
+The global prim paths are the prims that are not cloned and are shared between the cloned scenes. For instance,
+the ground plane belongs to the global prim paths.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">116</span>    <span class="c1"># filter collisions within each environment instance</span>
+<span class="linenos">117</span>    <span class="n">physics_scene_path</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_physics_context</span><span class="p">()</span><span class="o">.</span><span class="n">prim_path</span>
+<span class="linenos">118</span>    <span class="n">cloner</span><span class="o">.</span><span class="n">filter_collisions</span><span class="p">(</span>
+<span class="linenos">119</span>        <span class="n">physics_scene_path</span><span class="p">,</span> <span class="s2">&quot;/World/collisions&quot;</span><span class="p">,</span> <span class="n">envs_prim_paths</span><span class="p">,</span> <span class="n">global_paths</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;/World/defaultGroundPlane&quot;</span><span class="p">]</span>
+<span class="linenos">120</span>    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="the-code-execution">
+<h2>The Code Execution<a class="headerlink" href="#the-code-execution" title="Permalink to this heading">#</a></h2>
+<p>Now that we have gone through the code, let’s run the script and see the result:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./orbit.sh<span class="w"> </span>-p<span class="w"> </span>source/standalone/demo/play_cloner.py<span class="w"> </span>--robot<span class="w"> </span>franka_panda<span class="w"> </span>--num_robots<span class="w"> </span><span class="m">128</span>
+</pre></div>
+</div>
+<p>This should behave the same as the previous tutorial, except that it is much faster to spawn the robots.
+To stop the simulation, you can either close the window, or press the <code class="docutils literal notranslate"><span class="pre">STOP</span></code> button in the UI, or
+press <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> in the terminal.</p>
+<p>Now that we have learned how to design a scene with a robot and clone it multiple times, we can move on to
+the next tutorial to learn how to control the robot with a task-space controller.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_arms.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Adding a robotic arm to the scene</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_ik_controller.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using a task-space controller</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code">The Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code-explained">The Code Explained</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-the-simulation-stage">Configuring the simulation stage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloning-the-scene">Cloning the scene</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-collision-filtering">Applying collision filtering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code-execution">The Code Execution</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Isaac Lab Project Developers.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2024, The Isaac Lab Project Developers..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Oct 11, 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

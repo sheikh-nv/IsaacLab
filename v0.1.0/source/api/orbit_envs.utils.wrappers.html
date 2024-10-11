@@ -1,0 +1,1018 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>omni.isaac.orbit_envs.utils.wrappers &#8212; Isaac Lab documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/api/orbit_envs.utils.wrappers';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Contribution Guidelines" href="../refs/contributing.html" />
+    <link rel="prev" title="omni.isaac.orbit_envs.utils.data_collector" href="orbit_envs.utils.data_collector.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Oct 11, 2024"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/NVIDIA-logo-white.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../_static/NVIDIA-logo-black.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">Isaac Lab documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/isaac-sim/IsaacLab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-4.2.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" title="Stars" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" class="icon-link-image" alt="Stars"/></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../setup/installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/developer.html">Developer’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/sample.html">Running existing scripts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../features/actuators.html">Actuators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/motion_generators.html">Motion Generators</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials (beginner)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/00_empty.html">Creating an empty scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/01_arms.html">Adding a robotic arm to the scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/02_cloner.html">Duplicating a scene efficiently</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/03_ik_controller.html">Using a task-space controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/04_gym_env.html">Running an RL environment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Source API</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="orbit.actuators.group.html">omni.isaac.orbit.actuators.group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.actuators.model.html">omni.isaac.orbit.actuators.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.devices.html">omni.isaac.orbit.devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.markers.html">omni.isaac.orbit.markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.objects.articulated.html">omni.isaac.orbit.objects.articulated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.objects.rigid.html">omni.isaac.orbit.objects.rigid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.robots.html">omni.isaac.orbit.robots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.utils.html">omni.isaac.orbit.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.utils.assets.html">omni.isaac.orbit.utils.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.utils.kit.html">omni.isaac.orbit.utils.kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.utils.math.html">omni.isaac.orbit.utils.math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.utils.mdp.html">omni.isaac.orbit.utils.mdp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit_envs.isaac_env.html">omni.isaac.orbit_envs.isaac_env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit_envs.utils.html">omni.isaac.orbit_envs.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit_envs.utils.data_collector.html">omni.isaac.orbit_envs.utils.data_collector</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">omni.isaac.orbit_envs.utils.wrappers</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../refs/contributing.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/troubleshooting.html">Tricks and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/changelog.html">Extensions Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/roadmap.html">Development Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<h2>Versions</h2>
+<ul>
+  <li><a href="../../../main/index.html">main</a></li>
+  <li><a href="../../../v1.2.0/index.html">v1.2.0</a></li>
+  <li><a href="../../../v1.1.0/index.html">v1.1.0</a></li>
+  <li><a href="../../../v1.0.0/index.html">v1.0.0</a></li>
+  <li><a href="../../../v0.3.1/index.html">v0.3.1</a></li>
+  <li><a href="../../../v0.3.0/index.html">v0.3.0</a></li>
+  <li><a href="../../../v0.2.0/index.html">v0.2.0</a></li>
+  <li><a href="orbit_envs.utils.wrappers.html">v0.1.0</a></li>
+</ul>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/edit/main/source/api/orbit_envs.utils.wrappers.rst" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/issues/new?title=Issue%20on%20page%20%2Fsource/api/orbit_envs.utils.wrappers.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/source/api/orbit_envs.utils.wrappers.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>omni.isaac.orbit_envs.utils.wrappers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-omni.isaac.orbit_envs.utils.wrappers.rl_games">RL-Games Wrapper</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper"><code class="docutils literal notranslate"><span class="pre">RlGamesVecEnvWrapper</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.__init__"><code class="docutils literal notranslate"><span class="pre">RlGamesVecEnvWrapper.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.get_number_of_agents"><code class="docutils literal notranslate"><span class="pre">RlGamesVecEnvWrapper.get_number_of_agents()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.get_env_info"><code class="docutils literal notranslate"><span class="pre">RlGamesVecEnvWrapper.get_env_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesGpuEnv"><code class="docutils literal notranslate"><span class="pre">RlGamesGpuEnv</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesGpuEnv.__init__"><code class="docutils literal notranslate"><span class="pre">RlGamesGpuEnv.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-omni.isaac.orbit_envs.utils.wrappers.rsl_rl">RSL-RL Wrapper</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper"><code class="docutils literal notranslate"><span class="pre">RslRlVecEnvWrapper</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.__init__"><code class="docutils literal notranslate"><span class="pre">RslRlVecEnvWrapper.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.get_observations"><code class="docutils literal notranslate"><span class="pre">RslRlVecEnvWrapper.get_observations()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.get_privileged_observations"><code class="docutils literal notranslate"><span class="pre">RslRlVecEnvWrapper.get_privileged_observations()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.export_policy_as_jit"><code class="docutils literal notranslate"><span class="pre">export_policy_as_jit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.export_policy_as_onnx"><code class="docutils literal notranslate"><span class="pre">export_policy_as_onnx()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-omni.isaac.orbit_envs.utils.wrappers.sb3">Stable-Baselines3 Wrapper</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper"><code class="docutils literal notranslate"><span class="pre">Sb3VecEnvWrapper</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.__init__"><code class="docutils literal notranslate"><span class="pre">Sb3VecEnvWrapper.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.get_episode_rewards"><code class="docutils literal notranslate"><span class="pre">Sb3VecEnvWrapper.get_episode_rewards()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.get_episode_lengths"><code class="docutils literal notranslate"><span class="pre">Sb3VecEnvWrapper.get_episode_lengths()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="omni-isaac-orbit-envs-utils-wrappers">
+<h1>omni.isaac.orbit_envs.utils.wrappers<a class="headerlink" href="#omni-isaac-orbit-envs-utils-wrappers" title="Permalink to this heading">#</a></h1>
+<p>Wrappers allow you to modify the behavior of an environment without modifying the environment itself.
+This is useful for modifying the observation space, action space, or reward function. Additionally,
+they can be used to cast a given environment into the respective environment class definition used by
+different learning frameworks. This operation may include handling of asymmetric actor-critic observations,
+casting the data between different backends such <cite>numpy</cite> and <cite>pytorch</cite>, or organizing the returned data
+into the expected data structure by the learning framework.</p>
+<p>All wrappers derive from the <code class="docutils literal notranslate"><span class="pre">gym.Wrapper`</span></code> class. Using a wrapper is as simple as passing the initialized
+environment instance to the wrapper constructor. For instance, to wrap an environment in the
+<a class="reference external" href="https://github.com/DLR-RM/stable-baselines3">Stable-Baselines3</a> wrapper, you can do the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">omni.isaac.orbit_envs.utils.wrappers.sb3</span> <span class="kn">import</span> <span class="n">Sb3VecEnvWrapper</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">Sb3VecEnvWrapper</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="module-omni.isaac.orbit_envs.utils.wrappers.rl_games">
+<span id="rl-games-wrapper"></span><h2>RL-Games Wrapper<a class="headerlink" href="#module-omni.isaac.orbit_envs.utils.wrappers.rl_games" title="Permalink to this heading">#</a></h2>
+<p>Wrapper to configure an <code class="xref py py-class docutils literal notranslate"><span class="pre">IsaacEnv</span></code> instance to RL-Games vectorized environment.</p>
+<p>The following example shows how to wrap an environment for RL-Games and register the environment construction
+for RL-Games <code class="xref py py-class docutils literal notranslate"><span class="pre">Runner</span></code> class:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rl_games.common</span> <span class="kn">import</span> <span class="n">env_configurations</span><span class="p">,</span> <span class="n">vecenv</span>
+
+<span class="kn">from</span> <span class="nn">omni.isaac.orbit_envs.utils.wrappers.rl_games</span> <span class="kn">import</span> <span class="n">RlGamesGpuEnv</span><span class="p">,</span> <span class="n">RlGamesVecEnvWrapper</span>
+
+<span class="c1"># configuration parameters</span>
+<span class="n">rl_device</span> <span class="o">=</span> <span class="s2">&quot;cuda:0&quot;</span>
+<span class="n">clip_obs</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">clip_actions</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># wrap around environment for rl-games</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">RlGamesVecEnvWrapper</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">rl_device</span><span class="p">,</span> <span class="n">clip_obs</span><span class="p">,</span> <span class="n">clip_actions</span><span class="p">)</span>
+
+<span class="c1"># register the environment to rl-games registry</span>
+<span class="c1"># note: in agents configuration: environment name must be &quot;rlgpu&quot;</span>
+<span class="n">vecenv</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
+    <span class="s2">&quot;IsaacRlgWrapper&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">config_name</span><span class="p">,</span> <span class="n">num_actors</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">RlGamesGpuEnv</span><span class="p">(</span><span class="n">config_name</span><span class="p">,</span> <span class="n">num_actors</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">env_configurations</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;rlgpu&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;vecenv_type&quot;</span><span class="p">:</span> <span class="s2">&quot;IsaacRlgWrapper&quot;</span><span class="p">,</span> <span class="s2">&quot;env_creator&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">env</span><span class="p">})</span>
+</pre></div>
+</div>
+<p><strong>Classes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper" title="omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RlGamesVecEnvWrapper</span></code></a></p></td>
+<td><p>Wraps around IsaacSim environment for RL-Games.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesGpuEnv" title="omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesGpuEnv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RlGamesGpuEnv</span></code></a></p></td>
+<td><p>Thin wrapper to create instance of the environment to fit RL-Games runner.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">omni.isaac.orbit_envs.utils.wrappers.rl_games.</span></span><span class="sig-name descname"><span class="pre">RlGamesVecEnvWrapper</span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/rl_games.html#RlGamesVecEnvWrapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Wrapper</span></code></p>
+<p>Wraps around IsaacSim environment for RL-Games.</p>
+<p>This class wraps around the IsaacSim environment. Since RL-Games works directly on
+GPU buffers, the wrapper handles moving of buffers from the simulation environment
+to the same device as the learning agent. Additionally, it performs clipping of
+observations and actions.</p>
+<p>For algorithms like asymmetric actor-critic, RL-Games expects a dictionary for
+observations. This dictionary contains “obs” and “states” which typically correspond
+to the actor and critic observations respectively.</p>
+<p>To use asymmetric actor-critic, the environment instance must have the attributes
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">num_states</span></code> (int) and <code class="xref py py-attr docutils literal notranslate"><span class="pre">state_space</span></code> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">gym.spaces.Box</span></code>). These are
+used by the learning agent to allocate buffers in the trajectory memory. Additionally,
+the method <code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_observations()</span></code> should have the key “critic” which corresponds
+to the privileged observations. Since this is optional for some environments, the wrapper
+checks if these attributes exist. If they don’t then the wrapper defaults to zero as number
+of privileged observations.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p><a class="github reference external" href="https://github.com/Denys88/rl_games/blob/master/rl_games/common/ivecenv.py">Denys88/rl_games</a>
+<a class="github reference external" href="https://github.com/NVIDIA-Omniverse/IsaacGymEnvs">NVIDIA-Omniverse/IsaacGymEnvs</a></p>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.__init__" title="omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(env, rl_device, clip_obs, clip_actions)</p></td>
+<td><p>Initializes the wrapper instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.get_number_of_agents" title="omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.get_number_of_agents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_number_of_agents</span></code></a>()</p></td>
+<td><p>Returns number of actors in the environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.get_env_info" title="omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.get_env_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_env_info</span></code></a>()</p></td>
+<td><p>Returns the Gym spaces for the environment.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="orbit_envs.isaac_env.html#omni.isaac.orbit_envs.isaac_env.IsaacEnv" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv"><span class="pre">IsaacEnv</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rl_device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_obs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_actions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/rl_games.html#RlGamesVecEnvWrapper.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Initializes the wrapper instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>env</strong> (<a class="reference internal" href="orbit_envs.isaac_env.html#omni.isaac.orbit_envs.isaac_env.IsaacEnv" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv"><em>IsaacEnv</em></a>) – The environment to wrap around.</p></li>
+<li><p><strong>rl_device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The device on which agent computations are performed.</p></li>
+<li><p><strong>clip_obs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – The clipping value for observations.</p></li>
+<li><p><strong>clip_actions</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – The clipping value for actions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – The environment is not inherited from <code class="xref py py-class docutils literal notranslate"><span class="pre">IsaacEnv</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.get_number_of_agents">
+<span class="sig-name descname"><span class="pre">get_number_of_agents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/rl_games.html#RlGamesVecEnvWrapper.get_number_of_agents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.get_number_of_agents" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns number of actors in the environment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.get_env_info">
+<span class="sig-name descname"><span class="pre">get_env_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a></span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/rl_games.html#RlGamesVecEnvWrapper.get_env_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.get_env_info" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the Gym spaces for the environment.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesGpuEnv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">omni.isaac.orbit_envs.utils.wrappers.rl_games.</span></span><span class="sig-name descname"><span class="pre">RlGamesGpuEnv</span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/rl_games.html#RlGamesGpuEnv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesGpuEnv" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">IVecEnv</span></code></p>
+<p>Thin wrapper to create instance of the environment to fit RL-Games runner.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesGpuEnv.__init__" title="omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesGpuEnv.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(config_name, num_actors, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesGpuEnv.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_actors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/rl_games.html#RlGamesGpuEnv.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesGpuEnv.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-omni.isaac.orbit_envs.utils.wrappers.rsl_rl">
+<span id="rsl-rl-wrapper"></span><h2>RSL-RL Wrapper<a class="headerlink" href="#module-omni.isaac.orbit_envs.utils.wrappers.rsl_rl" title="Permalink to this heading">#</a></h2>
+<p>Wrapper to configure an <code class="xref py py-class docutils literal notranslate"><span class="pre">IsaacEnv</span></code> instance to RSL-RL vectorized environment.</p>
+<p>The following example shows how to wrap an environment for RSL-RL:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">omni.isaac.orbit_envs.utils.wrappers.rsl_rl</span> <span class="kn">import</span> <span class="n">RslRlVecEnvWrapper</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">RslRlVecEnvWrapper</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Classes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper" title="omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RslRlVecEnvWrapper</span></code></a></p></td>
+<td><p>Wraps around IsaacSim environment for RSL-RL.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Functions:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.export_policy_as_jit" title="omni.isaac.orbit_envs.utils.wrappers.rsl_rl.export_policy_as_jit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_policy_as_jit</span></code></a>(actor_critic, path[, ...])</p></td>
+<td><p>Export policy into a Torch JIT file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.export_policy_as_onnx" title="omni.isaac.orbit_envs.utils.wrappers.rsl_rl.export_policy_as_onnx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_policy_as_onnx</span></code></a>(actor_critic, path[, ...])</p></td>
+<td><p>Export policy into a Torch ONNX file.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">omni.isaac.orbit_envs.utils.wrappers.rsl_rl.</span></span><span class="sig-name descname"><span class="pre">RslRlVecEnvWrapper</span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/rsl_rl.html#RslRlVecEnvWrapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Wrapper</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">VecEnv</span></code></p>
+<p>Wraps around IsaacSim environment for RSL-RL.</p>
+<p>To use asymmetric actor-critic, the environment instance must have the attributes <code class="xref py py-attr docutils literal notranslate"><span class="pre">num_states</span></code> (int)
+and <code class="xref py py-attr docutils literal notranslate"><span class="pre">state_space</span></code> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">gym.spaces.Box</span></code>). These are used by the learning agent to allocate buffers in
+the trajectory memory. Additionally, the method <code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_observations()</span></code> should have the key “critic”
+which corresponds to the privileged observations. Since this is optional for some environments, the wrapper
+checks if these attributes exist. If they don’t then the wrapper defaults to zero as number of privileged
+observations.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p><a class="github reference external" href="https://github.com/leggedrobotics/rsl_rl/blob/master/rsl_rl/env/vec_env.py">leggedrobotics/rsl_rl</a></p>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.__init__" title="omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(env)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.get_observations" title="omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.get_observations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_observations</span></code></a>()</p></td>
+<td><p>Returns the current observations of the environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.get_privileged_observations" title="omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.get_privileged_observations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_privileged_observations</span></code></a>()</p></td>
+<td><p>Returns the current privileged observations of the environment (if available).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="orbit_envs.isaac_env.html#omni.isaac.orbit_envs.isaac_env.IsaacEnv" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv"><span class="pre">IsaacEnv</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/rsl_rl.html#RslRlVecEnvWrapper.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.get_observations">
+<span class="sig-name descname"><span class="pre">get_observations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><span class="pre">torch.Tensor</span></a></span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/rsl_rl.html#RslRlVecEnvWrapper.get_observations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.get_observations" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the current observations of the environment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.get_privileged_observations">
+<span class="sig-name descname"><span class="pre">get_privileged_observations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><span class="pre">torch.Tensor</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/rsl_rl.html#RslRlVecEnvWrapper.get_privileged_observations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.get_privileged_observations" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the current privileged observations of the environment (if available).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.rsl_rl.export_policy_as_jit">
+<span class="sig-prename descclassname"><span class="pre">omni.isaac.orbit_envs.utils.wrappers.rsl_rl.</span></span><span class="sig-name descname"><span class="pre">export_policy_as_jit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_critic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><span class="pre">object</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'policy.pt'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/rsl_rl.html#export_policy_as_jit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.export_policy_as_jit" title="Permalink to this definition">#</a></dt>
+<dd><p>Export policy into a Torch JIT file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>actor_critic</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><em>object</em></a>) – The actor-critic torch module.</p></li>
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The path to the saving directory.</p></li>
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – The name of exported JIT file. Defaults to “policy.pt”.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference:</dt><dd><p><a class="github reference external" href="https://github.com/leggedrobotics/legged_gym/blob/master/legged_gym/utils/helpers.py#L180">leggedrobotics/legged_gym</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.rsl_rl.export_policy_as_onnx">
+<span class="sig-prename descclassname"><span class="pre">omni.isaac.orbit_envs.utils.wrappers.rsl_rl.</span></span><span class="sig-name descname"><span class="pre">export_policy_as_onnx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_critic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><span class="pre">object</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'policy.onnx'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/rsl_rl.html#export_policy_as_onnx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.export_policy_as_onnx" title="Permalink to this definition">#</a></dt>
+<dd><p>Export policy into a Torch ONNX file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>actor_critic</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><em>object</em></a>) – The actor-critic torch module.</p></li>
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The path to the saving directory.</p></li>
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>optional</em>) – The name of exported JIT file. Defaults to “policy.pt”.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-omni.isaac.orbit_envs.utils.wrappers.sb3">
+<span id="stable-baselines3-wrapper"></span><h2>Stable-Baselines3 Wrapper<a class="headerlink" href="#module-omni.isaac.orbit_envs.utils.wrappers.sb3" title="Permalink to this heading">#</a></h2>
+<p>Wrapper to configure an <code class="xref py py-class docutils literal notranslate"><span class="pre">IsaacEnv</span></code> instance to Stable-Baselines3 vectorized environment.</p>
+<p>The following example shows how to wrap an environment for Stable-Baselines3:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">omni.isaac.orbit_envs.utils.wrappers.sb3</span> <span class="kn">import</span> <span class="n">Sb3VecEnvWrapper</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">Sb3VecEnvWrapper</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Classes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper" title="omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sb3VecEnvWrapper</span></code></a></p></td>
+<td><p>Wraps around IsaacSim environment for Stable Baselines3.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">omni.isaac.orbit_envs.utils.wrappers.sb3.</span></span><span class="sig-name descname"><span class="pre">Sb3VecEnvWrapper</span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/sb3.html#Sb3VecEnvWrapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Wrapper</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">VecEnv</span></code></p>
+<p>Wraps around IsaacSim environment for Stable Baselines3.</p>
+<p>Isaac Sim internally implements a vectorized environment. However, since it is
+still considered a single environment instance, Stable Baselines tries to wrap
+around it using the <code class="xref py py-class docutils literal notranslate"><span class="pre">DummyVecEnv</span></code>. This is only done if the environment
+is not inheriting from their <code class="xref py py-class docutils literal notranslate"><span class="pre">VecEnv</span></code>. Thus, this class thinly wraps
+over the environment from <code class="xref py py-class docutils literal notranslate"><span class="pre">IsaacEnv</span></code>.</p>
+<p>We also add monitoring functionality that computes the un-discounted episode
+return and length. This information is added to the info dicts under key <cite>episode</cite>.</p>
+<p>In contrast to Isaac Sim environment, stable-baselines expect the following:</p>
+<ol class="arabic simple">
+<li><p>numpy datatype for MDP signals</p></li>
+<li><p>a list of info dicts for each sub-environment (instead of a dict)</p></li>
+<li><dl class="simple">
+<dt>when environment has terminated, the observations from the environment should correspond</dt><dd><p>to the one after reset. The “real” final observation is passed using the info dicts
+under the key <cite>terminal_observation</cite>.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>By the nature of physics stepping in Isaac Sim, it is not possible to forward the
+simulation buffers without performing a physics step. Thus, reset is performed only
+at the start of <code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code> function before the actual physics step is taken.
+Thus, the returned observations for terminated environments is still the final
+observation and not the ones after the reset.</p>
+</div>
+<dl class="simple">
+<dt>Reference:</dt><dd><p><a class="reference external" href="https://stable-baselines3.readthedocs.io/en/master/guide/vec_envs.html">https://stable-baselines3.readthedocs.io/en/master/guide/vec_envs.html</a>
+<a class="reference external" href="https://stable-baselines3.readthedocs.io/en/master/common/monitor.html">https://stable-baselines3.readthedocs.io/en/master/common/monitor.html</a></p>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.__init__" title="omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(env)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.get_episode_rewards" title="omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.get_episode_rewards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_episode_rewards</span></code></a>()</p></td>
+<td><p>Returns the rewards of all the episodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.get_episode_lengths" title="omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.get_episode_lengths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_episode_lengths</span></code></a>()</p></td>
+<td><p>Returns the number of time-steps of all the episodes.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="orbit_envs.isaac_env.html#omni.isaac.orbit_envs.isaac_env.IsaacEnv" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv"><span class="pre">IsaacEnv</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/sb3.html#Sb3VecEnvWrapper.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.get_episode_rewards">
+<span class="sig-name descname"><span class="pre">get_episode_rewards</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/sb3.html#Sb3VecEnvWrapper.get_episode_rewards"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.get_episode_rewards" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the rewards of all the episodes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.get_episode_lengths">
+<span class="sig-name descname"><span class="pre">get_episode_lengths</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/utils/wrappers/sb3.html#Sb3VecEnvWrapper.get_episode_lengths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.get_episode_lengths" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the number of time-steps of all the episodes.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="orbit_envs.utils.data_collector.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">omni.isaac.orbit_envs.utils.data_collector</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../refs/contributing.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Contribution Guidelines</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-omni.isaac.orbit_envs.utils.wrappers.rl_games">RL-Games Wrapper</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper"><code class="docutils literal notranslate"><span class="pre">RlGamesVecEnvWrapper</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.__init__"><code class="docutils literal notranslate"><span class="pre">RlGamesVecEnvWrapper.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.get_number_of_agents"><code class="docutils literal notranslate"><span class="pre">RlGamesVecEnvWrapper.get_number_of_agents()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesVecEnvWrapper.get_env_info"><code class="docutils literal notranslate"><span class="pre">RlGamesVecEnvWrapper.get_env_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesGpuEnv"><code class="docutils literal notranslate"><span class="pre">RlGamesGpuEnv</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rl_games.RlGamesGpuEnv.__init__"><code class="docutils literal notranslate"><span class="pre">RlGamesGpuEnv.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-omni.isaac.orbit_envs.utils.wrappers.rsl_rl">RSL-RL Wrapper</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper"><code class="docutils literal notranslate"><span class="pre">RslRlVecEnvWrapper</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.__init__"><code class="docutils literal notranslate"><span class="pre">RslRlVecEnvWrapper.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.get_observations"><code class="docutils literal notranslate"><span class="pre">RslRlVecEnvWrapper.get_observations()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.RslRlVecEnvWrapper.get_privileged_observations"><code class="docutils literal notranslate"><span class="pre">RslRlVecEnvWrapper.get_privileged_observations()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.export_policy_as_jit"><code class="docutils literal notranslate"><span class="pre">export_policy_as_jit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.rsl_rl.export_policy_as_onnx"><code class="docutils literal notranslate"><span class="pre">export_policy_as_onnx()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-omni.isaac.orbit_envs.utils.wrappers.sb3">Stable-Baselines3 Wrapper</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper"><code class="docutils literal notranslate"><span class="pre">Sb3VecEnvWrapper</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.__init__"><code class="docutils literal notranslate"><span class="pre">Sb3VecEnvWrapper.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.get_episode_rewards"><code class="docutils literal notranslate"><span class="pre">Sb3VecEnvWrapper.get_episode_rewards()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.utils.wrappers.sb3.Sb3VecEnvWrapper.get_episode_lengths"><code class="docutils literal notranslate"><span class="pre">Sb3VecEnvWrapper.get_episode_lengths()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Isaac Lab Project Developers.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2024, The Isaac Lab Project Developers..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Oct 11, 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

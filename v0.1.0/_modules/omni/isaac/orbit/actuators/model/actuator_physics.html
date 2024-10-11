@@ -1,0 +1,811 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>omni.isaac.orbit.actuators.model.actuator_physics &#8212; Isaac Lab documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js"></script>
+    <script src="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+    <script src="../../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../../../../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/omni/isaac/orbit/actuators/model/actuator_physics';</script>
+    <link rel="icon" href="../../../../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Oct 11, 2024"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../_static/NVIDIA-logo-white.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../../../../_static/NVIDIA-logo-black.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">Isaac Lab documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/isaac-sim/IsaacLab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-4.2.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" title="Stars" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" class="icon-link-image" alt="Stars"/></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/setup/installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/setup/developer.html">Developer’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/setup/sample.html">Running existing scripts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/features/actuators.html">Actuators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/features/motion_generators.html">Motion Generators</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials (beginner)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/tutorials/00_empty.html">Creating an empty scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/tutorials/01_arms.html">Adding a robotic arm to the scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/tutorials/02_cloner.html">Duplicating a scene efficiently</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/tutorials/03_ik_controller.html">Using a task-space controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/tutorials/04_gym_env.html">Running an RL environment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Source API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../../../source/api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.actuators.group.html">omni.isaac.orbit.actuators.group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.actuators.model.html">omni.isaac.orbit.actuators.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.devices.html">omni.isaac.orbit.devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.markers.html">omni.isaac.orbit.markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.objects.articulated.html">omni.isaac.orbit.objects.articulated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.objects.rigid.html">omni.isaac.orbit.objects.rigid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.robots.html">omni.isaac.orbit.robots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.utils.html">omni.isaac.orbit.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.utils.assets.html">omni.isaac.orbit.utils.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.utils.kit.html">omni.isaac.orbit.utils.kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.utils.math.html">omni.isaac.orbit.utils.math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.utils.mdp.html">omni.isaac.orbit.utils.mdp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit_envs.isaac_env.html">omni.isaac.orbit_envs.isaac_env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit_envs.utils.html">omni.isaac.orbit_envs.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit_envs.utils.data_collector.html">omni.isaac.orbit_envs.utils.data_collector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit_envs.utils.wrappers.html">omni.isaac.orbit_envs.utils.wrappers</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/contributing.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/troubleshooting.html">Tricks and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/changelog.html">Extensions Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/roadmap.html">Development Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<h2>Versions</h2>
+<ul>
+  <li><a href="../../../../../../../main/index.html">main</a></li>
+  <li><a href="../../../../../../../v1.2.0/index.html">v1.2.0</a></li>
+  <li><a href="../../../../../../../v1.1.0/index.html">v1.1.0</a></li>
+  <li><a href="../../../../../../../v1.0.0/index.html">v1.0.0</a></li>
+  <li><a href="../../../../../../../v0.3.1/index.html">v0.3.1</a></li>
+  <li><a href="../../../../../../../v0.3.0/index.html">v0.3.0</a></li>
+  <li><a href="../../../../../../../v0.2.0/index.html">v0.2.0</a></li>
+  <li><a href="actuator_physics.html">v0.1.0</a></li>
+</ul>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/issues/new?title=Issue%20on%20page%20%2F_modules/omni/isaac/orbit/actuators/model/actuator_physics.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for omni.isaac.orbit.actuators.model.actuator_physics</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (c) 2022, NVIDIA CORPORATION &amp; AFFILIATES, ETH Zurich, and University of Toronto</span>
+<span class="c1"># All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Physics-based models for actuators.</span>
+
+<span class="sd">Currently the following models are supported:</span>
+<span class="sd">* Ideal actuator</span>
+<span class="sd">* DC motor</span>
+<span class="sd">* Variable gear ratio DC motor</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">from</span> <span class="nn">.actuator_cfg</span> <span class="kn">import</span> <span class="n">DCMotorCfg</span><span class="p">,</span> <span class="n">IdealActuatorCfg</span><span class="p">,</span> <span class="n">VariableGearRatioDCMotorCfg</span>
+
+
+<div class="viewcode-block" id="IdealActuator"><a class="viewcode-back" href="../../../../../../source/api/orbit.actuators.model.html#omni.isaac.orbit.actuators.model.IdealActuator">[docs]</a><span class="k">class</span> <span class="nc">IdealActuator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ideal torque-controlled actuator model with a simple saturation model.</span>
+
+<span class="sd">    It employs the following model for computing torques for the actuated joint :math:`j`:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \\tau_{j, computed} = k_p * (q - q_{des}) + k_d * (\\dot{q} - \\dot{q}_{des}) + \\tau_{ff}</span>
+
+<span class="sd">    where, :math:`k_p` and :math:`k_d` are joint stiffness and damping gains, :math:`q` and :math:`\\dot{q}`</span>
+<span class="sd">    are the current joint positions and velocities, :math:`q_{des}`, :math:`\\dot{q}_{des}` and :math:`\tau_{ff}`</span>
+<span class="sd">    are the desired joint positions, velocities and torques commands.</span>
+
+<span class="sd">    The clipping model is based on the maximum torque applied by the motor. It is implemented as:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \\tau_{j, max} &amp; = \\gamma \\times \\tau_{motor, max} \\\\</span>
+<span class="sd">        \\tau_{j, applied} &amp; = clip(\\tau_{computed}, -\\tau_{j, max}, \\tau_{j, max})</span>
+
+<span class="sd">    where the clipping function is defined as :math:`clip(x, x_{min}, x_{max}) = min(max(x, x_{min}), x_{max})`.</span>
+<span class="sd">    The parameters :math:`\\gamma` is the gear ratio of the gear box connecting the motor and the actuated joint ends,</span>
+<span class="sd">    and :math:`\\tau_{motor, max}` is the maximum motor effort possible. These parameters are read from</span>
+<span class="sd">    the configuration instance passed to the class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">cfg</span><span class="p">:</span> <span class="n">IdealActuatorCfg</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The configuration for the actuator model.&quot;&quot;&quot;</span>
+    <span class="n">num_actuators</span><span class="p">:</span> <span class="nb">int</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The number of actuators using the model.&quot;&quot;&quot;</span>
+    <span class="n">num_envs</span><span class="p">:</span> <span class="nb">int</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The number of instances of the articulation.&quot;&quot;&quot;</span>
+    <span class="n">device</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The computation device.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="IdealActuator.__init__"><a class="viewcode-back" href="../../../../../../source/api/orbit.actuators.model.html#omni.isaac.orbit.actuators.model.IdealActuator.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">:</span> <span class="n">IdealActuatorCfg</span><span class="p">,</span> <span class="n">num_actuators</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_envs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes the ideal actuator model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            cfg (IdealActuatorCfg): The configuration for the actuator model.</span>
+<span class="sd">            num_actuators (int): The number of actuators using the model.</span>
+<span class="sd">            num_envs (int): The number of instances of the articulation.</span>
+<span class="sd">            device (str): The computation device.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># store inputs to class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span> <span class="o">=</span> <span class="n">cfg</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_actuators</span> <span class="o">=</span> <span class="n">num_actuators</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_envs</span> <span class="o">=</span> <span class="n">num_envs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span>
+
+        <span class="c1"># create buffers for allocation</span>
+        <span class="c1"># -- joint commands</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_des_dof_pos</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_envs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_actuators</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_des_dof_vel</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_des_dof_pos</span><span class="p">)</span>
+        <span class="c1"># -- PD gains</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_p_gains</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_des_dof_pos</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_d_gains</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_des_dof_pos</span><span class="p">)</span>
+        <span class="c1"># -- feed-forward torque</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_torque_ff</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_des_dof_pos</span><span class="p">)</span></div>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Properties</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">gear_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gear-box conversion factor from motor axis to joint axis.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">gear_ratio</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Operations- State.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="IdealActuator.set_command"><a class="viewcode-back" href="../../../../../../source/api/orbit.actuators.model.html#omni.isaac.orbit.actuators.model.IdealActuator.set_command">[docs]</a>    <span class="k">def</span> <span class="nf">set_command</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">dof_pos</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dof_vel</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">p_gains</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">d_gains</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">torque_ff</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the desired joint positions, velocities, gains and feed-forward torques.</span>
+
+<span class="sd">        If the values are :obj:`None`, the previous values are retained.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dof_pos (Optional[Union[torch.Tensor, float]], optional): The desired joint positions. Defaults to None.</span>
+<span class="sd">            dof_vel (Optional[Union[torch.Tensor, float]], optional): The desired joint velocities. Defaults to None.</span>
+<span class="sd">            p_gains (Optional[Union[torch.Tensor, float]], optional): The stiffness gains of the drive. Defaults to None.</span>
+<span class="sd">            d_gains (Optional[Union[torch.Tensor, float]], optional): The damping gains of the drive. Defaults to None.</span>
+<span class="sd">            torque_ff (Optional[Union[torch.Tensor, float]], optional): The desired joint torque. Defaults to None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">dof_pos</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_des_dof_pos</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">dof_pos</span>
+        <span class="k">if</span> <span class="n">dof_vel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_des_dof_vel</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">dof_vel</span>
+        <span class="k">if</span> <span class="n">p_gains</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_p_gains</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">p_gains</span>
+        <span class="k">if</span> <span class="n">d_gains</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_d_gains</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">d_gains</span>
+        <span class="k">if</span> <span class="n">torque_ff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_torque_ff</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">torque_ff</span></div>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Operations- Main.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="IdealActuator.reset"><a class="viewcode-back" href="../../../../../../source/api/orbit.actuators.model.html#omni.isaac.orbit.actuators.model.IdealActuator.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env_ids</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resets the internal buffers or state of the actuator model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            env_ids (Sequence[int]): The ids to reset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># reset desired joint positions and velocities</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_des_dof_pos</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_des_dof_vel</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="c1"># reset feed-forward torque</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_torque_ff</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span></div>
+
+<div class="viewcode-block" id="IdealActuator.compute_torque"><a class="viewcode-back" href="../../../../../../source/api/orbit.actuators.model.html#omni.isaac.orbit.actuators.model.IdealActuator.compute_torque">[docs]</a>    <span class="k">def</span> <span class="nf">compute_torque</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dof_pos</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">dof_vel</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the desired joint torques using the input commands and current joint states.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dof_pos (torch.Tensor): The joint positions of the actuators.</span>
+<span class="sd">            dof_vel (torch.Tensor): The joint velocities of the actuators.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.Tensor: The desired joint torques to achieve the input commands.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># compute errors</span>
+        <span class="n">dof_pos_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_des_dof_pos</span> <span class="o">-</span> <span class="n">dof_pos</span>
+        <span class="n">dof_vel_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_des_dof_vel</span> <span class="o">-</span> <span class="n">dof_vel</span>
+        <span class="c1"># compute torques</span>
+        <span class="n">desired_torques</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_p_gains</span> <span class="o">*</span> <span class="n">dof_pos_error</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_d_gains</span> <span class="o">*</span> <span class="n">dof_vel_error</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_torque_ff</span>
+        <span class="c1"># return torques</span>
+        <span class="k">return</span> <span class="n">desired_torques</span></div>
+
+<div class="viewcode-block" id="IdealActuator.clip_torques"><a class="viewcode-back" href="../../../../../../source/api/orbit.actuators.model.html#omni.isaac.orbit.actuators.model.IdealActuator.clip_torques">[docs]</a>    <span class="k">def</span> <span class="nf">clip_torques</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">desired_torques</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clip the desired torques based on the motor limits.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            desired_torques (torch.Tensor): The desired torques to clip.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.Tensor: The clipped torques.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># evaluate parameters from motor axel to dof axel</span>
+        <span class="n">torque_limit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">motor_torque_limit</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">gear_ratio</span>
+        <span class="c1"># saturate torques</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">desired_torques</span><span class="p">,</span> <span class="o">-</span><span class="n">torque_limit</span><span class="p">,</span> <span class="n">torque_limit</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="DCMotor"><a class="viewcode-back" href="../../../../../../source/api/orbit.actuators.model.html#omni.isaac.orbit.actuators.model.DCMotor">[docs]</a><span class="k">class</span> <span class="nc">DCMotor</span><span class="p">(</span><span class="n">IdealActuator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Direct control (DC) motor actuator model with velocity-based saturation model.</span>
+
+<span class="sd">    It uses the same model as the :class:`IdealActuator` for computing the torques from input commands.</span>
+<span class="sd">    However, it implements a saturation model defined by DC motor characteristics.</span>
+
+<span class="sd">    A DC motor is a type of electric motor that is powered by direct current electricity. In most cases,</span>
+<span class="sd">    the motor is connected to a constant source of voltage supply, and the current is controlled by a rheostat.</span>
+<span class="sd">    Depending on various design factors such as windings and materials, the motor can draw a limited maximum power</span>
+<span class="sd">    from the electronic source, which limits the produced motor torque and speed.</span>
+
+<span class="sd">    A DC motor characteristics are defined by the following parameters:</span>
+
+<span class="sd">    * Continuous-rated speed (:math:`\\dot{q}_{motor, max}`) : The maximum-rated speed of the motor.</span>
+<span class="sd">    * Continuous-stall torque (:math:`\\tau_{motor, max}`): The maximum-rated torque produced at 0 speed.</span>
+<span class="sd">    * Peak torque (:math:`\\tau_{motor, peak}`): The maximum torque that can be outputted for a short period.</span>
+
+<span class="sd">    Based on these parameters, the instantaneous minimum and maximum torques are defined as follows:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \\tau_{j, max}(\\dot{q}) &amp; = clip \\left (\\tau_{j, peak} \\times \\left(1 -</span>
+<span class="sd">            \\frac{\\dot{q}}{\\dot{q}_{j, max}}\\right), 0.0, \\tau_{j, max} \\right) \\\\</span>
+<span class="sd">        \\tau_{j, min}(\\dot{q}) &amp; = clip \\left (\\tau_{j, peak} \\times \\left( -1 -</span>
+<span class="sd">            \\frac{\\dot{q}}{\\dot{q}_{j, max}}\\right), - \\tau_{j, max}, 0.0 \\right)</span>
+
+<span class="sd">    where :math:`\\gamma` is the gear ratio of the gear box connecting the motor and the actuated joint ends,</span>
+<span class="sd">    :math:`\\dot{q}_{j, max} = \\gamma^{-1} \\times  \\dot{q}_{motor, max}`, :math:`\\tau_{j, max} =</span>
+<span class="sd">    \\gamma \\times \\tau_{motor, max}` and :math:`\\tau_{j, peak} = \\gamma \\times \\tau_{motor, peak}`</span>
+<span class="sd">    are the maximum joint velocity, maximum joint torque and peak torque, respectively. These parameters</span>
+<span class="sd">    are read from the configuration instance passed to the class.</span>
+
+<span class="sd">    Using these values, the computed torques are clipped to the minimum and maximum values based on the</span>
+<span class="sd">    instantaneous joint velocity:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \\tau_{j, applied} = clip(\\tau_{computed}, \\tau_{j, min}(\\dot{q}), \\tau_{j, max}(\\dot{q}))</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">cfg</span><span class="p">:</span> <span class="n">DCMotorCfg</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The configuration for the actuator model.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DCMotor.__init__"><a class="viewcode-back" href="../../../../../../source/api/orbit.actuators.model.html#omni.isaac.orbit.actuators.model.DCMotor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">:</span> <span class="n">DCMotorCfg</span><span class="p">,</span> <span class="n">num_actuators</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_envs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes the DC motor actuator model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            cfg (DCMotorCfg): The configuration for the actuator model.</span>
+<span class="sd">            num_actuators (int): The number of actuators using the model.</span>
+<span class="sd">            num_envs (int): The number of instances of the articulation.</span>
+<span class="sd">            device (str): The computation device.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">num_actuators</span><span class="p">,</span> <span class="n">num_envs</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DCMotor.clip_torques"><a class="viewcode-back" href="../../../../../../source/api/orbit.actuators.model.html#omni.isaac.orbit.actuators.model.DCMotor.clip_torques">[docs]</a>    <span class="k">def</span> <span class="nf">clip_torques</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">desired_torques</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">dof_vel</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clip the desired torques based on the motor limits.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            desired_torques (torch.Tensor): The desired torques to clip.</span>
+<span class="sd">            dof_vel (torch.Tensor): The current joint velocities.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.Tensor: The clipped torques.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># evaluate parameters from motor axel to dof axel</span>
+        <span class="n">peak_torque</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">peak_motor_torque</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">gear_ratio</span>
+        <span class="n">torque_limit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">motor_torque_limit</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">gear_ratio</span>
+        <span class="n">velocity_limit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">motor_velocity_limit</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">gear_ratio</span>
+        <span class="c1"># compute torque limits</span>
+        <span class="c1"># -- max limit</span>
+        <span class="n">max_torques</span> <span class="o">=</span> <span class="n">peak_torque</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">dof_vel</span> <span class="o">/</span> <span class="n">velocity_limit</span><span class="p">)</span>
+        <span class="n">max_torques</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">max_torques</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">torque_limit</span><span class="p">)</span>
+        <span class="c1"># -- min limit</span>
+        <span class="n">min_torques</span> <span class="o">=</span> <span class="n">peak_torque</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">dof_vel</span> <span class="o">/</span> <span class="n">velocity_limit</span><span class="p">)</span>
+        <span class="n">min_torques</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">min_torques</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="n">torque_limit</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="c1"># saturate torques</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">desired_torques</span><span class="p">,</span> <span class="n">min_torques</span><span class="p">,</span> <span class="n">max_torques</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="VariableGearRatioDCMotor"><a class="viewcode-back" href="../../../../../../source/api/orbit.actuators.model.html#omni.isaac.orbit.actuators.model.VariableGearRatioDCMotor">[docs]</a><span class="k">class</span> <span class="nc">VariableGearRatioDCMotor</span><span class="p">(</span><span class="n">DCMotor</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Torque-controlled actuator with variable gear-ratio based saturation model.</span>
+
+<span class="sd">    Instead of using a fixed gear box, some motors are equiped with variators that allow the gear-ratio</span>
+<span class="sd">    to be changed continuously (instead of steps). This model implements a DC motor with a variable</span>
+<span class="sd">    gear ratio function that computes the gear-ratio as a function of the joint position, i.e.:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \\gamma = \\gamma(q)</span>
+
+<span class="sd">    where :math:`\\gamma(\\cdot)` is read from the configuration instance passed to the class. The gear-ratio function is evaluated at</span>
+<span class="sd">    every time step and the motor parameters are computed accordingly.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">cfg</span><span class="p">:</span> <span class="n">VariableGearRatioDCMotorCfg</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The configuration for the actuator model.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="VariableGearRatioDCMotor.__init__"><a class="viewcode-back" href="../../../../../../source/api/orbit.actuators.model.html#omni.isaac.orbit.actuators.model.VariableGearRatioDCMotor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">:</span> <span class="n">VariableGearRatioDCMotorCfg</span><span class="p">,</span> <span class="n">num_actuators</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_envs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes the variable gear ratio DC actuator model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            cfg (VariableGearRatioDCMotorCfg): The configuration for the actuator model.</span>
+<span class="sd">            num_actuators (int): The number of actuators using the model.</span>
+<span class="sd">            num_envs (int): The number of instances of the articulation.</span>
+<span class="sd">            device (str): The computation device.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">num_actuators</span><span class="p">,</span> <span class="n">num_envs</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+        <span class="c1"># parse the configuration</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">gear_ratio</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gear_ratio_fn</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">gear_ratio</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gear_ratio_fn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">gear_ratio</span>
+        <span class="c1"># check configuration</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gear_ratio_fn</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected a callable gear ratio function. Received: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">gear_ratio</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="c1"># create buffers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gear_ratio</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_envs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_actuators</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">gear_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gear-box conversion factor from motor axis to joint axis.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gear_ratio</span>
+
+<div class="viewcode-block" id="VariableGearRatioDCMotor.clip_torques"><a class="viewcode-back" href="../../../../../../source/api/orbit.actuators.model.html#omni.isaac.orbit.actuators.model.VariableGearRatioDCMotor.clip_torques">[docs]</a>    <span class="k">def</span> <span class="nf">clip_torques</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">desired_torques</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">dof_pos</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">dof_vel</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clip the desired torques based on the motor limits.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            desired_torques (torch.Tensor): The desired torques to clip.</span>
+<span class="sd">            dof_pos (torch.Tensor): The current joint positions.</span>
+<span class="sd">            dof_vel (torch.Tensor): The current joint velocities.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.Tensor: The clipped torques.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># compute gear ratio</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gear_ratio</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gear_ratio_fn</span><span class="p">(</span><span class="n">dof_pos</span><span class="p">)</span>
+        <span class="c1"># clip torques using model from parent</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">clip_torques</span><span class="p">(</span><span class="n">desired_torques</span><span class="p">,</span> <span class="n">dof_vel</span><span class="o">=</span><span class="n">dof_vel</span><span class="p">)</span></div></div>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Isaac Lab Project Developers.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2024, The Isaac Lab Project Developers..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Oct 11, 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

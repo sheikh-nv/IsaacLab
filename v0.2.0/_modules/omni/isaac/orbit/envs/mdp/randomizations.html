@@ -1,0 +1,845 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>omni.isaac.orbit.envs.mdp.randomizations &#8212; Isaac Lab documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js"></script>
+    <script src="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+    <script src="../../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../../../../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/omni/isaac/orbit/envs/mdp/randomizations';</script>
+    <link rel="icon" href="../../../../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Oct 11, 2024"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../_static/NVIDIA-logo-white.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../../../../_static/NVIDIA-logo-black.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">Isaac Lab documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/isaac-sim/IsaacLab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-4.2.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" title="Stars" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" class="icon-link-image" alt="Stars"/></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/setup/installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/setup/developer.html">Developer’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/setup/sample.html">Running existing scripts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/features/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/features/actuators.html">Actuators</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../../../source/tutorials/index.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../source/tutorials/00_sim/index.html">Setting up a Simple Simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../source/tutorials/00_sim/launch_app.html">Launching Isaac Sim from AppLauncher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../source/tutorials/00_sim/create_empty.html">Creating an empty scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../source/tutorials/00_sim/spawn_prims.html">Spawning prims into the scene</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../source/tutorials/01_assets/index.html">Interacting with Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../source/tutorials/01_assets/run_rigid_object.html">Interacting with a rigid object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../source/tutorials/01_assets/run_articulation.html">Interacting with an articulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../source/tutorials/02_scene/index.html">Creating a Scene</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../source/tutorials/02_scene/create_scene.html">Using the Interactive Scene</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../source/tutorials/03_envs/index.html">Designing an Environment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../source/tutorials/03_envs/create_base_env.html">Creating a Base Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../source/tutorials/03_envs/create_rl_env.html">Creating an RL Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../source/tutorials/03_envs/register_rl_env_gym.html">Registering an Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../source/tutorials/03_envs/run_rl_training.html">Training with an RL Agent</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../source/tutorials/04_sensors/index.html">Integrating Sensors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../source/tutorials/04_sensors/add_sensors_on_robot.html">Adding sensors on a robot</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../../../source/tutorials/05_controllers/index.html">Using Motion Generators</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../../source/tutorials/05_controllers/run_diff_ik.html">Using a task-space controller</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../../../source/how-to/index.html">How-to Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/how-to/import_new_asset.html">Importing a New Asset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/how-to/write_articulation_cfg.html">Writing an Asset Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/how-to/save_camera_output.html">Saving rendered images and 3D re-projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/how-to/draw_markers.html">Creating Visualization Markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/how-to/wrap_rl_env.html">Wrapping environments</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../../../source/deployment/index.html">Container Deployment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/deployment/docker.html">Docker Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/deployment/cluster.html">Cluster Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/deployment/run_docker_example.html">Running an example with Docker</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Source API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../../../source/api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.app.html">orbit.app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.actuators.html">orbit.actuators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.assets.html">orbit.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.controllers.html">orbit.controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.devices.html">orbit.devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.envs.html">orbit.envs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.managers.html">orbit.managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.markers.html">orbit.markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.scene.html">orbit.scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.sensors.html">orbit.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.sim.html">orbit.sim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.terrains.html">orbit.terrains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.utils.html">orbit.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.envs.mdp.html">orbit.envs.mdp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.envs.ui.html">orbit.envs.ui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.sensors.patterns.html">orbit.sensors.patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.sim.converters.html">orbit.sim.converters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.sim.schemas.html">orbit.sim.schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit/omni.isaac.orbit.sim.spawners.html">orbit.sim.spawners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit_tasks/omni.isaac.orbit_tasks.utils.html">orbit_tasks.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit_tasks/omni.isaac.orbit_tasks.utils.wrappers.html">orbit_tasks.utils.wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit_tasks/omni.isaac.orbit_tasks.utils.data_collector.html">orbit_tasks.utils.data_collector</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/migration.html">Migration Guide (Isaac Sim)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/contributing.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/troubleshooting.html">Tricks and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/issues.html">Known issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/changelog.html">Extensions Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<h2>Versions</h2>
+<ul>
+  <li><a href="../../../../../../../main/index.html">main</a></li>
+  <li><a href="../../../../../../../v1.2.0/index.html">v1.2.0</a></li>
+  <li><a href="../../../../../../../v1.1.0/index.html">v1.1.0</a></li>
+  <li><a href="../../../../../../../v1.0.0/index.html">v1.0.0</a></li>
+  <li><a href="../../../../../../../v0.3.1/index.html">v0.3.1</a></li>
+  <li><a href="../../../../../../../v0.3.0/index.html">v0.3.0</a></li>
+  <li><a href="randomizations.html">v0.2.0</a></li>
+  <li><a href="../../../../../../../v0.1.0/index.html">v0.1.0</a></li>
+</ul>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/issues/new?title=Issue%20on%20page%20%2F_modules/omni/isaac/orbit/envs/mdp/randomizations.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for omni.isaac.orbit.envs.mdp.randomizations</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (c) 2022-2023, The ORBIT Project Developers.</span>
+<span class="c1"># All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+
+<span class="sd">&quot;&quot;&quot;Common functions that can be used to enable different randomizations.</span>
+
+<span class="sd">Randomization includes anything related to altering the simulation state. This includes changing the physics</span>
+<span class="sd">materials, applying external forces, and resetting the state of the asset.</span>
+
+<span class="sd">The functions can be passed to the :class:`omni.isaac.orbit.managers.RandomizationTermCfg` object to enable</span>
+<span class="sd">the randomization introduced by the function.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">from</span> <span class="nn">omni.isaac.orbit.assets</span> <span class="kn">import</span> <span class="n">Articulation</span><span class="p">,</span> <span class="n">RigidObject</span>
+<span class="kn">from</span> <span class="nn">omni.isaac.orbit.managers</span> <span class="kn">import</span> <span class="n">SceneEntityCfg</span>
+<span class="kn">from</span> <span class="nn">omni.isaac.orbit.utils.math</span> <span class="kn">import</span> <span class="n">quat_from_euler_xyz</span><span class="p">,</span> <span class="n">sample_uniform</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">omni.isaac.orbit.envs</span> <span class="kn">import</span> <span class="n">BaseEnv</span>
+
+
+<div class="viewcode-block" id="randomize_rigid_body_material"><a class="viewcode-back" href="../../../../../../source/api/orbit/omni.isaac.orbit.envs.mdp.html#omni.isaac.orbit.envs.mdp.randomizations.randomize_rigid_body_material">[docs]</a><span class="k">def</span> <span class="nf">randomize_rigid_body_material</span><span class="p">(</span>
+    <span class="n">env</span><span class="p">:</span> <span class="n">BaseEnv</span><span class="p">,</span>
+    <span class="n">env_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">static_friction_range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">dynamic_friction_range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">restitution_range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">num_buckets</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">asset_cfg</span><span class="p">:</span> <span class="n">SceneEntityCfg</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Randomize the physics materials on all geometries of the asset.</span>
+
+<span class="sd">    This function creates a set of physics materials with random static friction, dynamic friction, and restitution</span>
+<span class="sd">    values. The number of materials is specified by ``num_buckets``. The materials are generated by sampling</span>
+<span class="sd">    uniform random values from the given ranges.</span>
+
+<span class="sd">    The material properties are then assigned to the geometries of the asset. The assignment is done by</span>
+<span class="sd">    creating a random integer tensor of shape  (total_body_count, num_shapes) where ``total_body_count``</span>
+<span class="sd">    is the number of assets spawned times the number of bodies per asset and ``num_shapes`` is the number of</span>
+<span class="sd">    shapes per body. The integer values are used as indices to select the material properties from the</span>
+<span class="sd">    material buckets.</span>
+
+<span class="sd">    .. tip::</span>
+<span class="sd">        This function uses CPU tensors to assign the material properties. It is recommended to use this function</span>
+<span class="sd">        only during the initialization of the environment.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        PhysX only allows 64000 unique physics materials in the scene. If the number of materials exceeds this</span>
+<span class="sd">        limit, the simulation will crash.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># extract the used quantities (to enable type-hinting)</span>
+    <span class="n">asset</span><span class="p">:</span> <span class="n">RigidObject</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">scene</span><span class="p">[</span><span class="n">asset_cfg</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+    <span class="n">num_envs</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">num_envs</span>
+    <span class="c1"># resolve environment ids</span>
+    <span class="k">if</span> <span class="n">env_ids</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">env_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_envs</span><span class="p">)</span>
+
+    <span class="c1"># sample material properties from the given ranges</span>
+    <span class="n">material_buckets</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_buckets</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">material_buckets</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">static_friction_range</span><span class="p">)</span>
+    <span class="n">material_buckets</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">dynamic_friction_range</span><span class="p">)</span>
+    <span class="n">material_buckets</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">restitution_range</span><span class="p">)</span>
+    <span class="c1"># create random material assignments based on the total number of shapes: num_assets x num_bodies x num_shapes</span>
+    <span class="n">material_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_buckets</span><span class="p">,</span> <span class="p">(</span><span class="n">asset</span><span class="o">.</span><span class="n">body_physx_view</span><span class="o">.</span><span class="n">count</span><span class="p">,</span> <span class="n">asset</span><span class="o">.</span><span class="n">body_physx_view</span><span class="o">.</span><span class="n">max_shapes</span><span class="p">))</span>
+    <span class="n">materials</span> <span class="o">=</span> <span class="n">material_buckets</span><span class="p">[</span><span class="n">material_ids</span><span class="p">]</span>
+    <span class="c1"># resolve the global body indices from the env_ids and the env_body_ids</span>
+    <span class="n">bodies_per_env</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">body_physx_view</span><span class="o">.</span><span class="n">count</span> <span class="o">//</span> <span class="n">num_envs</span>  <span class="c1"># - number of bodies per spawned asset</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">asset_cfg</span><span class="o">.</span><span class="n">body_ids</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">env_ids</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">indices</span> <span class="o">+=</span> <span class="n">env_ids</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">bodies_per_env</span>
+
+    <span class="c1"># set the material properties into the physics simulation</span>
+    <span class="c1"># TODO: Need to use CPU tensors for now. Check if this changes in the new release</span>
+    <span class="n">asset</span><span class="o">.</span><span class="n">body_physx_view</span><span class="o">.</span><span class="n">set_material_properties</span><span class="p">(</span><span class="n">materials</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="add_body_mass"><a class="viewcode-back" href="../../../../../../source/api/orbit/omni.isaac.orbit.envs.mdp.html#omni.isaac.orbit.envs.mdp.randomizations.add_body_mass">[docs]</a><span class="k">def</span> <span class="nf">add_body_mass</span><span class="p">(</span>
+    <span class="n">env</span><span class="p">:</span> <span class="n">BaseEnv</span><span class="p">,</span> <span class="n">env_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">mass_range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="n">asset_cfg</span><span class="p">:</span> <span class="n">SceneEntityCfg</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Randomize the mass of the bodies by adding a random value sampled from the given range.</span>
+
+<span class="sd">    .. tip::</span>
+<span class="sd">        This function uses CPU tensors to assign the material properties. It is recommended to use this function</span>
+<span class="sd">        only during the initialization of the environment.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># extract the used quantities (to enable type-hinting)</span>
+    <span class="n">asset</span><span class="p">:</span> <span class="n">RigidObject</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">scene</span><span class="p">[</span><span class="n">asset_cfg</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+    <span class="n">num_envs</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">num_envs</span>
+    <span class="c1"># resolve environment ids</span>
+    <span class="k">if</span> <span class="n">env_ids</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">env_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_envs</span><span class="p">)</span>
+
+    <span class="c1"># get the current masses of the bodies (num_assets x num_bodies)</span>
+    <span class="n">masses</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">body_physx_view</span><span class="o">.</span><span class="n">get_masses</span><span class="p">()</span>
+    <span class="n">masses</span> <span class="o">+=</span> <span class="n">sample_uniform</span><span class="p">(</span><span class="o">*</span><span class="n">mass_range</span><span class="p">,</span> <span class="n">masses</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">masses</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+    <span class="c1"># resolve the global body indices from the env_ids and the env_body_ids</span>
+    <span class="n">bodies_per_env</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">body_physx_view</span><span class="o">.</span><span class="n">count</span> <span class="o">//</span> <span class="n">env</span><span class="o">.</span><span class="n">num_envs</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">asset_cfg</span><span class="o">.</span><span class="n">body_ids</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">env_ids</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">indices</span> <span class="o">+=</span> <span class="n">env_ids</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">bodies_per_env</span>
+
+    <span class="c1"># set the mass into the physics simulation</span>
+    <span class="c1"># TODO: Need to use CPU tensors for now. Check if this changes in the new release</span>
+    <span class="n">asset</span><span class="o">.</span><span class="n">body_physx_view</span><span class="o">.</span><span class="n">set_masses</span><span class="p">(</span><span class="n">masses</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="apply_external_force_torque"><a class="viewcode-back" href="../../../../../../source/api/orbit/omni.isaac.orbit.envs.mdp.html#omni.isaac.orbit.envs.mdp.randomizations.apply_external_force_torque">[docs]</a><span class="k">def</span> <span class="nf">apply_external_force_torque</span><span class="p">(</span>
+    <span class="n">env</span><span class="p">:</span> <span class="n">BaseEnv</span><span class="p">,</span>
+    <span class="n">env_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">force_range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">torque_range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">asset_cfg</span><span class="p">:</span> <span class="n">SceneEntityCfg</span> <span class="o">=</span> <span class="n">SceneEntityCfg</span><span class="p">(</span><span class="s2">&quot;robot&quot;</span><span class="p">),</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Randomize the external forces and torques applied to the bodies.</span>
+
+<span class="sd">    This function creates a set of random forces and torques sampled from the given ranges. The number of forces</span>
+<span class="sd">    and torques is equal to the number of bodies times the number of environments. The forces and torques are</span>
+<span class="sd">    applied to the bodies by calling ``asset.set_external_force_and_torque``. The forces and torques are only</span>
+<span class="sd">    applied when ``asset.write_data_to_sim()`` is called.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># extract the used quantities (to enable type-hinting)</span>
+    <span class="n">asset</span><span class="p">:</span> <span class="n">RigidObject</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">scene</span><span class="p">[</span><span class="n">asset_cfg</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+    <span class="n">num_envs</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">num_envs</span>
+    <span class="c1"># resolve environment ids</span>
+    <span class="k">if</span> <span class="n">env_ids</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">env_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_envs</span><span class="p">)</span>
+
+    <span class="c1"># sample random forces and torques</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">env_ids</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">asset_cfg</span><span class="o">.</span><span class="n">body_ids</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">forces</span> <span class="o">=</span> <span class="n">sample_uniform</span><span class="p">(</span><span class="o">*</span><span class="n">force_range</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">asset</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">torques</span> <span class="o">=</span> <span class="n">sample_uniform</span><span class="p">(</span><span class="o">*</span><span class="n">torque_range</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">asset</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+    <span class="c1"># set the forces and torques into the buffers</span>
+    <span class="c1"># note: these are only applied when you call: `asset.write_data_to_sim()`</span>
+    <span class="n">asset</span><span class="o">.</span><span class="n">set_external_force_and_torque</span><span class="p">(</span><span class="n">forces</span><span class="p">,</span> <span class="n">torques</span><span class="p">,</span> <span class="n">env_ids</span><span class="o">=</span><span class="n">env_ids</span><span class="p">,</span> <span class="n">body_ids</span><span class="o">=</span><span class="n">asset_cfg</span><span class="o">.</span><span class="n">body_ids</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="push_by_setting_velocity"><a class="viewcode-back" href="../../../../../../source/api/orbit/omni.isaac.orbit.envs.mdp.html#omni.isaac.orbit.envs.mdp.randomizations.push_by_setting_velocity">[docs]</a><span class="k">def</span> <span class="nf">push_by_setting_velocity</span><span class="p">(</span>
+    <span class="n">env</span><span class="p">:</span> <span class="n">BaseEnv</span><span class="p">,</span>
+    <span class="n">env_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">velocity_range</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span>
+    <span class="n">asset_cfg</span><span class="p">:</span> <span class="n">SceneEntityCfg</span> <span class="o">=</span> <span class="n">SceneEntityCfg</span><span class="p">(</span><span class="s2">&quot;robot&quot;</span><span class="p">),</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Push the asset by setting the root velocity to a random value within the given ranges.</span>
+
+<span class="sd">    This creates an effect similar to pushing the asset with a random impulse that changes the asset&#39;s velocity.</span>
+<span class="sd">    It samples the root velocity from the given ranges and sets the velocity into the physics simulation.</span>
+
+<span class="sd">    The function takes a dictionary of velocity ranges for each axis and rotation. The keys of the dictionary</span>
+<span class="sd">    are ``x``, ``y``, ``z``, ``roll``, ``pitch``, and ``yaw``. The values are tuples of the form ``(min, max)``.</span>
+<span class="sd">    If the dictionary does not contain a key, the velocity is set to zero for that axis.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># extract the used quantities (to enable type-hinting)</span>
+    <span class="n">asset</span><span class="p">:</span> <span class="n">RigidObject</span> <span class="o">|</span> <span class="n">Articulation</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">scene</span><span class="p">[</span><span class="n">asset_cfg</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+
+    <span class="c1"># velocities</span>
+    <span class="n">vel_w</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">root_vel_w</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span>
+    <span class="c1"># sample random velocities</span>
+    <span class="n">vel_w</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">velocity_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">vel_w</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">velocity_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">vel_w</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">velocity_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">vel_w</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">velocity_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;roll&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">vel_w</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">velocity_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pitch&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">vel_w</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">velocity_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;yaw&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="c1"># set the velocities into the physics simulation</span>
+    <span class="n">asset</span><span class="o">.</span><span class="n">write_root_velocity_to_sim</span><span class="p">(</span><span class="n">vel_w</span><span class="p">,</span> <span class="n">env_ids</span><span class="o">=</span><span class="n">env_ids</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="reset_root_state_uniform"><a class="viewcode-back" href="../../../../../../source/api/orbit/omni.isaac.orbit.envs.mdp.html#omni.isaac.orbit.envs.mdp.randomizations.reset_root_state_uniform">[docs]</a><span class="k">def</span> <span class="nf">reset_root_state_uniform</span><span class="p">(</span>
+    <span class="n">env</span><span class="p">:</span> <span class="n">BaseEnv</span><span class="p">,</span>
+    <span class="n">env_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">pose_range</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span>
+    <span class="n">velocity_range</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span>
+    <span class="n">asset_cfg</span><span class="p">:</span> <span class="n">SceneEntityCfg</span> <span class="o">=</span> <span class="n">SceneEntityCfg</span><span class="p">(</span><span class="s2">&quot;robot&quot;</span><span class="p">),</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reset the asset root state to a random position and velocity uniformly within the given ranges.</span>
+
+<span class="sd">    This function randomizes the root position and velocity of the asset.</span>
+
+<span class="sd">    * It samples the root position from the given ranges and adds them to the default root position, before setting</span>
+<span class="sd">      them into the physics simulation.</span>
+<span class="sd">    * It samples the root orientation from the given ranges and sets them into the physics simulation.</span>
+<span class="sd">    * It samples the root velocity from the given ranges and sets them into the physics simulation.</span>
+
+<span class="sd">    The function takes a dictionary of position and velocity ranges for each axis and rotation. The keys of the</span>
+<span class="sd">    dictionary are ``x``, ``y``, ``z``, ``roll``, ``pitch``, and ``yaw``. The values are tuples of the form</span>
+<span class="sd">    ``(min, max)``. If the dictionary does not contain a key, the position or velocity is set to zero for that axis.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># extract the used quantities (to enable type-hinting)</span>
+    <span class="n">asset</span><span class="p">:</span> <span class="n">RigidObject</span> <span class="o">|</span> <span class="n">Articulation</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">scene</span><span class="p">[</span><span class="n">asset_cfg</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+    <span class="c1"># get default root state</span>
+    <span class="n">root_states</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">default_root_state</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+
+    <span class="c1"># positions</span>
+    <span class="n">pos_offset</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">root_states</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">pos_offset</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">pose_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">pos_offset</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">pose_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">pos_offset</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">pose_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">positions</span> <span class="o">=</span> <span class="n">root_states</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">env</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">env_origins</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span> <span class="o">+</span> <span class="n">pos_offset</span>
+    <span class="c1"># orientations</span>
+    <span class="n">euler_angles</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span>
+    <span class="n">euler_angles</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">pose_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;roll&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">euler_angles</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">pose_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pitch&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">euler_angles</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">pose_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;yaw&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">orientations</span> <span class="o">=</span> <span class="n">quat_from_euler_xyz</span><span class="p">(</span><span class="n">euler_angles</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">euler_angles</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">euler_angles</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="c1"># velocities</span>
+    <span class="n">velocities</span> <span class="o">=</span> <span class="n">root_states</span><span class="p">[:,</span> <span class="mi">7</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span>
+    <span class="n">velocities</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">velocity_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">velocities</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">velocity_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">velocities</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">velocity_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">velocities</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">velocity_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;roll&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">velocities</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">velocity_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pitch&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="n">velocities</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">*</span><span class="n">velocity_range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;yaw&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+
+    <span class="c1"># set into the physics simulation</span>
+    <span class="n">asset</span><span class="o">.</span><span class="n">write_root_pose_to_sim</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">positions</span><span class="p">,</span> <span class="n">orientations</span><span class="p">],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="n">env_ids</span><span class="o">=</span><span class="n">env_ids</span><span class="p">)</span>
+    <span class="n">asset</span><span class="o">.</span><span class="n">write_root_velocity_to_sim</span><span class="p">(</span><span class="n">velocities</span><span class="p">,</span> <span class="n">env_ids</span><span class="o">=</span><span class="n">env_ids</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="reset_joints_by_scale"><a class="viewcode-back" href="../../../../../../source/api/orbit/omni.isaac.orbit.envs.mdp.html#omni.isaac.orbit.envs.mdp.randomizations.reset_joints_by_scale">[docs]</a><span class="k">def</span> <span class="nf">reset_joints_by_scale</span><span class="p">(</span>
+    <span class="n">env</span><span class="p">:</span> <span class="n">BaseEnv</span><span class="p">,</span>
+    <span class="n">env_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">position_range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">velocity_range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">asset_cfg</span><span class="p">:</span> <span class="n">SceneEntityCfg</span> <span class="o">=</span> <span class="n">SceneEntityCfg</span><span class="p">(</span><span class="s2">&quot;robot&quot;</span><span class="p">),</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reset the robot joints by scaling the default position and velocity by the given ranges.</span>
+
+<span class="sd">    This function samples random values from the given ranges and scales the default joint positions and velocities</span>
+<span class="sd">    by these values. The scaled values are then set into the physics simulation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># extract the used quantities (to enable type-hinting)</span>
+    <span class="n">asset</span><span class="p">:</span> <span class="n">Articulation</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">scene</span><span class="p">[</span><span class="n">asset_cfg</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+    <span class="c1"># get default joint state</span>
+    <span class="n">joint_pos</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">default_joint_pos</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+    <span class="n">joint_vel</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">default_joint_vel</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+    <span class="c1"># scale these values randomly</span>
+    <span class="n">joint_pos</span> <span class="o">*=</span> <span class="n">sample_uniform</span><span class="p">(</span><span class="o">*</span><span class="n">position_range</span><span class="p">,</span> <span class="n">joint_pos</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">joint_pos</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">joint_vel</span> <span class="o">*=</span> <span class="n">sample_uniform</span><span class="p">(</span><span class="o">*</span><span class="n">velocity_range</span><span class="p">,</span> <span class="n">joint_vel</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">joint_vel</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+    <span class="c1"># clamp joint pos to limits</span>
+    <span class="n">joint_pos_limits</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">soft_joint_pos_limits</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span>
+    <span class="n">joint_pos</span> <span class="o">=</span> <span class="n">joint_pos</span><span class="o">.</span><span class="n">clamp_</span><span class="p">(</span><span class="n">joint_pos_limits</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">joint_pos_limits</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># set into the physics simulation</span>
+    <span class="n">asset</span><span class="o">.</span><span class="n">write_joint_state_to_sim</span><span class="p">(</span><span class="n">joint_pos</span><span class="p">,</span> <span class="n">joint_vel</span><span class="p">,</span> <span class="n">env_ids</span><span class="o">=</span><span class="n">env_ids</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="reset_joints_by_offset"><a class="viewcode-back" href="../../../../../../source/api/orbit/omni.isaac.orbit.envs.mdp.html#omni.isaac.orbit.envs.mdp.randomizations.reset_joints_by_offset">[docs]</a><span class="k">def</span> <span class="nf">reset_joints_by_offset</span><span class="p">(</span>
+    <span class="n">env</span><span class="p">:</span> <span class="n">BaseEnv</span><span class="p">,</span>
+    <span class="n">env_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">position_range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">velocity_range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+    <span class="n">asset_cfg</span><span class="p">:</span> <span class="n">SceneEntityCfg</span> <span class="o">=</span> <span class="n">SceneEntityCfg</span><span class="p">(</span><span class="s2">&quot;robot&quot;</span><span class="p">),</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reset the robot joints with offsets around the default position and velocity by the given ranges.</span>
+
+<span class="sd">    This function samples random values from the given ranges and biases the default joint positions and velocities</span>
+<span class="sd">    by these values. The biased values are then set into the physics simulation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># extract the used quantities (to enable type-hinting)</span>
+    <span class="n">asset</span><span class="p">:</span> <span class="n">Articulation</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">scene</span><span class="p">[</span><span class="n">asset_cfg</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+
+    <span class="c1"># get default joint state</span>
+    <span class="n">joint_pos</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">default_joint_pos</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+    <span class="n">joint_vel</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">default_joint_vel</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+    <span class="c1"># bias these values randomly</span>
+    <span class="n">joint_pos</span> <span class="o">+=</span> <span class="n">sample_uniform</span><span class="p">(</span><span class="o">*</span><span class="n">position_range</span><span class="p">,</span> <span class="n">joint_pos</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">joint_pos</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">joint_vel</span> <span class="o">+=</span> <span class="n">sample_uniform</span><span class="p">(</span><span class="o">*</span><span class="n">velocity_range</span><span class="p">,</span> <span class="n">joint_vel</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">joint_vel</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+    <span class="c1"># clamp joint pos to limits</span>
+    <span class="n">joint_pos_limits</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">soft_joint_pos_limits</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span>
+    <span class="n">joint_pos</span> <span class="o">=</span> <span class="n">joint_pos</span><span class="o">.</span><span class="n">clamp_</span><span class="p">(</span><span class="n">joint_pos_limits</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">joint_pos_limits</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># set into the physics simulation</span>
+    <span class="n">asset</span><span class="o">.</span><span class="n">write_joint_state_to_sim</span><span class="p">(</span><span class="n">joint_pos</span><span class="p">,</span> <span class="n">joint_vel</span><span class="p">,</span> <span class="n">env_ids</span><span class="o">=</span><span class="n">env_ids</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="reset_scene_to_default"><a class="viewcode-back" href="../../../../../../source/api/orbit/omni.isaac.orbit.envs.mdp.html#omni.isaac.orbit.envs.mdp.randomizations.reset_scene_to_default">[docs]</a><span class="k">def</span> <span class="nf">reset_scene_to_default</span><span class="p">(</span><span class="n">env</span><span class="p">:</span> <span class="n">BaseEnv</span><span class="p">,</span> <span class="n">env_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reset the scene to the default state specified in the scene configuration.&quot;&quot;&quot;</span>
+    <span class="c1"># rigid bodies</span>
+    <span class="k">for</span> <span class="n">rigid_object</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">rigid_objects</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="c1"># obtain default and deal with the offset for env origins</span>
+        <span class="n">default_root_state</span> <span class="o">=</span> <span class="n">rigid_object</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">default_root_state</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">default_root_state</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">+=</span> <span class="n">env</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">env_origins</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span>
+        <span class="c1"># set into the physics simulation</span>
+        <span class="n">rigid_object</span><span class="o">.</span><span class="n">write_root_state_to_sim</span><span class="p">(</span><span class="n">default_root_state</span><span class="p">,</span> <span class="n">env_ids</span><span class="o">=</span><span class="n">env_ids</span><span class="p">)</span>
+    <span class="c1"># articulations</span>
+    <span class="k">for</span> <span class="n">articulation_asset</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">articulations</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="c1"># obtain default and deal with the offset for env origins</span>
+        <span class="n">default_root_state</span> <span class="o">=</span> <span class="n">articulation_asset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">default_root_state</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">default_root_state</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">+=</span> <span class="n">env</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">env_origins</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span>
+        <span class="c1"># set into the physics simulation</span>
+        <span class="n">articulation_asset</span><span class="o">.</span><span class="n">write_root_state_to_sim</span><span class="p">(</span><span class="n">default_root_state</span><span class="p">,</span> <span class="n">env_ids</span><span class="o">=</span><span class="n">env_ids</span><span class="p">)</span>
+        <span class="c1"># obtain default joint positions</span>
+        <span class="n">default_joint_pos</span> <span class="o">=</span> <span class="n">articulation_asset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">default_joint_pos</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">default_joint_vel</span> <span class="o">=</span> <span class="n">articulation_asset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">default_joint_vel</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="c1"># set into the physics simulation</span>
+        <span class="n">articulation_asset</span><span class="o">.</span><span class="n">write_joint_state_to_sim</span><span class="p">(</span><span class="n">default_joint_pos</span><span class="p">,</span> <span class="n">default_joint_vel</span><span class="p">,</span> <span class="n">env_ids</span><span class="o">=</span><span class="n">env_ids</span><span class="p">)</span></div>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Isaac Lab Project Developers.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2024, The Isaac Lab Project Developers..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Oct 11, 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

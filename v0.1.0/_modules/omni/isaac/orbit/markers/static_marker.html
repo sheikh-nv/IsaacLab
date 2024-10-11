@@ -1,0 +1,691 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>omni.isaac.orbit.markers.static_marker &#8212; Isaac Lab documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx_highlight.js"></script>
+    <script src="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+    <script src="../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../../../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/omni/isaac/orbit/markers/static_marker';</script>
+    <link rel="icon" href="../../../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Oct 11, 2024"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/NVIDIA-logo-white.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../../../_static/NVIDIA-logo-black.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">Isaac Lab documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/isaac-sim/IsaacLab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-4.2.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" title="Stars" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" class="icon-link-image" alt="Stars"/></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/setup/installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/setup/developer.html">Developer’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/setup/sample.html">Running existing scripts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/features/actuators.html">Actuators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/features/motion_generators.html">Motion Generators</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials (beginner)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/tutorials/00_empty.html">Creating an empty scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/tutorials/01_arms.html">Adding a robotic arm to the scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/tutorials/02_cloner.html">Duplicating a scene efficiently</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/tutorials/03_ik_controller.html">Using a task-space controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/tutorials/04_gym_env.html">Running an RL environment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Source API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../../source/api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit.actuators.group.html">omni.isaac.orbit.actuators.group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit.actuators.model.html">omni.isaac.orbit.actuators.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit.devices.html">omni.isaac.orbit.devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit.markers.html">omni.isaac.orbit.markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit.objects.articulated.html">omni.isaac.orbit.objects.articulated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit.objects.rigid.html">omni.isaac.orbit.objects.rigid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit.robots.html">omni.isaac.orbit.robots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit.utils.html">omni.isaac.orbit.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit.utils.assets.html">omni.isaac.orbit.utils.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit.utils.kit.html">omni.isaac.orbit.utils.kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit.utils.math.html">omni.isaac.orbit.utils.math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit.utils.mdp.html">omni.isaac.orbit.utils.mdp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit_envs.isaac_env.html">omni.isaac.orbit_envs.isaac_env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit_envs.utils.html">omni.isaac.orbit_envs.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit_envs.utils.data_collector.html">omni.isaac.orbit_envs.utils.data_collector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../source/api/orbit_envs.utils.wrappers.html">omni.isaac.orbit_envs.utils.wrappers</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/refs/contributing.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/refs/troubleshooting.html">Tricks and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/refs/changelog.html">Extensions Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/refs/roadmap.html">Development Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/refs/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../source/refs/bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<h2>Versions</h2>
+<ul>
+  <li><a href="../../../../../../main/index.html">main</a></li>
+  <li><a href="../../../../../../v1.2.0/index.html">v1.2.0</a></li>
+  <li><a href="../../../../../../v1.1.0/index.html">v1.1.0</a></li>
+  <li><a href="../../../../../../v1.0.0/index.html">v1.0.0</a></li>
+  <li><a href="../../../../../../v0.3.1/index.html">v0.3.1</a></li>
+  <li><a href="../../../../../../v0.3.0/index.html">v0.3.0</a></li>
+  <li><a href="../../../../../../v0.2.0/index.html">v0.2.0</a></li>
+  <li><a href="static_marker.html">v0.1.0</a></li>
+</ul>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/issues/new?title=Issue%20on%20page%20%2F_modules/omni/isaac/orbit/markers/static_marker.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for omni.isaac.orbit.markers.static_marker</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (c) 2022, NVIDIA CORPORATION &amp; AFFILIATES, ETH Zurich, and University of Toronto</span>
+<span class="c1"># All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+
+<span class="sd">&quot;&quot;&quot;A class to coordinate groups of visual markers (loaded from USD).&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span> <span class="nn">omni.isaac.core.utils.prims</span> <span class="k">as</span> <span class="nn">prim_utils</span>
+<span class="kn">import</span> <span class="nn">omni.isaac.core.utils.stage</span> <span class="k">as</span> <span class="nn">stage_utils</span>
+<span class="kn">from</span> <span class="nn">omni.isaac.core.materials</span> <span class="kn">import</span> <span class="n">PreviewSurface</span>
+<span class="kn">from</span> <span class="nn">omni.isaac.core.prims</span> <span class="kn">import</span> <span class="n">GeometryPrim</span>
+<span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Gf</span><span class="p">,</span> <span class="n">UsdGeom</span>
+
+<span class="kn">import</span> <span class="nn">omni.isaac.orbit.utils.kit</span> <span class="k">as</span> <span class="nn">kit_utils</span>
+<span class="kn">from</span> <span class="nn">omni.isaac.orbit.utils.assets</span> <span class="kn">import</span> <span class="n">ISAAC_NUCLEUS_DIR</span><span class="p">,</span> <span class="n">check_file_path</span>
+
+
+<div class="viewcode-block" id="StaticMarker"><a class="viewcode-back" href="../../../../../source/api/orbit.markers.html#omni.isaac.orbit.markers.StaticMarker">[docs]</a><span class="k">class</span> <span class="nc">StaticMarker</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class to coordinate groups of visual markers (loaded from USD).</span>
+
+<span class="sd">    This class allows visualization of different UI elements in the scene, such as points and frames.</span>
+<span class="sd">    The class uses `UsdGeom.PointInstancer`_ for efficient handling of the element in the stage</span>
+<span class="sd">    via instancing of the marker.</span>
+
+<span class="sd">    Usage:</span>
+<span class="sd">        To create 24 default frame markers with a scale of 0.5:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            from omni.isaac.orbit.utils.markers import StaticMarker</span>
+
+<span class="sd">            # create a static marker</span>
+<span class="sd">            marker = StaticMarker(&quot;/World/Visuals/frames&quot;, 24, scale=(0.5, 0.5, 0.5))</span>
+
+<span class="sd">            # set position of the marker</span>
+<span class="sd">            marker_positions = np.random.uniform(-1.0, 1.0, (24, 3))</span>
+<span class="sd">            marker.set_world_poses(marker_positions)</span>
+
+<span class="sd">    .. _UsdGeom.PointInstancer: https://graphics.pixar.com/usd/dev/api/class_usd_geom_point_instancer.html</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="StaticMarker.__init__"><a class="viewcode-back" href="../../../../../source/api/orbit.markers.html#omni.isaac.orbit.markers.StaticMarker.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">prim_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">count</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">usd_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">scale</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+        <span class="n">color</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the class.</span>
+
+<span class="sd">        When the class is initialized, the :class:`UsdGeom.PointInstancer` is created into the stage</span>
+<span class="sd">        and the marker prim is registered into it.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            prim_path (str): The prim path where the PointInstancer will be created.</span>
+<span class="sd">            count (int): The number of marker duplicates to create.</span>
+<span class="sd">            usd_path (Optional[str], optional): The USD file path to the marker. Defaults to the USD path</span>
+<span class="sd">                for the RGB frame axis marker.</span>
+<span class="sd">            scale (Tuple[float, float, float], optional): The scale of the marker. Defaults to (1.0, 1.0, 1.0).</span>
+<span class="sd">            color (Optional[Tuple[float, float, float]], optional): The color of the marker.</span>
+<span class="sd">                If provided, it overrides the existing color on all the prims of the marker.</span>
+<span class="sd">                Defaults to None.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: When a prim already exists at the :obj:`prim_path` and it is not a :class:`UsdGeom.PointInstancer`.</span>
+<span class="sd">            FileNotFoundError: When the USD file at :obj:`usd_path` does not exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># resolve default markers in the UI elements</span>
+        <span class="c1"># -- USD path</span>
+        <span class="k">if</span> <span class="n">usd_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">usd_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ISAAC_NUCLEUS_DIR</span><span class="si">}</span><span class="s2">/Props/UIElements/frame_prim.usd&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">check_file_path</span><span class="p">(</span><span class="n">usd_path</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;USD file for the marker not found at: </span><span class="si">{</span><span class="n">usd_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># -- prim path</span>
+        <span class="n">stage</span> <span class="o">=</span> <span class="n">stage_utils</span><span class="o">.</span><span class="n">get_current_stage</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">prim_utils</span><span class="o">.</span><span class="n">is_prim_path_valid</span><span class="p">(</span><span class="n">prim_path</span><span class="p">):</span>
+            <span class="c1"># retrieve prim if it exists</span>
+            <span class="n">prim</span> <span class="o">=</span> <span class="n">prim_utils</span><span class="o">.</span><span class="n">get_prim_at_path</span><span class="p">(</span><span class="n">prim_path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">prim</span><span class="o">.</span><span class="n">IsA</span><span class="p">(</span><span class="n">UsdGeom</span><span class="o">.</span><span class="n">PointInstancer</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The prim at path </span><span class="si">{</span><span class="n">prim_path</span><span class="si">}</span><span class="s2"> cannot be parsed as a `PointInstancer` object&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_instancer_manager</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">PointInstancer</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># create a new prim</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_instancer_manager</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">PointInstancer</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">prim_path</span><span class="p">)</span>
+        <span class="c1"># store inputs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prim_path</span> <span class="o">=</span> <span class="n">prim_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_usd_path</span> <span class="o">=</span> <span class="n">usd_path</span>
+
+        <span class="c1"># create manager for handling instancing of frame markers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_instancer_manager</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">PointInstancer</span><span class="o">.</span><span class="n">Define</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">prim_path</span><span class="p">)</span>
+        <span class="c1"># create a child prim for the marker</span>
+        <span class="n">prim_utils</span><span class="o">.</span><span class="n">create_prim</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prim_path</span><span class="si">}</span><span class="s2">/marker&quot;</span><span class="p">,</span> <span class="n">usd_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_usd_path</span><span class="p">)</span>
+        <span class="c1"># disable any physics on the marker</span>
+        <span class="c1"># FIXME: Also support disabling rigid body properties on the marker.</span>
+        <span class="c1">#   Currently, it is not possible on GPU pipeline.</span>
+        <span class="c1"># kit_utils.set_nested_rigid_body_properties(f&quot;{prim_path}/marker&quot;, rigid_body_enabled=False)</span>
+        <span class="n">kit_utils</span><span class="o">.</span><span class="n">set_nested_collision_properties</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prim_path</span><span class="si">}</span><span class="s2">/marker&quot;</span><span class="p">,</span> <span class="n">collision_enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># apply material to marker</span>
+        <span class="k">if</span> <span class="n">color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">prim</span> <span class="o">=</span> <span class="n">GeometryPrim</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prim_path</span><span class="si">}</span><span class="s2">/marker&quot;</span><span class="p">)</span>
+            <span class="n">material</span> <span class="o">=</span> <span class="n">PreviewSurface</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prim_path</span><span class="si">}</span><span class="s2">/markerColor&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">color</span><span class="p">))</span>
+            <span class="n">prim</span><span class="o">.</span><span class="n">apply_visual_material</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">weaker_than_descendants</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># add child reference to point instancer</span>
+        <span class="c1"># FUTURE: Add support for multiple markers in the same instance manager?</span>
+        <span class="n">relation_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_instancer_manager</span><span class="o">.</span><span class="n">GetPrototypesRel</span><span class="p">()</span>
+        <span class="n">relation_manager</span><span class="o">.</span><span class="n">AddTarget</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prim_path</span><span class="si">}</span><span class="s2">/marker&quot;</span><span class="p">)</span>  <span class="c1"># target index: 0</span>
+
+        <span class="c1"># buffers for storing data in pixar Gf format</span>
+        <span class="c1"># FUTURE: Make them very far away from the scene?</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gf_positions</span> <span class="o">=</span> <span class="p">[</span><span class="n">Gf</span><span class="o">.</span><span class="n">Vec3f</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gf_orientations</span> <span class="o">=</span> <span class="p">[</span><span class="n">Gf</span><span class="o">.</span><span class="n">Quath</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gf_scales</span> <span class="o">=</span> <span class="p">[</span><span class="n">Gf</span><span class="o">.</span><span class="n">Vec3f</span><span class="p">(</span><span class="o">*</span><span class="nb">tuple</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">)]</span>
+
+        <span class="c1"># specify that all vis prims are related to same geometry</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_instancer_manager</span><span class="o">.</span><span class="n">GetProtoIndicesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
+        <span class="c1"># set initial positions of the targets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_instancer_manager</span><span class="o">.</span><span class="n">GetScalesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gf_scales</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_instancer_manager</span><span class="o">.</span><span class="n">GetPositionsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gf_positions</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_instancer_manager</span><span class="o">.</span><span class="n">GetOrientationsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gf_orientations</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StaticMarker.set_visibility"><a class="viewcode-back" href="../../../../../source/api/orbit.markers.html#omni.isaac.orbit.markers.StaticMarker.set_visibility">[docs]</a>    <span class="k">def</span> <span class="nf">set_visibility</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visible</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the visibility of the markers.</span>
+
+<span class="sd">        The method does this through the USD API.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            visible (bool): flag to set the visibility.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">imageable</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Imageable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_instancer_manager</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">visible</span><span class="p">:</span>
+            <span class="n">imageable</span><span class="o">.</span><span class="n">MakeVisible</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">imageable</span><span class="o">.</span><span class="n">MakeInvisible</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="StaticMarker.set_world_poses"><a class="viewcode-back" href="../../../../../source/api/orbit.markers.html#omni.isaac.orbit.markers.StaticMarker.set_world_poses">[docs]</a>    <span class="k">def</span> <span class="nf">set_world_poses</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">positions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">orientations</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">indices</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update marker poses in the simulation world frame.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            positions (Optional[Union[np.ndarray, torch.Tensor]], optional):</span>
+<span class="sd">                Positions in the world frame. Shape: (M, 3). Defaults to :obj:`None`, which means left unchanged.</span>
+<span class="sd">            orientations (Optional[Union[np.ndarray, torch.Tensor]], optional):</span>
+<span class="sd">                Quaternion orientations (w, x, y, z) in the world frame of the prims. Shape: (M, 4).</span>
+<span class="sd">                Defaults to :obj:`None`, which means left unchanged.</span>
+<span class="sd">            indices (Optional[Sequence[int]], optional): Indices to specify which alter poses.</span>
+<span class="sd">                Shape: (M,), where M &lt;= total number of markers. Defaults to :obj:`None` (i.e: all markers).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># resolve inputs</span>
+        <span class="k">if</span> <span class="n">positions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">positions</span> <span class="o">=</span> <span class="n">positions</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">orientations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">orientations</span> <span class="o">=</span> <span class="n">orientations</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">indices</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
+        <span class="c1"># change marker locations</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">marker_index</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">indices</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">positions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_gf_positions</span><span class="p">[</span><span class="n">marker_index</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">positions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">orientations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_gf_orientations</span><span class="p">[</span><span class="n">marker_index</span><span class="p">]</span><span class="o">.</span><span class="n">SetReal</span><span class="p">(</span><span class="n">orientations</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_gf_orientations</span><span class="p">[</span><span class="n">marker_index</span><span class="p">]</span><span class="o">.</span><span class="n">SetImaginary</span><span class="p">(</span><span class="n">orientations</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">:])</span>
+        <span class="c1"># apply to instance manager</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_instancer_manager</span><span class="o">.</span><span class="n">GetPositionsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gf_positions</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_instancer_manager</span><span class="o">.</span><span class="n">GetOrientationsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gf_orientations</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StaticMarker.set_scales"><a class="viewcode-back" href="../../../../../source/api/orbit.markers.html#omni.isaac.orbit.markers.StaticMarker.set_scales">[docs]</a>    <span class="k">def</span> <span class="nf">set_scales</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scales</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">indices</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update marker poses in the simulation world frame.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            scales (Union[np.ndarray, torch.Tensor]): Scale applied before any rotation is applied. Shape: (M, 3).</span>
+<span class="sd">            indices (Optional[Sequence[int]], optional): Indices to specify which alter poses.</span>
+<span class="sd">                Shape: (M,), where M &lt;= total number of markers. Defaults to :obj:`None` (i.e: all markers).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># default arguments</span>
+        <span class="k">if</span> <span class="n">indices</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
+        <span class="c1"># resolve inputs</span>
+        <span class="n">scales</span> <span class="o">=</span> <span class="n">scales</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="c1"># change marker locations</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">marker_index</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">indices</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gf_scales</span><span class="p">[</span><span class="n">marker_index</span><span class="p">][:]</span> <span class="o">=</span> <span class="n">scales</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># apply to instance manager</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_instancer_manager</span><span class="o">.</span><span class="n">GetScalesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gf_scales</span><span class="p">)</span></div></div>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Isaac Lab Project Developers.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2024, The Isaac Lab Project Developers..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Oct 11, 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,990 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Using a task-space controller &#8212; Isaac Lab documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/tutorials/03_ik_controller';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Running an RL environment" href="04_gym_env.html" />
+    <link rel="prev" title="Duplicating a scene efficiently" href="02_cloner.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Oct 11, 2024"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/NVIDIA-logo-white.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../_static/NVIDIA-logo-black.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">Isaac Lab documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/isaac-sim/IsaacLab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-4.2.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" title="Stars" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" class="icon-link-image" alt="Stars"/></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../setup/installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/developer.html">Developer’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/sample.html">Running existing scripts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../features/actuators.html">Actuators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/motion_generators.html">Motion Generators</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials (beginner)</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_empty.html">Creating an empty scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_arms.html">Adding a robotic arm to the scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_cloner.html">Duplicating a scene efficiently</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Using a task-space controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_gym_env.html">Running an RL environment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Source API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.actuators.group.html">omni.isaac.orbit.actuators.group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.actuators.model.html">omni.isaac.orbit.actuators.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.devices.html">omni.isaac.orbit.devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.markers.html">omni.isaac.orbit.markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.objects.articulated.html">omni.isaac.orbit.objects.articulated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.objects.rigid.html">omni.isaac.orbit.objects.rigid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.robots.html">omni.isaac.orbit.robots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.utils.html">omni.isaac.orbit.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.utils.assets.html">omni.isaac.orbit.utils.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.utils.kit.html">omni.isaac.orbit.utils.kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.utils.math.html">omni.isaac.orbit.utils.math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit.utils.mdp.html">omni.isaac.orbit.utils.mdp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit_envs.isaac_env.html">omni.isaac.orbit_envs.isaac_env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit_envs.utils.html">omni.isaac.orbit_envs.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit_envs.utils.data_collector.html">omni.isaac.orbit_envs.utils.data_collector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/orbit_envs.utils.wrappers.html">omni.isaac.orbit_envs.utils.wrappers</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../refs/contributing.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/troubleshooting.html">Tricks and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/changelog.html">Extensions Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/roadmap.html">Development Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<h2>Versions</h2>
+<ul>
+  <li><a href="../../../main/index.html">main</a></li>
+  <li><a href="../../../v1.2.0/index.html">v1.2.0</a></li>
+  <li><a href="../../../v1.1.0/index.html">v1.1.0</a></li>
+  <li><a href="../../../v1.0.0/index.html">v1.0.0</a></li>
+  <li><a href="../../../v0.3.1/index.html">v0.3.1</a></li>
+  <li><a href="../../../v0.3.0/index.html">v0.3.0</a></li>
+  <li><a href="../../../v0.2.0/index.html">v0.2.0</a></li>
+  <li><a href="03_ik_controller.html">v0.1.0</a></li>
+</ul>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/edit/main/source/tutorials/03_ik_controller.rst" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/issues/new?title=Issue%20on%20page%20%2Fsource/tutorials/03_ik_controller.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/source/tutorials/03_ik_controller.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Using a task-space controller</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code">The Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code-explained">The Code Explained</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-an-ik-controller">Creating an IK controller</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-robot-command">Computing robot command</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-markers-for-displaying-frames">Using markers for displaying frames</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code-execution">The Code Execution</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="using-a-task-space-controller">
+<h1>Using a task-space controller<a class="headerlink" href="#using-a-task-space-controller" title="Permalink to this heading">#</a></h1>
+<p>In the previous tutorials, we learned how to create a scene and control a robotic arm using a
+joint-space controller. In this tutorial, we will learn how to use a task-space controller to
+control the robot. More specifically, we will use the <code class="xref py py-class docutils literal notranslate"><span class="pre">DifferentialInverseKinematics</span></code> class
+to track a desired end-effector pose command.</p>
+<section id="the-code">
+<h2>The Code<a class="headerlink" href="#the-code" title="Permalink to this heading">#</a></h2>
+<p>The tutorial corresponds to the <code class="docutils literal notranslate"><span class="pre">play_ik_control.py</span></code> script in the <code class="docutils literal notranslate"><span class="pre">orbit/source/standalone/demo</span></code> directory.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="c1"># Copyright (c) 2022, NVIDIA CORPORATION &amp; AFFILIATES, ETH Zurich, and University of Toronto</span>
+<span class="linenos">  2</span><span class="c1"># All rights reserved.</span>
+<span class="linenos">  3</span><span class="c1">#</span>
+<span class="linenos">  4</span><span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+<span class="linenos">  5</span>
+<span class="linenos">  6</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">  7</span><span class="sd">This script demonstrates how to use the inverse kinematics controller with the simulator.</span>
+<span class="linenos">  8</span>
+<span class="linenos">  9</span><span class="sd">The differential IK controller can be configured in different modes. It uses the Jacobians computed by</span>
+<span class="linenos"> 10</span><span class="sd">PhysX. This helps perform parallelized computation of the inverse kinematics.</span>
+<span class="linenos"> 11</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 12</span>
+<span class="linenos"> 13</span><span class="sd">&quot;&quot;&quot;Launch Isaac Sim Simulator first.&quot;&quot;&quot;</span>
+<span class="linenos"> 14</span>
+<span class="linenos"> 15</span>
+<span class="linenos"> 16</span><span class="kn">import</span> <span class="nn">argparse</span>
+<span class="linenos"> 17</span>
+<span class="linenos"> 18</span><span class="kn">from</span> <span class="nn">omni.isaac.kit</span> <span class="kn">import</span> <span class="n">SimulationApp</span>
+<span class="linenos"> 19</span>
+<span class="linenos"> 20</span><span class="c1"># add argparse arguments</span>
+<span class="linenos"> 21</span><span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="s2">&quot;Welcome to Orbit: Omniverse Robotics Environments!&quot;</span><span class="p">)</span>
+<span class="linenos"> 22</span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--headless&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Force display off at all times.&quot;</span><span class="p">)</span>
+<span class="linenos"> 23</span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--robot&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;franka_panda&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Name of the robot.&quot;</span><span class="p">)</span>
+<span class="linenos"> 24</span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--num_envs&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of environments to spawn.&quot;</span><span class="p">)</span>
+<span class="linenos"> 25</span><span class="n">args_cli</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+<span class="linenos"> 26</span>
+<span class="linenos"> 27</span><span class="c1"># launch omniverse app</span>
+<span class="linenos"> 28</span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;headless&quot;</span><span class="p">:</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">headless</span><span class="p">}</span>
+<span class="linenos"> 29</span><span class="n">simulation_app</span> <span class="o">=</span> <span class="n">SimulationApp</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<span class="linenos"> 30</span>
+<span class="linenos"> 31</span>
+<span class="linenos"> 32</span><span class="sd">&quot;&quot;&quot;Rest everything follows.&quot;&quot;&quot;</span>
+<span class="linenos"> 33</span>
+<span class="linenos"> 34</span>
+<span class="linenos"> 35</span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="linenos"> 36</span>
+<span class="linenos"> 37</span><span class="kn">import</span> <span class="nn">omni.isaac.core.utils.prims</span> <span class="k">as</span> <span class="nn">prim_utils</span>
+<span class="linenos"> 38</span><span class="kn">from</span> <span class="nn">omni.isaac.cloner</span> <span class="kn">import</span> <span class="n">GridCloner</span>
+<span class="linenos"> 39</span><span class="kn">from</span> <span class="nn">omni.isaac.core.simulation_context</span> <span class="kn">import</span> <span class="n">SimulationContext</span>
+<span class="linenos"> 40</span><span class="kn">from</span> <span class="nn">omni.isaac.core.utils.carb</span> <span class="kn">import</span> <span class="n">set_carb_setting</span>
+<span class="linenos"> 41</span><span class="kn">from</span> <span class="nn">omni.isaac.core.utils.viewports</span> <span class="kn">import</span> <span class="n">set_camera_view</span>
+<span class="linenos"> 42</span>
+<span class="linenos"> 43</span><span class="kn">import</span> <span class="nn">omni.isaac.orbit.utils.kit</span> <span class="k">as</span> <span class="nn">kit_utils</span>
+<span class="hll"><span class="linenos"> 44</span><span class="kn">from</span> <span class="nn">omni.isaac.orbit.controllers.differential_inverse_kinematics</span> <span class="kn">import</span> <span class="p">(</span>
+</span><span class="hll"><span class="linenos"> 45</span>    <span class="n">DifferentialInverseKinematics</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos"> 46</span>    <span class="n">DifferentialInverseKinematicsCfg</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos"> 47</span><span class="p">)</span>
+</span><span class="linenos"> 48</span><span class="kn">from</span> <span class="nn">omni.isaac.orbit.markers</span> <span class="kn">import</span> <span class="n">StaticMarker</span>
+<span class="linenos"> 49</span><span class="kn">from</span> <span class="nn">omni.isaac.orbit.robots.config.franka</span> <span class="kn">import</span> <span class="n">FRANKA_PANDA_ARM_WITH_PANDA_HAND_CFG</span>
+<span class="linenos"> 50</span><span class="kn">from</span> <span class="nn">omni.isaac.orbit.robots.config.universal_robots</span> <span class="kn">import</span> <span class="n">UR10_CFG</span>
+<span class="linenos"> 51</span><span class="kn">from</span> <span class="nn">omni.isaac.orbit.robots.single_arm</span> <span class="kn">import</span> <span class="n">SingleArmManipulator</span>
+<span class="linenos"> 52</span><span class="kn">from</span> <span class="nn">omni.isaac.orbit.utils.assets</span> <span class="kn">import</span> <span class="n">ISAAC_NUCLEUS_DIR</span>
+<span class="linenos"> 53</span>
+<span class="linenos"> 54</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 55</span><span class="sd">Main</span>
+<span class="linenos"> 56</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 57</span>
+<span class="linenos"> 58</span>
+<span class="linenos"> 59</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="linenos"> 60</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Spawns a single-arm manipulator and applies commands through inverse kinematics control.&quot;&quot;&quot;</span>
+<span class="linenos"> 61</span>
+<span class="linenos"> 62</span>    <span class="c1"># Load kit helper</span>
+<span class="linenos"> 63</span>    <span class="n">sim</span> <span class="o">=</span> <span class="n">SimulationContext</span><span class="p">(</span>
+<span class="linenos"> 64</span>        <span class="n">stage_units_in_meters</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">physics_dt</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">rendering_dt</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda:0&quot;</span>
+<span class="linenos"> 65</span>    <span class="p">)</span>
+<span class="linenos"> 66</span>    <span class="c1"># Set main camera</span>
+<span class="linenos"> 67</span>    <span class="n">set_camera_view</span><span class="p">([</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<span class="linenos"> 68</span>    <span class="c1"># Enable GPU pipeline and flatcache</span>
+<span class="linenos"> 69</span>    <span class="k">if</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_physics_context</span><span class="p">()</span><span class="o">.</span><span class="n">use_gpu_pipeline</span><span class="p">:</span>
+<span class="linenos"> 70</span>        <span class="n">sim</span><span class="o">.</span><span class="n">get_physics_context</span><span class="p">()</span><span class="o">.</span><span class="n">enable_flatcache</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 71</span>    <span class="c1"># Enable hydra scene-graph instancing</span>
+<span class="linenos"> 72</span>    <span class="n">set_carb_setting</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">_settings</span><span class="p">,</span> <span class="s2">&quot;/persistent/omnihydra/useSceneGraphInstancing&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 73</span>
+<span class="linenos"> 74</span>    <span class="c1"># Create interface to clone the scene</span>
+<span class="linenos"> 75</span>    <span class="n">cloner</span> <span class="o">=</span> <span class="n">GridCloner</span><span class="p">(</span><span class="n">spacing</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="linenos"> 76</span>    <span class="n">cloner</span><span class="o">.</span><span class="n">define_base_env</span><span class="p">(</span><span class="s2">&quot;/World/envs&quot;</span><span class="p">)</span>
+<span class="linenos"> 77</span>    <span class="c1"># Everything under the namespace &quot;/World/envs/env_0&quot; will be cloned</span>
+<span class="linenos"> 78</span>    <span class="n">prim_utils</span><span class="o">.</span><span class="n">define_prim</span><span class="p">(</span><span class="s2">&quot;/World/envs/env_0&quot;</span><span class="p">)</span>
+<span class="linenos"> 79</span>
+<span class="linenos"> 80</span>    <span class="c1"># Spawn things into stage</span>
+<span class="linenos"> 81</span>    <span class="c1"># Markers</span>
+<span class="linenos"> 82</span>    <span class="n">ee_marker</span> <span class="o">=</span> <span class="n">StaticMarker</span><span class="p">(</span><span class="s2">&quot;/Visuals/ee_current&quot;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">args_cli</span><span class="o">.</span><span class="n">num_envs</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="linenos"> 83</span>    <span class="n">goal_marker</span> <span class="o">=</span> <span class="n">StaticMarker</span><span class="p">(</span><span class="s2">&quot;/Visuals/ee_goal&quot;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">args_cli</span><span class="o">.</span><span class="n">num_envs</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="linenos"> 84</span>    <span class="c1"># Ground-plane</span>
+<span class="linenos"> 85</span>    <span class="n">kit_utils</span><span class="o">.</span><span class="n">create_ground_plane</span><span class="p">(</span><span class="s2">&quot;/World/defaultGroundPlane&quot;</span><span class="p">,</span> <span class="n">z_position</span><span class="o">=-</span><span class="mf">1.05</span><span class="p">)</span>
+<span class="linenos"> 86</span>    <span class="c1"># Lights-1</span>
+<span class="linenos"> 87</span>    <span class="n">prim_utils</span><span class="o">.</span><span class="n">create_prim</span><span class="p">(</span>
+<span class="linenos"> 88</span>        <span class="s2">&quot;/World/Light/GreySphere&quot;</span><span class="p">,</span>
+<span class="linenos"> 89</span>        <span class="s2">&quot;SphereLight&quot;</span><span class="p">,</span>
+<span class="linenos"> 90</span>        <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span>
+<span class="linenos"> 91</span>        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;radius&quot;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s2">&quot;intensity&quot;</span><span class="p">:</span> <span class="mf">600.0</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)},</span>
+<span class="linenos"> 92</span>    <span class="p">)</span>
+<span class="linenos"> 93</span>    <span class="c1"># Lights-2</span>
+<span class="linenos"> 94</span>    <span class="n">prim_utils</span><span class="o">.</span><span class="n">create_prim</span><span class="p">(</span>
+<span class="linenos"> 95</span>        <span class="s2">&quot;/World/Light/WhiteSphere&quot;</span><span class="p">,</span>
+<span class="linenos"> 96</span>        <span class="s2">&quot;SphereLight&quot;</span><span class="p">,</span>
+<span class="linenos"> 97</span>        <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span>
+<span class="linenos"> 98</span>        <span class="n">attributes</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;radius&quot;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s2">&quot;intensity&quot;</span><span class="p">:</span> <span class="mf">600.0</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)},</span>
+<span class="linenos"> 99</span>    <span class="p">)</span>
+<span class="linenos">100</span>    <span class="c1"># -- Table</span>
+<span class="linenos">101</span>    <span class="n">table_usd_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ISAAC_NUCLEUS_DIR</span><span class="si">}</span><span class="s2">/Props/Mounts/SeattleLabTable/table_instanceable.usd&quot;</span>
+<span class="linenos">102</span>    <span class="n">prim_utils</span><span class="o">.</span><span class="n">create_prim</span><span class="p">(</span><span class="s2">&quot;/World/envs/env_0/Table&quot;</span><span class="p">,</span> <span class="n">usd_path</span><span class="o">=</span><span class="n">table_usd_path</span><span class="p">)</span>
+<span class="linenos">103</span>    <span class="c1"># -- Robot</span>
+<span class="linenos">104</span>    <span class="c1"># resolve robot config from command-line arguments</span>
+<span class="linenos">105</span>    <span class="k">if</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">robot</span> <span class="o">==</span> <span class="s2">&quot;franka_panda&quot;</span><span class="p">:</span>
+<span class="linenos">106</span>        <span class="n">robot_cfg</span> <span class="o">=</span> <span class="n">FRANKA_PANDA_ARM_WITH_PANDA_HAND_CFG</span>
+<span class="linenos">107</span>    <span class="k">elif</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">robot</span> <span class="o">==</span> <span class="s2">&quot;ur10&quot;</span><span class="p">:</span>
+<span class="linenos">108</span>        <span class="n">robot_cfg</span> <span class="o">=</span> <span class="n">UR10_CFG</span>
+<span class="linenos">109</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">110</span>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Robot </span><span class="si">{</span><span class="n">args_cli</span><span class="o">.</span><span class="n">robot</span><span class="si">}</span><span class="s2"> is not supported. Valid: franka_panda, ur10&quot;</span><span class="p">)</span>
+<span class="linenos">111</span>    <span class="c1"># configure robot settings to use IK controller</span>
+<span class="linenos">112</span>    <span class="n">robot_cfg</span><span class="o">.</span><span class="n">data_info</span><span class="o">.</span><span class="n">enable_jacobian</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">113</span>    <span class="n">robot_cfg</span><span class="o">.</span><span class="n">rigid_props</span><span class="o">.</span><span class="n">disable_gravity</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">114</span>    <span class="c1"># spawn robot</span>
+<span class="linenos">115</span>    <span class="n">robot</span> <span class="o">=</span> <span class="n">SingleArmManipulator</span><span class="p">(</span><span class="n">cfg</span><span class="o">=</span><span class="n">robot_cfg</span><span class="p">)</span>
+<span class="linenos">116</span>    <span class="n">robot</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s2">&quot;/World/envs/env_0/Robot&quot;</span><span class="p">,</span> <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+<span class="linenos">117</span>
+<span class="linenos">118</span>    <span class="c1"># Clone the scene</span>
+<span class="linenos">119</span>    <span class="n">num_envs</span> <span class="o">=</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">num_envs</span>
+<span class="linenos">120</span>    <span class="n">envs_prim_paths</span> <span class="o">=</span> <span class="n">cloner</span><span class="o">.</span><span class="n">generate_paths</span><span class="p">(</span><span class="s2">&quot;/World/envs/env&quot;</span><span class="p">,</span> <span class="n">num_paths</span><span class="o">=</span><span class="n">num_envs</span><span class="p">)</span>
+<span class="linenos">121</span>    <span class="n">envs_positions</span> <span class="o">=</span> <span class="n">cloner</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="n">source_prim_path</span><span class="o">=</span><span class="s2">&quot;/World/envs/env_0&quot;</span><span class="p">,</span> <span class="n">prim_paths</span><span class="o">=</span><span class="n">envs_prim_paths</span><span class="p">)</span>
+<span class="linenos">122</span>    <span class="c1"># convert environment positions to torch tensor</span>
+<span class="linenos">123</span>    <span class="n">envs_positions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">envs_positions</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">sim</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+<span class="linenos">124</span>    <span class="c1"># filter collisions within each environment instance</span>
+<span class="linenos">125</span>    <span class="n">physics_scene_path</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_physics_context</span><span class="p">()</span><span class="o">.</span><span class="n">prim_path</span>
+<span class="linenos">126</span>    <span class="n">cloner</span><span class="o">.</span><span class="n">filter_collisions</span><span class="p">(</span>
+<span class="linenos">127</span>        <span class="n">physics_scene_path</span><span class="p">,</span> <span class="s2">&quot;/World/collisions&quot;</span><span class="p">,</span> <span class="n">envs_prim_paths</span><span class="p">,</span> <span class="n">global_paths</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;/World/defaultGroundPlane&quot;</span><span class="p">]</span>
+<span class="linenos">128</span>    <span class="p">)</span>
+<span class="linenos">129</span>
+<span class="hll"><span class="linenos">130</span>    <span class="c1"># Create controller</span>
+</span><span class="hll"><span class="linenos">131</span>    <span class="c1"># the controller takes as command type: {position/pose}_{abs/rel}</span>
+</span><span class="hll"><span class="linenos">132</span>    <span class="n">ik_control_cfg</span> <span class="o">=</span> <span class="n">DifferentialInverseKinematicsCfg</span><span class="p">(</span>
+</span><span class="hll"><span class="linenos">133</span>        <span class="n">command_type</span><span class="o">=</span><span class="s2">&quot;pose_abs&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">134</span>        <span class="n">ik_method</span><span class="o">=</span><span class="s2">&quot;dls&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">135</span>        <span class="n">position_offset</span><span class="o">=</span><span class="n">robot</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">ee_info</span><span class="o">.</span><span class="n">pos_offset</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">136</span>        <span class="n">rotation_offset</span><span class="o">=</span><span class="n">robot</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">ee_info</span><span class="o">.</span><span class="n">rot_offset</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">137</span>    <span class="p">)</span>
+</span><span class="hll"><span class="linenos">138</span>    <span class="n">ik_controller</span> <span class="o">=</span> <span class="n">DifferentialInverseKinematics</span><span class="p">(</span><span class="n">ik_control_cfg</span><span class="p">,</span> <span class="n">num_envs</span><span class="p">,</span> <span class="n">sim</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+</span><span class="linenos">139</span>
+<span class="linenos">140</span>    <span class="c1"># Play the simulator</span>
+<span class="linenos">141</span>    <span class="n">sim</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="linenos">142</span>    <span class="c1"># Acquire handles</span>
+<span class="linenos">143</span>    <span class="c1"># Initialize handles</span>
+<span class="linenos">144</span>    <span class="n">robot</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="s2">&quot;/World/envs/env_.*/Robot&quot;</span><span class="p">)</span>
+<span class="linenos">145</span>    <span class="c1"># Reset states</span>
+<span class="linenos">146</span>    <span class="n">robot</span><span class="o">.</span><span class="n">reset_buffers</span><span class="p">()</span>
+<span class="hll"><span class="linenos">147</span>    <span class="n">ik_controller</span><span class="o">.</span><span class="n">reset_idx</span><span class="p">()</span>
+</span><span class="linenos">148</span>
+<span class="linenos">149</span>    <span class="c1"># Now we are ready!</span>
+<span class="linenos">150</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[INFO]: Setup complete...&quot;</span><span class="p">)</span>
+<span class="linenos">151</span>
+<span class="linenos">152</span>    <span class="c1"># Create buffers to store actions</span>
+<span class="linenos">153</span>    <span class="n">ik_commands</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">robot</span><span class="o">.</span><span class="n">count</span><span class="p">,</span> <span class="n">ik_controller</span><span class="o">.</span><span class="n">num_actions</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">robot</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+<span class="linenos">154</span>    <span class="n">robot_actions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">robot</span><span class="o">.</span><span class="n">count</span><span class="p">,</span> <span class="n">robot</span><span class="o">.</span><span class="n">num_actions</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">robot</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+<span class="linenos">155</span>
+<span class="linenos">156</span>    <span class="c1"># Set end effector goals</span>
+<span class="linenos">157</span>    <span class="c1"># Define goals for the arm</span>
+<span class="linenos">158</span>    <span class="n">ee_goals</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos">159</span>        <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.707</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.707</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="linenos">160</span>        <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.707</span><span class="p">,</span> <span class="mf">0.707</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+<span class="linenos">161</span>        <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+<span class="linenos">162</span>    <span class="p">]</span>
+<span class="linenos">163</span>    <span class="n">ee_goals</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">ee_goals</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">sim</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+<span class="linenos">164</span>    <span class="c1"># Track the given command</span>
+<span class="linenos">165</span>    <span class="n">current_goal_idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">166</span>    <span class="n">ik_commands</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">ee_goals</span><span class="p">[</span><span class="n">current_goal_idx</span><span class="p">]</span>
+<span class="linenos">167</span>
+<span class="linenos">168</span>    <span class="c1"># Define simulation stepping</span>
+<span class="linenos">169</span>    <span class="n">sim_dt</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_physics_dt</span><span class="p">()</span>
+<span class="linenos">170</span>    <span class="c1"># episode counter</span>
+<span class="linenos">171</span>    <span class="n">sim_time</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="linenos">172</span>    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">173</span>    <span class="c1"># Note: We need to update buffers before the first step for the controller.</span>
+<span class="linenos">174</span>    <span class="n">robot</span><span class="o">.</span><span class="n">update_buffers</span><span class="p">(</span><span class="n">sim_dt</span><span class="p">)</span>
+<span class="linenos">175</span>
+<span class="linenos">176</span>    <span class="c1"># Simulate physics</span>
+<span class="linenos">177</span>    <span class="c1"># Simulate physics</span>
+<span class="linenos">178</span>    <span class="k">while</span> <span class="n">simulation_app</span><span class="o">.</span><span class="n">is_running</span><span class="p">():</span>
+<span class="linenos">179</span>        <span class="c1"># If simulation is stopped, then exit.</span>
+<span class="linenos">180</span>        <span class="k">if</span> <span class="n">sim</span><span class="o">.</span><span class="n">is_stopped</span><span class="p">():</span>
+<span class="linenos">181</span>            <span class="k">break</span>
+<span class="linenos">182</span>        <span class="c1"># If simulation is paused, then skip.</span>
+<span class="linenos">183</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">sim</span><span class="o">.</span><span class="n">is_playing</span><span class="p">():</span>
+<span class="linenos">184</span>            <span class="n">sim</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">render</span><span class="o">=</span><span class="ow">not</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">headless</span><span class="p">)</span>
+<span class="linenos">185</span>            <span class="k">continue</span>
+<span class="linenos">186</span>        <span class="c1"># reset</span>
+<span class="linenos">187</span>        <span class="k">if</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">150</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">188</span>            <span class="c1"># reset time</span>
+<span class="linenos">189</span>            <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">190</span>            <span class="n">sim_time</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="linenos">191</span>            <span class="c1"># reset dof state</span>
+<span class="linenos">192</span>            <span class="n">dof_pos</span><span class="p">,</span> <span class="n">dof_vel</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">get_default_dof_state</span><span class="p">()</span>
+<span class="linenos">193</span>            <span class="n">robot</span><span class="o">.</span><span class="n">set_dof_state</span><span class="p">(</span><span class="n">dof_pos</span><span class="p">,</span> <span class="n">dof_vel</span><span class="p">)</span>
+<span class="linenos">194</span>            <span class="n">robot</span><span class="o">.</span><span class="n">reset_buffers</span><span class="p">()</span>
+<span class="linenos">195</span>            <span class="c1"># reset controller</span>
+<span class="linenos">196</span>            <span class="n">ik_controller</span><span class="o">.</span><span class="n">reset_idx</span><span class="p">()</span>
+<span class="linenos">197</span>            <span class="c1"># reset actions</span>
+<span class="linenos">198</span>            <span class="n">ik_commands</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">ee_goals</span><span class="p">[</span><span class="n">current_goal_idx</span><span class="p">]</span>
+<span class="linenos">199</span>            <span class="c1"># change goal</span>
+<span class="linenos">200</span>            <span class="n">current_goal_idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_goal_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">ee_goals</span><span class="p">)</span>
+<span class="hll"><span class="linenos">201</span>        <span class="c1"># set the controller commands</span>
+</span><span class="hll"><span class="linenos">202</span>        <span class="n">ik_controller</span><span class="o">.</span><span class="n">set_command</span><span class="p">(</span><span class="n">ik_commands</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">203</span>        <span class="c1"># compute the joint commands</span>
+</span><span class="hll"><span class="linenos">204</span>        <span class="n">robot_actions</span><span class="p">[:,</span> <span class="p">:</span> <span class="n">robot</span><span class="o">.</span><span class="n">arm_num_dof</span><span class="p">]</span> <span class="o">=</span> <span class="n">ik_controller</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span>
+</span><span class="hll"><span class="linenos">205</span>            <span class="n">robot</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ee_state_w</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">envs_positions</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">206</span>            <span class="n">robot</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ee_state_w</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">],</span>
+</span><span class="hll"><span class="linenos">207</span>            <span class="n">robot</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ee_jacobian</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">208</span>            <span class="n">robot</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">arm_dof_pos</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">209</span>        <span class="p">)</span>
+</span><span class="hll"><span class="linenos">210</span>        <span class="c1"># in some cases the zero action correspond to offset in actuators</span>
+</span><span class="hll"><span class="linenos">211</span>        <span class="c1"># so we need to subtract these over here so that they can be added later on</span>
+</span><span class="hll"><span class="linenos">212</span>        <span class="n">arm_command_offset</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">actuator_pos_offset</span><span class="p">[:,</span> <span class="p">:</span> <span class="n">robot</span><span class="o">.</span><span class="n">arm_num_dof</span><span class="p">]</span>
+</span><span class="hll"><span class="linenos">213</span>        <span class="c1"># offset actuator command with position offsets</span>
+</span><span class="hll"><span class="linenos">214</span>        <span class="c1"># note: valid only when doing position control of the robot</span>
+</span><span class="hll"><span class="linenos">215</span>        <span class="n">robot_actions</span><span class="p">[:,</span> <span class="p">:</span> <span class="n">robot</span><span class="o">.</span><span class="n">arm_num_dof</span><span class="p">]</span> <span class="o">-=</span> <span class="n">arm_command_offset</span>
+</span><span class="hll"><span class="linenos">216</span>        <span class="c1"># apply actions</span>
+</span><span class="hll"><span class="linenos">217</span>        <span class="n">robot</span><span class="o">.</span><span class="n">apply_action</span><span class="p">(</span><span class="n">robot_actions</span><span class="p">)</span>
+</span><span class="linenos">218</span>        <span class="c1"># perform step</span>
+<span class="linenos">219</span>        <span class="n">sim</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="linenos">220</span>        <span class="c1"># update sim-time</span>
+<span class="linenos">221</span>        <span class="n">sim_time</span> <span class="o">+=</span> <span class="n">sim_dt</span>
+<span class="linenos">222</span>        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="linenos">223</span>        <span class="c1"># note: to deal with timeline events such as stopping, we need to check if the simulation is playing</span>
+<span class="linenos">224</span>        <span class="k">if</span> <span class="n">sim</span><span class="o">.</span><span class="n">is_playing</span><span class="p">():</span>
+<span class="linenos">225</span>            <span class="c1"># update buffers</span>
+<span class="linenos">226</span>            <span class="n">robot</span><span class="o">.</span><span class="n">update_buffers</span><span class="p">(</span><span class="n">sim_dt</span><span class="p">)</span>
+<span class="linenos">227</span>            <span class="c1"># update marker positions</span>
+<span class="linenos">228</span>            <span class="n">ee_marker</span><span class="o">.</span><span class="n">set_world_poses</span><span class="p">(</span><span class="n">robot</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ee_state_w</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">robot</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ee_state_w</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">])</span>
+<span class="linenos">229</span>            <span class="n">goal_marker</span><span class="o">.</span><span class="n">set_world_poses</span><span class="p">(</span><span class="n">ik_commands</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">envs_positions</span><span class="p">,</span> <span class="n">ik_commands</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">])</span>
+<span class="linenos">230</span>
+<span class="linenos">231</span>
+<span class="linenos">232</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="linenos">233</span>    <span class="c1"># Run IK example with Manipulator</span>
+<span class="linenos">234</span>    <span class="n">main</span><span class="p">()</span>
+<span class="linenos">235</span>    <span class="c1"># Close the simulator</span>
+<span class="linenos">236</span>    <span class="n">simulation_app</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="the-code-explained">
+<h2>The Code Explained<a class="headerlink" href="#the-code-explained" title="Permalink to this heading">#</a></h2>
+<p>While using any task-space controller, it is important to ensure that the provided
+quantities are in the correct frames. When parallelizing environment instances using the cloner,
+each environment itself can be thought of having its own local frame. However, from the way
+the physics engine is implemented in Isaac Sim, all environments exist on the same stage and
+thus there is a unique global frame for the entire simulation. In summary, there are the three
+main frames that are used in Orbit:</p>
+<ul class="simple">
+<li><p>The simulation world frame (denoted as <code class="docutils literal notranslate"><span class="pre">w</span></code>), which is the frame of the entire simulation.</p></li>
+<li><p>The local environment frame (denoted as <code class="docutils literal notranslate"><span class="pre">e</span></code>), which is the frame of the local environment.</p></li>
+<li><p>The robot’s base frame (denoted as <code class="docutils literal notranslate"><span class="pre">b</span></code>), which is the frame of the robot’s base link.</p></li>
+</ul>
+<p>In the current scenario, where the robot is mounted on the table, the base frame of the robot coincides with
+the local environment frame. However, this is not always the case. For example, in a scenario where the robot
+is a floating-base system. The location of the environment frames are obtained from the
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">envs_positions</span></code> value returned by the cloner.</p>
+<section id="creating-an-ik-controller">
+<h3>Creating an IK controller<a class="headerlink" href="#creating-an-ik-controller" title="Permalink to this heading">#</a></h3>
+<p>Computing the inverse kinematics (IK) of a robot is a common task in robotics.
+The <code class="xref py py-class docutils literal notranslate"><span class="pre">DifferentialInverseKinematics</span></code> class computes the desired joint positions
+for a robot to reach a desired end-effector pose. The included implementation performs
+the computation in a batched format and is optimized for speed.</p>
+<p>Since in many robots the end-effector is not a rigid body, the simulator does not provide
+the pose and Jacobian of the end-effector directly. Instead, the obtained Jacobian
+is that of the parent body and not the end-effector. Thus, the IK controller takes in
+as input the end-effector offset from the parent frame. This offset is typically specified
+in the robot’s configuration instance and thus is obtained from there.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">130</span>    <span class="c1"># Create controller</span>
+<span class="linenos">131</span>    <span class="c1"># the controller takes as command type: {position/pose}_{abs/rel}</span>
+<span class="linenos">132</span>    <span class="n">ik_control_cfg</span> <span class="o">=</span> <span class="n">DifferentialInverseKinematicsCfg</span><span class="p">(</span>
+<span class="linenos">133</span>        <span class="n">command_type</span><span class="o">=</span><span class="s2">&quot;pose_abs&quot;</span><span class="p">,</span>
+<span class="linenos">134</span>        <span class="n">ik_method</span><span class="o">=</span><span class="s2">&quot;dls&quot;</span><span class="p">,</span>
+<span class="linenos">135</span>        <span class="n">position_offset</span><span class="o">=</span><span class="n">robot</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">ee_info</span><span class="o">.</span><span class="n">pos_offset</span><span class="p">,</span>
+<span class="linenos">136</span>        <span class="n">rotation_offset</span><span class="o">=</span><span class="n">robot</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">ee_info</span><span class="o">.</span><span class="n">rot_offset</span><span class="p">,</span>
+<span class="linenos">137</span>    <span class="p">)</span>
+<span class="linenos">138</span>    <span class="n">ik_controller</span> <span class="o">=</span> <span class="n">DifferentialInverseKinematics</span><span class="p">(</span><span class="n">ik_control_cfg</span><span class="p">,</span> <span class="n">num_envs</span><span class="p">,</span> <span class="n">sim</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="computing-robot-command">
+<h3>Computing robot command<a class="headerlink" href="#computing-robot-command" title="Permalink to this heading">#</a></h3>
+<p>The IK controller separates the operation of setting the desired command and
+computing the desired joint positions. This is done to allow for the user to
+run the IK controller at a different frequency than the robot’s control frequency.</p>
+<p>The <code class="xref py py-attr docutils literal notranslate"><span class="pre">set_command</span></code> method takes in the desired end-effector pose as a single
+batched array. The first three columns correspond to the desired position and the
+last four columns correspond to the desired quaternion orientation in <code class="docutils literal notranslate"><span class="pre">(w,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>
+order.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">201</span>        <span class="c1"># set the controller commands</span>
+<span class="linenos">202</span>        <span class="n">ik_controller</span><span class="o">.</span><span class="n">set_command</span><span class="p">(</span><span class="n">ik_commands</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can then compute the desired joint positions using the <code class="xref py py-attr docutils literal notranslate"><span class="pre">compute</span></code> method.
+The method takes in the current end-effector position, orientation, Jacobian, and
+current joint positions. We read the Jacobian matrix from the robot’s data, which uses
+its value computed from the physics engine.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">203</span>        <span class="c1"># compute the joint commands</span>
+<span class="linenos">204</span>        <span class="n">robot_actions</span><span class="p">[:,</span> <span class="p">:</span> <span class="n">robot</span><span class="o">.</span><span class="n">arm_num_dof</span><span class="p">]</span> <span class="o">=</span> <span class="n">ik_controller</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span>
+<span class="linenos">205</span>            <span class="n">robot</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ee_state_w</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">envs_positions</span><span class="p">,</span>
+<span class="linenos">206</span>            <span class="n">robot</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ee_state_w</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">],</span>
+<span class="linenos">207</span>            <span class="n">robot</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ee_jacobian</span><span class="p">,</span>
+<span class="linenos">208</span>            <span class="n">robot</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">arm_dof_pos</span><span class="p">,</span>
+<span class="linenos">209</span>        <span class="p">)</span>
+</pre></div>
+</div>
+<p>While the IK controller returns the desired joint positions, we need to convert
+them to the robot’s action space. This is done by subtracting joint positions
+offsets from the desired joint positions. The joint offsets are obtained from the
+robot’s data which is a constant value obtained from the robot’s configuration.
+For more details, we suggest reading the <a class="reference internal" href="../api/orbit.actuators.group.html"><span class="doc">omni.isaac.orbit.actuators.group</span></a> tutorial.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">210</span>        <span class="c1"># in some cases the zero action correspond to offset in actuators</span>
+<span class="linenos">211</span>        <span class="c1"># so we need to subtract these over here so that they can be added later on</span>
+<span class="linenos">212</span>        <span class="n">arm_command_offset</span> <span class="o">=</span> <span class="n">robot</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">actuator_pos_offset</span><span class="p">[:,</span> <span class="p">:</span> <span class="n">robot</span><span class="o">.</span><span class="n">arm_num_dof</span><span class="p">]</span>
+<span class="linenos">213</span>        <span class="c1"># offset actuator command with position offsets</span>
+<span class="linenos">214</span>        <span class="c1"># note: valid only when doing position control of the robot</span>
+<span class="linenos">215</span>        <span class="n">robot_actions</span><span class="p">[:,</span> <span class="p">:</span> <span class="n">robot</span><span class="o">.</span><span class="n">arm_num_dof</span><span class="p">]</span> <span class="o">-=</span> <span class="n">arm_command_offset</span>
+</pre></div>
+</div>
+<p>These actions can then be applied on the robot, as done in the previous tutorials.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">216</span>        <span class="c1"># apply actions</span>
+<span class="linenos">217</span>        <span class="n">robot</span><span class="o">.</span><span class="n">apply_action</span><span class="p">(</span><span class="n">robot_actions</span><span class="p">)</span>
+<span class="linenos">218</span>        <span class="c1"># perform step</span>
+<span class="linenos">219</span>        <span class="n">sim</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="using-markers-for-displaying-frames">
+<h3>Using markers for displaying frames<a class="headerlink" href="#using-markers-for-displaying-frames" title="Permalink to this heading">#</a></h3>
+<p>We will use the <code class="xref py py-class docutils literal notranslate"><span class="pre">StaticMarker</span></code> class to display the current and desired end-effector poses.
+The marker class takes as input the associated prim name, the number of markers to display, the
+USD file corresponding to the marker, and the scale of the marker. By default, it uses a frame marker
+to display the pose.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">81</span>    <span class="c1"># Markers</span>
+<span class="linenos">82</span>    <span class="n">ee_marker</span> <span class="o">=</span> <span class="n">StaticMarker</span><span class="p">(</span><span class="s2">&quot;/Visuals/ee_current&quot;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">args_cli</span><span class="o">.</span><span class="n">num_envs</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="linenos">83</span>    <span class="n">goal_marker</span> <span class="o">=</span> <span class="n">StaticMarker</span><span class="p">(</span><span class="s2">&quot;/Visuals/ee_goal&quot;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">args_cli</span><span class="o">.</span><span class="n">num_envs</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>We can then set the pose of the marker using the <code class="xref py py-attr docutils literal notranslate"><span class="pre">set_world_poses</span></code> method.
+It is important to ensure that the set poses are in the simulation world frame and not the
+local environment frame.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">223</span>        <span class="c1"># note: to deal with timeline events such as stopping, we need to check if the simulation is playing</span>
+<span class="linenos">224</span>        <span class="k">if</span> <span class="n">sim</span><span class="o">.</span><span class="n">is_playing</span><span class="p">():</span>
+<span class="linenos">225</span>            <span class="c1"># update buffers</span>
+<span class="linenos">226</span>            <span class="n">robot</span><span class="o">.</span><span class="n">update_buffers</span><span class="p">(</span><span class="n">sim_dt</span><span class="p">)</span>
+<span class="linenos">227</span>            <span class="c1"># update marker positions</span>
+<span class="linenos">228</span>            <span class="n">ee_marker</span><span class="o">.</span><span class="n">set_world_poses</span><span class="p">(</span><span class="n">robot</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ee_state_w</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">robot</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ee_state_w</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">])</span>
+<span class="linenos">229</span>            <span class="n">goal_marker</span><span class="o">.</span><span class="n">set_world_poses</span><span class="p">(</span><span class="n">ik_commands</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">envs_positions</span><span class="p">,</span> <span class="n">ik_commands</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="the-code-execution">
+<h2>The Code Execution<a class="headerlink" href="#the-code-execution" title="Permalink to this heading">#</a></h2>
+<p>Now that we have gone through the code, let’s run the script and see the result:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./orbit.sh<span class="w"> </span>-p<span class="w"> </span>source/standalone/demo/play_ik_control.py<span class="w"> </span>--robot<span class="w"> </span>franka_panda<span class="w"> </span>--num_robots<span class="w"> </span><span class="m">128</span>
+</pre></div>
+</div>
+<p>The script will start a simulation with 128 robots. The robots will be controlled using a task-space controller.
+The current and desired end-effector poses should be displayed using frame markers. When the robot reaches the
+desired pose, the command should cycle through to the next pose specified in the script.
+To stop the simulation, you can either close the window, or press the <code class="docutils literal notranslate"><span class="pre">STOP</span></code> button in the UI, or
+press <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> in the terminal.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02_cloner.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Duplicating a scene efficiently</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04_gym_env.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Running an RL environment</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code">The Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code-explained">The Code Explained</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-an-ik-controller">Creating an IK controller</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-robot-command">Computing robot command</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-markers-for-displaying-frames">Using markers for displaying frames</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code-execution">The Code Execution</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Isaac Lab Project Developers.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2024, The Isaac Lab Project Developers..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Oct 11, 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

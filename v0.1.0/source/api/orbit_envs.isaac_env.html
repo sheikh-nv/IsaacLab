@@ -1,0 +1,1634 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>omni.isaac.orbit_envs.isaac_env &#8212; Isaac Lab documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/api/orbit_envs.isaac_env';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="omni.isaac.orbit_envs.utils" href="orbit_envs.utils.html" />
+    <link rel="prev" title="omni.isaac.orbit.utils.mdp" href="orbit.utils.mdp.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Oct 11, 2024"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/NVIDIA-logo-white.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../_static/NVIDIA-logo-black.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">Isaac Lab documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/isaac-sim/IsaacLab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-4.2.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" title="Stars" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" class="icon-link-image" alt="Stars"/></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../setup/installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/developer.html">Developer’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/sample.html">Running existing scripts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../features/actuators.html">Actuators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/motion_generators.html">Motion Generators</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials (beginner)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/00_empty.html">Creating an empty scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/01_arms.html">Adding a robotic arm to the scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/02_cloner.html">Duplicating a scene efficiently</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/03_ik_controller.html">Using a task-space controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/04_gym_env.html">Running an RL environment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Source API</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="orbit.actuators.group.html">omni.isaac.orbit.actuators.group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.actuators.model.html">omni.isaac.orbit.actuators.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.devices.html">omni.isaac.orbit.devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.markers.html">omni.isaac.orbit.markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.objects.articulated.html">omni.isaac.orbit.objects.articulated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.objects.rigid.html">omni.isaac.orbit.objects.rigid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.robots.html">omni.isaac.orbit.robots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.utils.html">omni.isaac.orbit.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.utils.assets.html">omni.isaac.orbit.utils.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.utils.kit.html">omni.isaac.orbit.utils.kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.utils.math.html">omni.isaac.orbit.utils.math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit.utils.mdp.html">omni.isaac.orbit.utils.mdp</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">omni.isaac.orbit_envs.isaac_env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit_envs.utils.html">omni.isaac.orbit_envs.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit_envs.utils.data_collector.html">omni.isaac.orbit_envs.utils.data_collector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orbit_envs.utils.wrappers.html">omni.isaac.orbit_envs.utils.wrappers</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../refs/contributing.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/troubleshooting.html">Tricks and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/changelog.html">Extensions Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/roadmap.html">Development Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<h2>Versions</h2>
+<ul>
+  <li><a href="../../../main/index.html">main</a></li>
+  <li><a href="../../../v1.2.0/index.html">v1.2.0</a></li>
+  <li><a href="../../../v1.1.0/index.html">v1.1.0</a></li>
+  <li><a href="../../../v1.0.0/index.html">v1.0.0</a></li>
+  <li><a href="../../../v0.3.1/index.html">v0.3.1</a></li>
+  <li><a href="../../../v0.3.0/index.html">v0.3.0</a></li>
+  <li><a href="../../../v0.2.0/index.html">v0.2.0</a></li>
+  <li><a href="orbit_envs.isaac_env.html">v0.1.0</a></li>
+</ul>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/edit/main/source/api/orbit_envs.isaac_env.rst" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/issues/new?title=Issue%20on%20page%20%2Fsource/api/orbit_envs.isaac_env.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/source/api/orbit_envs.isaac_env.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>omni.isaac.orbit_envs.isaac_env</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-omni.isaac.orbit_envs.isaac_env">Base Environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.VecEnvIndices"><code class="docutils literal notranslate"><span class="pre">VecEnvIndices</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.VecEnvObs"><code class="docutils literal notranslate"><span class="pre">VecEnvObs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.VecEnvStepReturn"><code class="docutils literal notranslate"><span class="pre">VecEnvStepReturn</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv"><code class="docutils literal notranslate"><span class="pre">IsaacEnv</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.__init__"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.env_ns"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.env_ns</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.template_env_ns"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.template_env_ns</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.seed"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.seed()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.reset"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.reset()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.step"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.step()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.render"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.render()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.close"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.close()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._design_scene"><code class="docutils literal notranslate"><span class="pre">IsaacEnv._design_scene()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._reset_idx"><code class="docutils literal notranslate"><span class="pre">IsaacEnv._reset_idx()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._step_impl"><code class="docutils literal notranslate"><span class="pre">IsaacEnv._step_impl()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._get_observations"><code class="docutils literal notranslate"><span class="pre">IsaacEnv._get_observations()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._cache_common_quantities"><code class="docutils literal notranslate"><span class="pre">IsaacEnv._cache_common_quantities()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._configure_simulation_flags"><code class="docutils literal notranslate"><span class="pre">IsaacEnv._configure_simulation_flags()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-omni.isaac.orbit_envs.isaac_env_cfg">Base Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg"><code class="docutils literal notranslate"><span class="pre">IsaacEnvCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.__init__"><code class="docutils literal notranslate"><span class="pre">IsaacEnvCfg.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.env"><code class="docutils literal notranslate"><span class="pre">IsaacEnvCfg.env</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.viewer"><code class="docutils literal notranslate"><span class="pre">IsaacEnvCfg.viewer</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.sim"><code class="docutils literal notranslate"><span class="pre">IsaacEnvCfg.sim</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg"><code class="docutils literal notranslate"><span class="pre">EnvCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.num_envs"><code class="docutils literal notranslate"><span class="pre">EnvCfg.num_envs</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.env_spacing"><code class="docutils literal notranslate"><span class="pre">EnvCfg.env_spacing</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.episode_length_s"><code class="docutils literal notranslate"><span class="pre">EnvCfg.episode_length_s</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.__init__"><code class="docutils literal notranslate"><span class="pre">EnvCfg.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg"><code class="docutils literal notranslate"><span class="pre">ViewerCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.debug_vis"><code class="docutils literal notranslate"><span class="pre">ViewerCfg.debug_vis</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.eye"><code class="docutils literal notranslate"><span class="pre">ViewerCfg.eye</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.lookat"><code class="docutils literal notranslate"><span class="pre">ViewerCfg.lookat</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.__init__"><code class="docutils literal notranslate"><span class="pre">ViewerCfg.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg"><code class="docutils literal notranslate"><span class="pre">PhysxCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.use_gpu"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.use_gpu</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.solver_type"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.solver_type</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.enable_stabilization"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.enable_stabilization</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.bounce_threshold_velocity"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.bounce_threshold_velocity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.friction_offset_threshold"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.friction_offset_threshold</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.friction_correlation_distance"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.friction_correlation_distance</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_rigid_contact_count"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_max_rigid_contact_count</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_rigid_patch_count"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_max_rigid_patch_count</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_found_lost_pairs_capacity"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_found_lost_pairs_capacity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_found_lost_aggregate_pairs_capacity"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_found_lost_aggregate_pairs_capacity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_total_aggregate_pairs_capacity"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_total_aggregate_pairs_capacity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.__init__"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_heap_capacity"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_heap_capacity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_temp_buffer_capacity"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_temp_buffer_capacity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_num_partitions"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_max_num_partitions</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_soft_body_contacts"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_max_soft_body_contacts</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_particle_contacts"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_max_particle_contacts</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg"><code class="docutils literal notranslate"><span class="pre">SimCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.__init__"><code class="docutils literal notranslate"><span class="pre">SimCfg.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.dt"><code class="docutils literal notranslate"><span class="pre">SimCfg.dt</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.substeps"><code class="docutils literal notranslate"><span class="pre">SimCfg.substeps</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.gravity"><code class="docutils literal notranslate"><span class="pre">SimCfg.gravity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.enable_scene_query_support"><code class="docutils literal notranslate"><span class="pre">SimCfg.enable_scene_query_support</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.use_flatcache"><code class="docutils literal notranslate"><span class="pre">SimCfg.use_flatcache</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.use_gpu_pipeline"><code class="docutils literal notranslate"><span class="pre">SimCfg.use_gpu_pipeline</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.device"><code class="docutils literal notranslate"><span class="pre">SimCfg.device</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.physx"><code class="docutils literal notranslate"><span class="pre">SimCfg.physx</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="omni-isaac-orbit-envs-isaac-env">
+<h1>omni.isaac.orbit_envs.isaac_env<a class="headerlink" href="#omni-isaac-orbit-envs-isaac-env" title="Permalink to this heading">#</a></h1>
+<p>We use OpenAI Gym registry to register the environment and their default configuration file.
+The default configuration file is passed to the argument “kwargs” in the Gym specification registry.
+The string is parsed into respective configuration container which needs to be passed to the environment
+class. This is done using the function <code class="xref py py-meth docutils literal notranslate"><span class="pre">load_default_env_cfg()</span></code> in the sub-module
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">omni.isaac.orbit.utils.parse_cfg</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is a slight abuse of kwargs since they are meant to be directly passed into the environment class.
+Instead, we remove the key <code class="xref py py-obj docutils literal notranslate"><span class="pre">cfg_file</span></code> from the “kwargs” dictionary and the user needs to provide
+the kwarg argument <code class="xref py py-obj docutils literal notranslate"><span class="pre">cfg</span></code> while creating the environment.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gym</span>
+<span class="kn">import</span> <span class="nn">omni.isaac.orbit_envs</span>
+<span class="kn">from</span> <span class="nn">omni.isaac.orbit_envs.utils.parse_cfg</span> <span class="kn">import</span> <span class="n">load_default_env_cfg</span>
+
+<span class="n">task_name</span> <span class="o">=</span> <span class="s2">&quot;Isaac-Cartpole-v0&quot;</span>
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">load_default_env_cfg</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">task_name</span><span class="p">,</span> <span class="n">cfg</span><span class="o">=</span><span class="n">cfg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>All environments must inherit from <code class="xref py py-class docutils literal notranslate"><span class="pre">IsaacEnv</span></code> class which is defined in the sub-module
+<a class="reference internal" href="#module-omni.isaac.orbit_envs.isaac_env" title="omni.isaac.orbit_envs.isaac_env"><code class="xref py py-mod docutils literal notranslate"><span class="pre">omni.isaac.orbit_envs.isaac_env</span></code></a>.
+The main methods that needs to be implemented by an inherited environment class:</p>
+<ul class="simple">
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">_design_scene()</span></code>: Design the template environment for cloning.</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">_reset_idx()</span></code>: Environment reset function based on environment indices.</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">_step_impl()</span></code>: Apply actions into simulation and compute MDP signals.</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_observations()</span></code>: Get observations from the environment.</p></li>
+</ul>
+<p>The following attributes need to be set by the inherited class:</p>
+<ul class="simple">
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">action_space</span></code>: The Space object corresponding to valid actions</p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">observation_space</span></code>: The Space object corresponding to valid observations</p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">reward_range</span></code>: A tuple corresponding to the min and max possible rewards. A default reward range set to [-inf, +inf] already exists.</p></li>
+</ul>
+<p>The action and observation space correspond to single environment (and not vectorized).</p>
+<section id="module-omni.isaac.orbit_envs.isaac_env">
+<span id="base-environment"></span><h2>Base Environment<a class="headerlink" href="#module-omni.isaac.orbit_envs.isaac_env" title="Permalink to this heading">#</a></h2>
+<p>The superclass for Isaac Sim based environments.</p>
+<p><strong>Classes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IsaacEnv</span></code></a></p></td>
+<td><p>The superclass for Isaac Sim based environments.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py data">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.VecEnvIndices">
+<span class="sig-prename descclassname"><span class="pre">omni.isaac.orbit_envs.isaac_env.</span></span><span class="sig-name descname"><span class="pre">VecEnvIndices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.VecEnvIndices" title="Permalink to this definition">#</a></dt>
+<dd><p>Indices of the sub-environments. Used when we want to access one or more environments.</p>
+<p>alias of <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]]</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.VecEnvObs">
+<span class="sig-prename descclassname"><span class="pre">omni.isaac.orbit_envs.isaac_env.</span></span><span class="sig-name descname"><span class="pre">VecEnvObs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.VecEnvObs" title="Permalink to this definition">#</a></dt>
+<dd><p>Observation returned by the environment. It contains the observation for each sub-environment.</p>
+<p>The observations are stored in a dictionary. The keys are the group to which the observations belong.
+This is useful for various learning setups beyond vanilla reinforcement learning, such as asymmetric
+actor-critic, multi-agent, or hierarchical reinforcement learning.</p>
+<p>For example, for asymmetric actor-critic, the observation for the actor and the critic can be accessed
+using the keys <code class="docutils literal notranslate"><span class="pre">&quot;policy&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;critic&quot;</span></code> respectively.</p>
+<p>Within each group, the observations can be stored either as a dictionary with keys as the names of each
+observation term in the group, or a single tensor obtained from concatenating all the observation terms.</p>
+<p>alias of <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]]]</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.VecEnvStepReturn">
+<span class="sig-prename descclassname"><span class="pre">omni.isaac.orbit_envs.isaac_env.</span></span><span class="sig-name descname"><span class="pre">VecEnvStepReturn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.VecEnvStepReturn" title="Permalink to this definition">#</a></dt>
+<dd><p>The environment signals processed at the end of each step. It contains the observation, reward, termination
+signal and additional information for each sub-environment.</p>
+<p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]]], <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>]</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.IsaacEnv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">omni.isaac.orbit_envs.isaac_env.</span></span><span class="sig-name descname"><span class="pre">IsaacEnv</span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env.html#IsaacEnv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Env</span></code></p>
+<p>The superclass for Isaac Sim based environments.</p>
+<p>It encapsulates an environment using Omniverse Isaac Sim for under-the-hood
+dynamics and rendering. An environment can be partially or fully-observed.</p>
+<p>Each observation from the environment is a batch of observations for each sub-
+environments. The method <a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.step" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> is also expected to receive a batch of actions
+for each sub-environment.</p>
+<p>While the environment itself is implemented as a vectorized environment, we do not
+inherit from <code class="xref py py-class docutils literal notranslate"><span class="pre">gym.vector.VectorEnv</span></code>. This is mainly because the class adds
+various methods (for wait and asynchronous updates) which are not required.
+Additionally, each RL library typically has its own definition for a vectorized
+environment. Thus, to reduce complexity, we directly use the <code class="xref py py-class docutils literal notranslate"><span class="pre">gym.Env</span></code> over
+here and leave it up to library-defined wrappers to take care of wrapping this
+environment for their agents.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.__init__" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(cfg[, headless])</p></td>
+<td><p>Initialize the environment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.seed" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv.seed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seed</span></code></a>([seed])</p></td>
+<td><p>Set the seed for the environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.reset" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
+<td><p>Flags all environments for reset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.step" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv.step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">step</span></code></a>(actions)</p></td>
+<td><p>Reset any terminated environments and apply actions on the environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.render" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv.render"><code class="xref py py-obj docutils literal notranslate"><span class="pre">render</span></code></a>()</p></td>
+<td><p>Run rendering without stepping through the physics.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.close" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a>()</p></td>
+<td><p>Cleanup for the environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._design_scene" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv._design_scene"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_design_scene</span></code></a>()</p></td>
+<td><p>Creates the template environment scene.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._reset_idx" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv._reset_idx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_reset_idx</span></code></a>(env_ids)</p></td>
+<td><p>Resets the MDP for given environment instances.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._step_impl" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv._step_impl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_step_impl</span></code></a>(actions)</p></td>
+<td><p>Apply actions on the environment and computes MDP signals.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._get_observations" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv._get_observations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_get_observations</span></code></a>()</p></td>
+<td><p>Grabs observations from the environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._cache_common_quantities" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv._cache_common_quantities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_cache_common_quantities</span></code></a>()</p></td>
+<td><p>Cache common quantities from simulator used for computing MDP signals.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._configure_simulation_flags" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv._configure_simulation_flags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_configure_simulation_flags</span></code></a>([sim_params])</p></td>
+<td><p>Configure the various flags for performance.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.env_ns" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv.env_ns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">env_ns</span></code></a></p></td>
+<td><p>The namespace <code class="docutils literal notranslate"><span class="pre">/World/envs</span></code> in which all environments created.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.template_env_ns" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv.template_env_ns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">template_env_ns</span></code></a></p></td>
+<td><p>The namespace <code class="docutils literal notranslate"><span class="pre">/World/envs/env_0</span></code> used for the template environment.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.IsaacEnv.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg" title="omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg"><span class="pre">IsaacEnvCfg</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">headless</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env.html#IsaacEnv.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Initialize the environment.</p>
+<p>We currently support only PyTorch backend for the environment. In the future, we plan to extend this to use
+other backends such as Warp.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg</strong> (<a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg" title="omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg"><em>IsaacEnvCfg</em></a>) – Instance of the environment configuration.</p></li>
+<li><p><strong>headless</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to run with GUI or without GUI. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.13)"><strong>RuntimeError</strong></a> – No stage is found in the simulation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.IsaacEnv.env_ns">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">env_ns</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.env_ns" title="Permalink to this definition">#</a></dt>
+<dd><p>The namespace <code class="docutils literal notranslate"><span class="pre">/World/envs</span></code> in which all environments created.</p>
+<p>The environments are present w.r.t. this namespace under “env_{N}” prim,
+where N is a natural number.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.IsaacEnv.template_env_ns">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">template_env_ns</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.template_env_ns" title="Permalink to this definition">#</a></dt>
+<dd><p>The namespace <code class="docutils literal notranslate"><span class="pre">/World/envs/env_0</span></code> used for the template environment.</p>
+<p>All prims under this namespace are cloned during construction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.IsaacEnv.seed">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env.html#IsaacEnv.seed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.seed" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the seed for the environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – The seed for random generator. Defaults to -1.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.IsaacEnv.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><span class="pre">torch.Tensor</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env.html#IsaacEnv.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.reset" title="Permalink to this definition">#</a></dt>
+<dd><p>Flags all environments for reset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once the buffers for resetting the environments are set, a simulation step is
+taken to forward all other buffers.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Observations from the environment.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>VecEnvObs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.IsaacEnv.step">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><span class="pre">torch.Tensor</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.13)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><span class="pre">torch.Tensor</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env.html#IsaacEnv.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.step" title="Permalink to this definition">#</a></dt>
+<dd><p>Reset any terminated environments and apply actions on the environment.</p>
+<p>This function deals with various timeline events (play, pause and stop) for clean execution.
+When the simulation is stopped all the physics handles expire and we cannot perform any read or
+write operations. The timeline event is only detected after every <cite>sim.step()</cite> call. Hence, at
+every call we need to check the status of the simulator. The logic is as follows:</p>
+<ol class="arabic simple">
+<li><p>If the simulation is stopped, we complain about it and return the previous buffers.</p></li>
+<li><p>If the simulation is paused, we do not set any actions, but step the simulator.</p></li>
+<li><p>If the simulation is playing, we set the actions and step the simulator.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>actions</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><em>torch.Tensor</em></a>) – Actions to apply on the simulator.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We perform resetting of the terminated environments before simulation
+stepping. This is because the physics buffers are not forwarded until
+the physics step occurs.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A tuple containing:</dt><dd><ul class="simple">
+<li><p>(VecEnvObs) observations from the environment</p></li>
+<li><p>(torch.Tensor) reward from the environment</p></li>
+<li><p>(torch.Tensor) whether the current episode is completed or not</p></li>
+<li><p>(dict) misc information</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>VecEnvStepReturn</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.IsaacEnv.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env.html#IsaacEnv.render"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.render" title="Permalink to this definition">#</a></dt>
+<dd><p>Run rendering without stepping through the physics.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.IsaacEnv.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env.html#IsaacEnv.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.close" title="Permalink to this definition">#</a></dt>
+<dd><p>Cleanup for the environment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.IsaacEnv._design_scene">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_design_scene</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env.html#IsaacEnv._design_scene"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._design_scene" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates the template environment scene.</p>
+<p>All prims under the <em>template namespace</em> will be duplicated across the
+stage and collisions between the duplicates will be filtered out. In case,
+there are any prims which need to be a common collider across all the
+environments, they should be returned as a list of prim paths. These could
+be prims like the ground plane, walls, etc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>List of prim paths which are common across all the</dt><dd><p>environments and need to be considered for common collision filtering.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional[List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.IsaacEnv._reset_idx">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_reset_idx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.13)"><span class="pre">Iterable</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env.html#IsaacEnv._reset_idx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._reset_idx" title="Permalink to this definition">#</a></dt>
+<dd><p>Resets the MDP for given environment instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>env_ids</strong> (<em>VecEnvIndices</em>) – Indices of environment instances to reset.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.IsaacEnv._step_impl">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_step_impl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><span class="pre">torch.Tensor</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env.html#IsaacEnv._step_impl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._step_impl" title="Permalink to this definition">#</a></dt>
+<dd><p>Apply actions on the environment and computes MDP signals.</p>
+<p>This function sets the simulation buffers for actions to apply, perform
+stepping of the simulation, and compute the MDP signals for reward and
+termination.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The environment specific implementation of this function is responsible for also
+stepping the simulation. To have a clean exit when the timeline is stopped
+through the UI, the implementation should check the simulation status
+after stepping the simulator and return if the simulation is stopped.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># simulate</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">sim</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">render</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">enable_render</span><span class="p">)</span>
+<span class="c1"># check that simulation is playing</span>
+<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sim</span><span class="o">.</span><span class="n">is_stopped</span><span class="p">():</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>actions</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><em>torch.Tensor</em></a>) – Actions to apply on the environment.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.IsaacEnv._get_observations">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_get_observations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><span class="pre">torch.Tensor</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.4)"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env.html#IsaacEnv._get_observations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._get_observations" title="Permalink to this definition">#</a></dt>
+<dd><p>Grabs observations from the environment.</p>
+<p>The observations are stored in a dictionary. The keys are the group to which the observations belong.
+This is useful for various learning setups beyond vanilla reinforcement learning, such as asymmetric
+actor-critic, multi-agent, or hierarchical reinforcement learning.</p>
+<p>By default, most learning frameworks deal with default and privileged observations in different ways.
+This handling must be taken care of by the wrapper around the <a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv" title="omni.isaac.orbit_envs.isaac_env.IsaacEnv"><code class="xref py py-class docutils literal notranslate"><span class="pre">IsaacEnv</span></code></a> instance.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For included frameworks (RSL-RL, RL-Games), the observations must have the key “policy”. In case,
+the key “critic” is also present, then the critic observations are taken from the “critic” group.
+Otherwise, they are the same as the “policy” group.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Observations from the environment.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>VecEnvObs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.IsaacEnv._cache_common_quantities">
+<span class="sig-name descname"><span class="pre">_cache_common_quantities</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env.html#IsaacEnv._cache_common_quantities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._cache_common_quantities" title="Permalink to this definition">#</a></dt>
+<dd><p>Cache common quantities from simulator used for computing MDP signals.</p>
+<p>Implementing this function is optional. It is mostly useful in scenarios where
+shared quantities between observations, rewards and termination signals need to be
+computed only once.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The function should be called after performing simulation stepping and before
+computing any MDP signals.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env.IsaacEnv._configure_simulation_flags">
+<span class="sig-name descname"><span class="pre">_configure_simulation_flags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><span class="pre">dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env.html#IsaacEnv._configure_simulation_flags"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._configure_simulation_flags" title="Permalink to this definition">#</a></dt>
+<dd><p>Configure the various flags for performance.</p>
+<p>This function enables flat-cache for speeding up GPU pipeline, enables hydra scene-graph
+instancing for visualizing multiple instances when flatcache is enabled, and disables the
+viewport if running in headless mode.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-omni.isaac.orbit_envs.isaac_env_cfg">
+<span id="base-configuration"></span><h2>Base Configuration<a class="headerlink" href="#module-omni.isaac.orbit_envs.isaac_env_cfg" title="Permalink to this heading">#</a></h2>
+<p>Base configuration of the environment.</p>
+<p>This module defines the general configuration of the environment. It includes parameters for
+configuring the environment instances, viewer settings, and simulation parameters.</p>
+<p><strong>Classes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg" title="omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IsaacEnvCfg</span></code></a></p></td>
+<td><p>Base configuration of the environment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg" title="omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EnvCfg</span></code></a></p></td>
+<td><p>Configuration of the common environment information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg" title="omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ViewerCfg</span></code></a></p></td>
+<td><p>Configuration of the scene viewport camera.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhysxCfg</span></code></a></p></td>
+<td><p>PhysX solver parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg" title="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SimCfg</span></code></a></p></td>
+<td><p>Configuration for simulation physics.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">omni.isaac.orbit_envs.isaac_env_cfg.</span></span><span class="sig-name descname"><span class="pre">IsaacEnvCfg</span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env_cfg.html#IsaacEnvCfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Base configuration of the environment.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.__init__" title="omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([env, viewer, sim])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.env" title="omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.env"><code class="xref py py-obj docutils literal notranslate"><span class="pre">env</span></code></a></p></td>
+<td><p>General environment configuration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.viewer" title="omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.viewer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewer</span></code></a></p></td>
+<td><p>Viewer configuration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.sim" title="omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.sim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim</span></code></a></p></td>
+<td><p>Physics simulation configuration.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env:</span> <span class="pre">~omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">viewer:</span> <span class="pre">~omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim:</span> <span class="pre">~omni.isaac.orbit_envs.isaac_env_cfg.SimCfg</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.env">
+<span class="sig-name descname"><span class="pre">env</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg" title="omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg"><span class="pre">EnvCfg</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.env" title="Permalink to this definition">#</a></dt>
+<dd><p>General environment configuration.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.viewer">
+<span class="sig-name descname"><span class="pre">viewer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg" title="omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg"><span class="pre">ViewerCfg</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.viewer" title="Permalink to this definition">#</a></dt>
+<dd><p>Viewer configuration. Default is ViewerCfg().</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.sim">
+<span class="sig-name descname"><span class="pre">sim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg" title="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg"><span class="pre">SimCfg</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.sim" title="Permalink to this definition">#</a></dt>
+<dd><p>Physics simulation configuration. Default is SimCfg().</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">omni.isaac.orbit_envs.isaac_env_cfg.</span></span><span class="sig-name descname"><span class="pre">EnvCfg</span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env_cfg.html#EnvCfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Configuration of the common environment information.</p>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.num_envs" title="omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.num_envs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_envs</span></code></a></p></td>
+<td><p>Number of environment instances to create.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.env_spacing" title="omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.env_spacing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">env_spacing</span></code></a></p></td>
+<td><p>Spacing between cloned environments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.episode_length_s" title="omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.episode_length_s"><code class="xref py py-obj docutils literal notranslate"><span class="pre">episode_length_s</span></code></a></p></td>
+<td><p>Duration of an episode (in seconds).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.__init__" title="omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([num_envs, env_spacing, ...])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.num_envs">
+<span class="sig-name descname"><span class="pre">num_envs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.num_envs" title="Permalink to this definition">#</a></dt>
+<dd><p>Number of environment instances to create.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.env_spacing">
+<span class="sig-name descname"><span class="pre">env_spacing</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.env_spacing" title="Permalink to this definition">#</a></dt>
+<dd><p>Spacing between cloned environments.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.episode_length_s">
+<span class="sig-name descname"><span class="pre">episode_length_s</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.episode_length_s" title="Permalink to this definition">#</a></dt>
+<dd><p>Duration of an episode (in seconds). Default is None (no limit).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_envs:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_spacing:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">episode_length_s:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">omni.isaac.orbit_envs.isaac_env_cfg.</span></span><span class="sig-name descname"><span class="pre">ViewerCfg</span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env_cfg.html#ViewerCfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Configuration of the scene viewport camera.</p>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.debug_vis" title="omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.debug_vis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">debug_vis</span></code></a></p></td>
+<td><p>Whether to enable/disable debug visualization in the scene.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.eye" title="omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.eye"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eye</span></code></a></p></td>
+<td><p>Initial camera position (in m).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.lookat" title="omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.lookat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lookat</span></code></a></p></td>
+<td><p>Initial camera target position (in m).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.__init__" title="omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([debug_vis, eye, lookat])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.debug_vis">
+<span class="sig-name descname"><span class="pre">debug_vis</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.debug_vis" title="Permalink to this definition">#</a></dt>
+<dd><p>Whether to enable/disable debug visualization in the scene.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.eye">
+<span class="sig-name descname"><span class="pre">eye</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.13)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.eye" title="Permalink to this definition">#</a></dt>
+<dd><p>Initial camera position (in m). Default is (7.5, 7.5, 7.5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.lookat">
+<span class="sig-name descname"><span class="pre">lookat</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.13)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.lookat" title="Permalink to this definition">#</a></dt>
+<dd><p>Initial camera target position (in m). Default is (0.0, 0.0, 0.0).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">debug_vis:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eye:</span> <span class="pre">~typing.Tuple[float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">float]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookat:</span> <span class="pre">~typing.Tuple[float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">float]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">omni.isaac.orbit_envs.isaac_env_cfg.</span></span><span class="sig-name descname"><span class="pre">PhysxCfg</span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env_cfg.html#PhysxCfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>PhysX solver parameters.</p>
+<p>These parameters are used to configure the PhysX solver. For more information, see the PhysX 5 SDK
+documentation.</p>
+<p>PhysX 5 supports GPU-accelerated physics simulation. This is enabled by default, but can be disabled
+through the flag <cite>use_gpu</cite>. Unlike CPU PhysX, the GPU simulation feature is not able to dynamically
+grow all the buffers. Therefore, it is necessary to provide a reasonable estimate of the buffer sizes
+for GPU features. If insufficient buffer sizes are provided, the simulation will fail with errors and
+lead to adverse behaviors. The buffer sizes can be adjusted through the <cite>gpu_*</cite> parameters.</p>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><p>PhysX 5 documentation: <a class="reference external" href="https://nvidia-omniverse.github.io/PhysX/">https://nvidia-omniverse.github.io/PhysX/</a></p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.use_gpu" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.use_gpu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_gpu</span></code></a></p></td>
+<td><p>Enable/disable GPU accelerated dynamics simulation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.solver_type" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.solver_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solver_type</span></code></a></p></td>
+<td><p>The type of solver to use.Default is 1 (TGS).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.enable_stabilization" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.enable_stabilization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_stabilization</span></code></a></p></td>
+<td><p>Enable/disable additional stabilization pass in solver.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.bounce_threshold_velocity" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.bounce_threshold_velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bounce_threshold_velocity</span></code></a></p></td>
+<td><p>Relative velocity threshold for contacts to bounce (in m/s).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.friction_offset_threshold" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.friction_offset_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">friction_offset_threshold</span></code></a></p></td>
+<td><p>Threshold for contact point to experience friction force (in m).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.friction_correlation_distance" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.friction_correlation_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">friction_correlation_distance</span></code></a></p></td>
+<td><p>Distance threshold for merging contacts into a single friction anchor point (in m).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_rigid_contact_count" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_rigid_contact_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gpu_max_rigid_contact_count</span></code></a></p></td>
+<td><p>Size of rigid contact stream buffer allocated in pinned host memory.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_rigid_patch_count" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_rigid_patch_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gpu_max_rigid_patch_count</span></code></a></p></td>
+<td><p>Size of the rigid contact patch stream buffer allocated in pinned host memory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_found_lost_pairs_capacity" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_found_lost_pairs_capacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gpu_found_lost_pairs_capacity</span></code></a></p></td>
+<td><p>Capacity of found and lost buffers allocated in GPU global memory.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_found_lost_aggregate_pairs_capacity" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_found_lost_aggregate_pairs_capacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gpu_found_lost_aggregate_pairs_capacity</span></code></a></p></td>
+<td><p>Capacity of found and lost buffers in aggregate system allocated in GPU global memory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_total_aggregate_pairs_capacity" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_total_aggregate_pairs_capacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gpu_total_aggregate_pairs_capacity</span></code></a></p></td>
+<td><p>Capacity of total number of aggregate pairs allocated in GPU global memory.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_heap_capacity" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_heap_capacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gpu_heap_capacity</span></code></a></p></td>
+<td><p>Initial capacity of the GPU and pinned host memory heaps.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_temp_buffer_capacity" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_temp_buffer_capacity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gpu_temp_buffer_capacity</span></code></a></p></td>
+<td><p>Capacity of temp buffer allocated in pinned host memory.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_num_partitions" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_num_partitions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gpu_max_num_partitions</span></code></a></p></td>
+<td><p>Limitation for the partitions in the GPU dynamics pipeline.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_soft_body_contacts" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_soft_body_contacts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gpu_max_soft_body_contacts</span></code></a></p></td>
+<td><p>Size of soft body contacts stream buffer allocated in pinned host memory.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_particle_contacts" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_particle_contacts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gpu_max_particle_contacts</span></code></a></p></td>
+<td><p>Size of particle contacts stream buffer allocated in pinned host memory.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.__init__" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([use_gpu, solver_type, ...])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.use_gpu">
+<span class="sig-name descname"><span class="pre">use_gpu</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.use_gpu" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable GPU accelerated dynamics simulation. Default is True.</p>
+<p>This enables GPU-accelerated implementations for broad-phase collision checks, contact generation,
+shape and body management, and constrained solver.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.solver_type">
+<span class="sig-name descname"><span class="pre">solver_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.solver_type" title="Permalink to this definition">#</a></dt>
+<dd><p>The type of solver to use.Default is 1 (TGS).</p>
+<p>Available solvers:</p>
+<ul class="simple">
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">0</span></code>: PGS (Projective Gauss-Seidel)</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">1</span></code>: TGS (Truncated Gauss-Seidel)</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.enable_stabilization">
+<span class="sig-name descname"><span class="pre">enable_stabilization</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.enable_stabilization" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable additional stabilization pass in solver. Default is True.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.bounce_threshold_velocity">
+<span class="sig-name descname"><span class="pre">bounce_threshold_velocity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.bounce_threshold_velocity" title="Permalink to this definition">#</a></dt>
+<dd><p>Relative velocity threshold for contacts to bounce (in m/s). Default is 0.5 m/s.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.friction_offset_threshold">
+<span class="sig-name descname"><span class="pre">friction_offset_threshold</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.friction_offset_threshold" title="Permalink to this definition">#</a></dt>
+<dd><p>Threshold for contact point to experience friction force (in m). Default is 0.04 m.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.friction_correlation_distance">
+<span class="sig-name descname"><span class="pre">friction_correlation_distance</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.friction_correlation_distance" title="Permalink to this definition">#</a></dt>
+<dd><p>Distance threshold for merging contacts into a single friction anchor point (in m). Default is 0.025 m.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_rigid_contact_count">
+<span class="sig-name descname"><span class="pre">gpu_max_rigid_contact_count</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_rigid_contact_count" title="Permalink to this definition">#</a></dt>
+<dd><p>Size of rigid contact stream buffer allocated in pinned host memory. Default is 2 ** 20.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_rigid_patch_count">
+<span class="sig-name descname"><span class="pre">gpu_max_rigid_patch_count</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_rigid_patch_count" title="Permalink to this definition">#</a></dt>
+<dd><p>Size of the rigid contact patch stream buffer allocated in pinned host memory. Default is 80 * 2 ** 11.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_found_lost_pairs_capacity">
+<span class="sig-name descname"><span class="pre">gpu_found_lost_pairs_capacity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_found_lost_pairs_capacity" title="Permalink to this definition">#</a></dt>
+<dd><p>Capacity of found and lost buffers allocated in GPU global memory. Default is 2 ** 11.</p>
+<p>This is used for the found/lost pair reports in the BP.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_found_lost_aggregate_pairs_capacity">
+<span class="sig-name descname"><span class="pre">gpu_found_lost_aggregate_pairs_capacity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_found_lost_aggregate_pairs_capacity" title="Permalink to this definition">#</a></dt>
+<dd><p>Capacity of found and lost buffers in aggregate system allocated in GPU global memory.
+Default is 2 ** 21.</p>
+<p>This is used for the found/lost pair reports in AABB manager.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_total_aggregate_pairs_capacity">
+<span class="sig-name descname"><span class="pre">gpu_total_aggregate_pairs_capacity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_total_aggregate_pairs_capacity" title="Permalink to this definition">#</a></dt>
+<dd><p>Capacity of total number of aggregate pairs allocated in GPU global memory. Default is 2 ** 21.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_gpu:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver_type:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_stabilization:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounce_threshold_velocity:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">friction_offset_threshold:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">friction_correlation_distance:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu_max_rigid_contact_count:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu_max_rigid_patch_count:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu_found_lost_pairs_capacity:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu_found_lost_aggregate_pairs_capacity:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu_total_aggregate_pairs_capacity:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu_heap_capacity:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu_temp_buffer_capacity:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu_max_num_partitions:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu_max_soft_body_contacts:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu_max_particle_contacts:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_heap_capacity">
+<span class="sig-name descname"><span class="pre">gpu_heap_capacity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_heap_capacity" title="Permalink to this definition">#</a></dt>
+<dd><p>Initial capacity of the GPU and pinned host memory heaps. Additional memory will be allocated
+if more memory is required. Default is 2 ** 26.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_temp_buffer_capacity">
+<span class="sig-name descname"><span class="pre">gpu_temp_buffer_capacity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_temp_buffer_capacity" title="Permalink to this definition">#</a></dt>
+<dd><p>Capacity of temp buffer allocated in pinned host memory. Default is 2 ** 24.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_num_partitions">
+<span class="sig-name descname"><span class="pre">gpu_max_num_partitions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_num_partitions" title="Permalink to this definition">#</a></dt>
+<dd><p>Limitation for the partitions in the GPU dynamics pipeline. Default is 8.</p>
+<p>This variable must be power of 2. A value greater than 32 is currently not supported. Range: (1, 32)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_soft_body_contacts">
+<span class="sig-name descname"><span class="pre">gpu_max_soft_body_contacts</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_soft_body_contacts" title="Permalink to this definition">#</a></dt>
+<dd><p>Size of soft body contacts stream buffer allocated in pinned host memory. Default is 2 ** 20.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_particle_contacts">
+<span class="sig-name descname"><span class="pre">gpu_max_particle_contacts</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_particle_contacts" title="Permalink to this definition">#</a></dt>
+<dd><p>Size of particle contacts stream buffer allocated in pinned host memory. Default is 2 ** 20.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">omni.isaac.orbit_envs.isaac_env_cfg.</span></span><span class="sig-name descname"><span class="pre">SimCfg</span></span><a class="reference internal" href="../../_modules/omni/isaac/orbit_envs/isaac_env_cfg.html#SimCfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Configuration for simulation physics.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.__init__" title="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([dt, substeps, gravity, ...])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.dt" title="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.dt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dt</span></code></a></p></td>
+<td><p>The physics simulation time-step (in seconds).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.substeps" title="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.substeps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">substeps</span></code></a></p></td>
+<td><p>The number of physics simulation steps per rendering step.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.gravity" title="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.gravity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gravity</span></code></a></p></td>
+<td><p>The gravity vector (in m/s^2).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.enable_scene_query_support" title="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.enable_scene_query_support"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_scene_query_support</span></code></a></p></td>
+<td><p>Enable/disable scene query support when using instanced assets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.use_flatcache" title="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.use_flatcache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_flatcache</span></code></a></p></td>
+<td><p>Enable/disable reading of physics buffers directly.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.use_gpu_pipeline" title="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.use_gpu_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_gpu_pipeline</span></code></a></p></td>
+<td><p>Enable/disable GPU pipeline.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.device" title="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.device"><code class="xref py py-obj docutils literal notranslate"><span class="pre">device</span></code></a></p></td>
+<td><p>0&quot;.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.physx" title="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.physx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">physx</span></code></a></p></td>
+<td><p>PhysX solver settings.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">substeps:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity:</span> <span class="pre">~typing.Tuple[float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">float]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_scene_query_support:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_flatcache:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_gpu_pipeline:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">physx:</span> <span class="pre">~omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.__init__" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.dt">
+<span class="sig-name descname"><span class="pre">dt</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.dt" title="Permalink to this definition">#</a></dt>
+<dd><p>The physics simulation time-step (in seconds). Default is 0.0167 seconds.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.substeps">
+<span class="sig-name descname"><span class="pre">substeps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.substeps" title="Permalink to this definition">#</a></dt>
+<dd><p>The number of physics simulation steps per rendering step. Default is 1.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.gravity">
+<span class="sig-name descname"><span class="pre">gravity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.13)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.gravity" title="Permalink to this definition">#</a></dt>
+<dd><p>The gravity vector (in m/s^2). Default is (0.0, 0.0, -9.81).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.enable_scene_query_support">
+<span class="sig-name descname"><span class="pre">enable_scene_query_support</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.enable_scene_query_support" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable scene query support when using instanced assets. Default is True.</p>
+<p>If this is set to False, the geometries of instances assets will appear stationary. However, this
+can also provide some performance speed-up.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.use_flatcache">
+<span class="sig-name descname"><span class="pre">use_flatcache</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.use_flatcache" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable reading of physics buffers directly. Default is True.</p>
+<p>If this is set to False, the physics buffers will be read from USD, which leads to overhead with
+massive parallelization.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.use_gpu_pipeline">
+<span class="sig-name descname"><span class="pre">use_gpu_pipeline</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.use_gpu_pipeline" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/disable GPU pipeline. Default is True.</p>
+<p>If this is set to False, the physics data will be read as CPU buffers.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.device">
+<span class="sig-name descname"><span class="pre">device</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.device" title="Permalink to this definition">#</a></dt>
+<dd><p>0”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The device for running the simulation/environment. Default is “cuda</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.physx">
+<span class="sig-name descname"><span class="pre">physx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg" title="omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg"><span class="pre">PhysxCfg</span></a></em><a class="headerlink" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.physx" title="Permalink to this definition">#</a></dt>
+<dd><p>PhysX solver settings. Default is PhysxCfg().</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="orbit.utils.mdp.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">omni.isaac.orbit.utils.mdp</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="orbit_envs.utils.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">omni.isaac.orbit_envs.utils</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-omni.isaac.orbit_envs.isaac_env">Base Environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.VecEnvIndices"><code class="docutils literal notranslate"><span class="pre">VecEnvIndices</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.VecEnvObs"><code class="docutils literal notranslate"><span class="pre">VecEnvObs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.VecEnvStepReturn"><code class="docutils literal notranslate"><span class="pre">VecEnvStepReturn</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv"><code class="docutils literal notranslate"><span class="pre">IsaacEnv</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.__init__"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.env_ns"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.env_ns</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.template_env_ns"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.template_env_ns</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.seed"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.seed()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.reset"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.reset()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.step"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.step()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.render"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.render()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv.close"><code class="docutils literal notranslate"><span class="pre">IsaacEnv.close()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._design_scene"><code class="docutils literal notranslate"><span class="pre">IsaacEnv._design_scene()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._reset_idx"><code class="docutils literal notranslate"><span class="pre">IsaacEnv._reset_idx()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._step_impl"><code class="docutils literal notranslate"><span class="pre">IsaacEnv._step_impl()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._get_observations"><code class="docutils literal notranslate"><span class="pre">IsaacEnv._get_observations()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._cache_common_quantities"><code class="docutils literal notranslate"><span class="pre">IsaacEnv._cache_common_quantities()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env.IsaacEnv._configure_simulation_flags"><code class="docutils literal notranslate"><span class="pre">IsaacEnv._configure_simulation_flags()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-omni.isaac.orbit_envs.isaac_env_cfg">Base Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg"><code class="docutils literal notranslate"><span class="pre">IsaacEnvCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.__init__"><code class="docutils literal notranslate"><span class="pre">IsaacEnvCfg.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.env"><code class="docutils literal notranslate"><span class="pre">IsaacEnvCfg.env</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.viewer"><code class="docutils literal notranslate"><span class="pre">IsaacEnvCfg.viewer</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.IsaacEnvCfg.sim"><code class="docutils literal notranslate"><span class="pre">IsaacEnvCfg.sim</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg"><code class="docutils literal notranslate"><span class="pre">EnvCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.num_envs"><code class="docutils literal notranslate"><span class="pre">EnvCfg.num_envs</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.env_spacing"><code class="docutils literal notranslate"><span class="pre">EnvCfg.env_spacing</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.episode_length_s"><code class="docutils literal notranslate"><span class="pre">EnvCfg.episode_length_s</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.EnvCfg.__init__"><code class="docutils literal notranslate"><span class="pre">EnvCfg.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg"><code class="docutils literal notranslate"><span class="pre">ViewerCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.debug_vis"><code class="docutils literal notranslate"><span class="pre">ViewerCfg.debug_vis</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.eye"><code class="docutils literal notranslate"><span class="pre">ViewerCfg.eye</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.lookat"><code class="docutils literal notranslate"><span class="pre">ViewerCfg.lookat</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.ViewerCfg.__init__"><code class="docutils literal notranslate"><span class="pre">ViewerCfg.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg"><code class="docutils literal notranslate"><span class="pre">PhysxCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.use_gpu"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.use_gpu</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.solver_type"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.solver_type</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.enable_stabilization"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.enable_stabilization</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.bounce_threshold_velocity"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.bounce_threshold_velocity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.friction_offset_threshold"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.friction_offset_threshold</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.friction_correlation_distance"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.friction_correlation_distance</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_rigid_contact_count"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_max_rigid_contact_count</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_rigid_patch_count"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_max_rigid_patch_count</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_found_lost_pairs_capacity"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_found_lost_pairs_capacity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_found_lost_aggregate_pairs_capacity"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_found_lost_aggregate_pairs_capacity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_total_aggregate_pairs_capacity"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_total_aggregate_pairs_capacity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.__init__"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_heap_capacity"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_heap_capacity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_temp_buffer_capacity"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_temp_buffer_capacity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_num_partitions"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_max_num_partitions</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_soft_body_contacts"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_max_soft_body_contacts</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.PhysxCfg.gpu_max_particle_contacts"><code class="docutils literal notranslate"><span class="pre">PhysxCfg.gpu_max_particle_contacts</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg"><code class="docutils literal notranslate"><span class="pre">SimCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.__init__"><code class="docutils literal notranslate"><span class="pre">SimCfg.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.dt"><code class="docutils literal notranslate"><span class="pre">SimCfg.dt</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.substeps"><code class="docutils literal notranslate"><span class="pre">SimCfg.substeps</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.gravity"><code class="docutils literal notranslate"><span class="pre">SimCfg.gravity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.enable_scene_query_support"><code class="docutils literal notranslate"><span class="pre">SimCfg.enable_scene_query_support</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.use_flatcache"><code class="docutils literal notranslate"><span class="pre">SimCfg.use_flatcache</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.use_gpu_pipeline"><code class="docutils literal notranslate"><span class="pre">SimCfg.use_gpu_pipeline</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.device"><code class="docutils literal notranslate"><span class="pre">SimCfg.device</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#omni.isaac.orbit_envs.isaac_env_cfg.SimCfg.physx"><code class="docutils literal notranslate"><span class="pre">SimCfg.physx</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Isaac Lab Project Developers.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2024, The Isaac Lab Project Developers..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Oct 11, 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

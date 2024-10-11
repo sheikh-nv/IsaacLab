@@ -1,0 +1,879 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>omni.isaac.orbit.utils.mdp.observation_manager &#8212; Isaac Lab documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js"></script>
+    <script src="/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+    <script src="../../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../../../../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/omni/isaac/orbit/utils/mdp/observation_manager';</script>
+    <link rel="icon" href="../../../../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="Oct 11, 2024"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../_static/NVIDIA-logo-white.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../../../../_static/NVIDIA-logo-black.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">Isaac Lab documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/isaac-sim/IsaacLab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-4.2.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" title="Stars" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" class="icon-link-image" alt="Stars"/></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/setup/installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/setup/developer.html">Developer’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/setup/sample.html">Running existing scripts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/features/actuators.html">Actuators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/features/motion_generators.html">Motion Generators</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials (beginner)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/tutorials/00_empty.html">Creating an empty scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/tutorials/01_arms.html">Adding a robotic arm to the scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/tutorials/02_cloner.html">Duplicating a scene efficiently</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/tutorials/03_ik_controller.html">Using a task-space controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/tutorials/04_gym_env.html">Running an RL environment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Source API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../../../source/api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.actuators.group.html">omni.isaac.orbit.actuators.group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.actuators.model.html">omni.isaac.orbit.actuators.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.devices.html">omni.isaac.orbit.devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.markers.html">omni.isaac.orbit.markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.objects.articulated.html">omni.isaac.orbit.objects.articulated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.objects.rigid.html">omni.isaac.orbit.objects.rigid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.robots.html">omni.isaac.orbit.robots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.utils.html">omni.isaac.orbit.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.utils.assets.html">omni.isaac.orbit.utils.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.utils.kit.html">omni.isaac.orbit.utils.kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.utils.math.html">omni.isaac.orbit.utils.math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit.utils.mdp.html">omni.isaac.orbit.utils.mdp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit_envs.isaac_env.html">omni.isaac.orbit_envs.isaac_env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit_envs.utils.html">omni.isaac.orbit_envs.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit_envs.utils.data_collector.html">omni.isaac.orbit_envs.utils.data_collector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../source/api/orbit_envs.utils.wrappers.html">omni.isaac.orbit_envs.utils.wrappers</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/contributing.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/troubleshooting.html">Tricks and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/changelog.html">Extensions Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/roadmap.html">Development Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../source/refs/bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<h2>Versions</h2>
+<ul>
+  <li><a href="../../../../../../../main/index.html">main</a></li>
+  <li><a href="../../../../../../../v1.2.0/index.html">v1.2.0</a></li>
+  <li><a href="../../../../../../../v1.1.0/index.html">v1.1.0</a></li>
+  <li><a href="../../../../../../../v1.0.0/index.html">v1.0.0</a></li>
+  <li><a href="../../../../../../../v0.3.1/index.html">v0.3.1</a></li>
+  <li><a href="../../../../../../../v0.3.0/index.html">v0.3.0</a></li>
+  <li><a href="../../../../../../../v0.2.0/index.html">v0.2.0</a></li>
+  <li><a href="observation_manager.html">v0.1.0</a></li>
+</ul>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/issues/new?title=Issue%20on%20page%20%2F_modules/omni/isaac/orbit/utils/mdp/observation_manager.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for omni.isaac.orbit.utils.mdp.observation_manager</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (c) 2022, NVIDIA CORPORATION &amp; AFFILIATES, ETH Zurich, and University of Toronto</span>
+<span class="c1"># All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">prettytable</span> <span class="kn">import</span> <span class="n">PrettyTable</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span>
+
+
+<div class="viewcode-block" id="ObservationManager"><a class="viewcode-back" href="../../../../../../source/api/orbit.utils.mdp.html#omni.isaac.orbit.utils.mdp.ObservationManager">[docs]</a><span class="k">class</span> <span class="nc">ObservationManager</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manager for computing observation signals for a given world.</span>
+
+<span class="sd">    Observations are organized into groups based on their intended usage. This allows having different observation</span>
+<span class="sd">    groups for different types of learning such as asymmetric actor-critic and student-teacher training. Each</span>
+<span class="sd">    group contains a dictionary of observation terms which contain information about the observation function</span>
+<span class="sd">    to call, the noise corruption model to use, and the sensor to retrieve data from.</span>
+
+<span class="sd">    The configuration for the observation manager is a dictionary of dictionaries. The top level dictionary</span>
+<span class="sd">    contains a key for each observation group. Each group dictionary contains configuration settings and</span>
+<span class="sd">    each observation term activated in the group.</span>
+
+<span class="sd">    The following configuration settings are available for each group:</span>
+
+<span class="sd">    - ``enable_corruption``: A boolean indicating whether to enable noise corruption for the group. If not</span>
+<span class="sd">      specified, False is assumed.</span>
+<span class="sd">    - ``return_dict_obs_in_group``: A boolean indicating whether to return the observations as a dictionary</span>
+<span class="sd">      with the keys being the observation term names, or as a single tensor with the observations concatenated</span>
+<span class="sd">      tensor along their last dimension. If not specified, False is assumed.</span>
+
+
+<span class="sd">    Each observation term dictionary contains the following keys:</span>
+
+<span class="sd">    - ``func``: The name of the observation term function. This is the name of the function to call to compute</span>
+<span class="sd">      the observation. The function must be defined in the class that inherits from this class. If not specified,</span>
+<span class="sd">      the function name is assumed to be the same as the term name.</span>
+<span class="sd">    - ``scale``: The scale to apply to the observation before adding noise. If not specified, no scaling is</span>
+<span class="sd">      applied.</span>
+<span class="sd">    - ``clip``: The clipping range to apply to the observation after adding noise. This is a tuple of the</span>
+<span class="sd">      form (min, max). If not specified, no clipping is applied.</span>
+<span class="sd">    - ``noise``: The noise corruption model to use. If not specified, no corruption is done. This is a dictionary</span>
+<span class="sd">      with the following keys:</span>
+
+<span class="sd">      - ``type``: The type of noise corruption model to use. This can be either:</span>
+
+<span class="sd">        - ``deterministic``: Deterministic additive noise.</span>
+<span class="sd">        - ``gaussian``: Gaussian noise is added.</span>
+<span class="sd">        - ``uniform``: Uniform noise is added.</span>
+
+<span class="sd">      - ``params``: The parameters for the noise corruption model. This is a dictionary with the keys</span>
+<span class="sd">        depending on the type of noise corruption model:</span>
+
+<span class="sd">        - For deterministic noise:</span>
+
+<span class="sd">          - ``value``: The value to add to the observation.</span>
+
+<span class="sd">        - For gaussian noise:</span>
+
+<span class="sd">          - ``mean``: The mean of the Gaussian distribution.</span>
+<span class="sd">          - ``std``: The standard deviation of the Gaussian distribution.</span>
+
+<span class="sd">        - For uniform noise:</span>
+
+<span class="sd">          - ``min``: The minimum value of the uniform distribution.</span>
+<span class="sd">          - ``max``: The maximum value of the uniform distribution.</span>
+
+<span class="sd">    Usage:</span>
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import torch</span>
+<span class="sd">            from collections import namedtuple</span>
+
+<span class="sd">            from omni.isaac.orbit.utils.mdp.observation_manager import ObservationManager</span>
+
+
+<span class="sd">            class DummyObservationManager(ObservationManager):</span>
+<span class="sd">                def obs_term_1(self, env):</span>
+<span class="sd">                    return torch.ones(env.num_envs, 4, device=self.device)</span>
+
+<span class="sd">                def obs_term_2(self, env, bbq: bool):</span>
+<span class="sd">                    return bbq * torch.ones(env.num_envs, 1, device=self.device)</span>
+
+<span class="sd">                def obs_term_3(self, env, hot: bool):</span>
+<span class="sd">                    return hot * 2 * torch.ones(env.num_envs, 1, device=self.device)</span>
+
+<span class="sd">                def obs_term_4(self, env, hot: bool, bland: float):</span>
+<span class="sd">                    return hot * bland * torch.ones(env.num_envs, 5, device=self.device)</span>
+
+
+<span class="sd">            # dummy environment with 20 instances</span>
+<span class="sd">            env = namedtuple(&quot;IsaacEnv&quot;, [&quot;num_envs&quot;])(20)</span>
+<span class="sd">            # dummy device</span>
+<span class="sd">            device = &quot;cpu&quot;</span>
+
+<span class="sd">            # create observations manager</span>
+<span class="sd">            cfg = {</span>
+<span class="sd">                &quot;return_dict_obs_in_group&quot;: False,</span>
+<span class="sd">                &quot;policy&quot;: {</span>
+<span class="sd">                    &quot;enable_corruption&quot;: True,</span>
+<span class="sd">                    &quot;obs_term_1&quot;: {</span>
+<span class="sd">                        &quot;scale&quot;: 10,</span>
+<span class="sd">                        &quot;noise&quot;: {&quot;name&quot;: &quot;uniform&quot;, &quot;min&quot;: -0.1, &quot;max&quot;: 0.1}</span>
+<span class="sd">                    },</span>
+<span class="sd">                },</span>
+<span class="sd">                &quot;critic&quot;: {</span>
+<span class="sd">                    &quot;enable_corruption&quot;: False,</span>
+<span class="sd">                    &quot;obs_term_1&quot;: {&quot;scale&quot;: 10},</span>
+<span class="sd">                    &quot;obs_term_2&quot;: {&quot;scale&quot;: 5, &quot;bbq&quot;: True},</span>
+<span class="sd">                    &quot;obs_term_3&quot;: {&quot;scale&quot;: 0.0, &quot;hot&quot;: False}</span>
+<span class="sd">                },</span>
+<span class="sd">            }</span>
+<span class="sd">            obs_man = DummyObservationManager(cfg, env, device)</span>
+
+<span class="sd">            # print observation manager</span>
+<span class="sd">            # shows sequence of observation terms for each group and their configuration</span>
+<span class="sd">            print(obs_man)</span>
+
+<span class="sd">            # here we reset all environment ids, but it is possible to reset only a subset</span>
+<span class="sd">            # of the environment ids based on the episode termination.</span>
+<span class="sd">            obs_man.reset_idx(env_ids=list(range(env.num_envs)))</span>
+
+<span class="sd">            # check number of active terms</span>
+<span class="sd">            assert len(obs_man.active_terms[&quot;policy&quot;]) == 1</span>
+<span class="sd">            assert len(obs_man.active_terms[&quot;critic&quot;]) == 3</span>
+
+<span class="sd">            # compute observation using manager</span>
+<span class="sd">            observations = obs_man.compute()</span>
+<span class="sd">            # check the observation shape</span>
+<span class="sd">            assert (env.num_envs, 4) == observations[&quot;policy&quot;].shape</span>
+<span class="sd">            assert (env.num_envs, 6) == observations[&quot;critic&quot;].shape</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ObservationManager.__init__"><a class="viewcode-back" href="../../../../../../source/api/orbit.utils.mdp.html#omni.isaac.orbit.utils.mdp.ObservationManager.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">env</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize observation manager.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            cfg (Dict[str, Dict[str, Any]]): A dictionary of configuration settings for each group.</span>
+<span class="sd">            env (_type_): The object instance (typically the environment) from which data is read to</span>
+<span class="sd">                compute the observation terms.</span>
+<span class="sd">            device (str): The computation device for observations.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># store input</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_env</span> <span class="o">=</span> <span class="n">env</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">device</span>
+        <span class="c1"># store observation manager settings</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_return_dict_obs_in_group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;return_dict_obs_in_group&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># parse config to create observation terms information</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_observation_terms</span><span class="p">()</span>
+        <span class="c1"># compute combined vector for obs group</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_dim</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">group_term_dims</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_dim</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">term_dims</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">dims</span> <span class="ow">in</span> <span class="n">group_term_dims</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_dim</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">term_dims</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns: A string representation for reward manager.&quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt;ObservationManager&gt; contains </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_names</span><span class="p">)</span><span class="si">}</span><span class="s2"> groups.</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+        <span class="c1"># add info for each group</span>
+        <span class="k">for</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">group_dim</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_dim</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># create table for term information</span>
+            <span class="n">table</span> <span class="o">=</span> <span class="n">PrettyTable</span><span class="p">()</span>
+            <span class="n">table</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Active Observation Terms in Group: &#39;</span><span class="si">{</span><span class="n">group_name</span><span class="si">}</span><span class="s2">&#39; (shape: </span><span class="si">{</span><span class="n">group_dim</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="n">table</span><span class="o">.</span><span class="n">field_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Index&quot;</span><span class="p">,</span> <span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;Function&quot;</span><span class="p">,</span> <span class="s2">&quot;Shape&quot;</span><span class="p">,</span> <span class="s2">&quot;Corruptor&quot;</span><span class="p">,</span> <span class="s2">&quot;Clipping&quot;</span><span class="p">,</span> <span class="s2">&quot;Scaling&quot;</span><span class="p">,</span> <span class="s2">&quot;Parameters&quot;</span><span class="p">]</span>
+            <span class="c1"># set alignment of table columns</span>
+            <span class="n">table</span><span class="o">.</span><span class="n">align</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;l&quot;</span>
+            <span class="c1"># add info for each term</span>
+            <span class="n">obs_terms</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_names</span><span class="p">[</span><span class="n">group_name</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_functions</span><span class="p">[</span><span class="n">group_name</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_dim</span><span class="p">[</span><span class="n">group_name</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_corruptors</span><span class="p">[</span><span class="n">group_name</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_clip_ranges</span><span class="p">[</span><span class="n">group_name</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_scales</span><span class="p">[</span><span class="n">group_name</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_params</span><span class="p">[</span><span class="n">group_name</span><span class="p">],</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">corruptor</span><span class="p">,</span> <span class="n">clip_range</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">obs_terms</span><span class="p">):</span>
+                <span class="c1"># resolve inputs to simplify prints</span>
+                <span class="n">tab_func</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span>
+                <span class="n">tab_dims</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span>
+                <span class="n">tab_corruptor</span> <span class="o">=</span> <span class="n">corruptor</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+                <span class="n">tab_scale</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="k">if</span> <span class="n">scale</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">scale</span>
+                <span class="n">tab_params</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="k">else</span> <span class="n">params</span>
+                <span class="c1"># add row</span>
+                <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">tab_func</span><span class="p">,</span> <span class="n">tab_dims</span><span class="p">,</span> <span class="n">tab_corruptor</span><span class="p">,</span> <span class="n">clip_range</span><span class="p">,</span> <span class="n">tab_scale</span><span class="p">,</span> <span class="n">tab_params</span><span class="p">])</span>
+            <span class="c1"># convert table to string</span>
+            <span class="n">msg</span> <span class="o">+=</span> <span class="n">table</span><span class="o">.</span><span class="n">get_string</span><span class="p">()</span>
+            <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+        <span class="k">return</span> <span class="n">msg</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">device</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Name of device for computation.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_device</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">active_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Name of active observation terms in each group.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_names</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">group_obs_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Shape of observation tensor in each group.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_dim</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Operations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ObservationManager.reset_idx"><a class="viewcode-back" href="../../../../../../source/api/orbit.utils.mdp.html#omni.isaac.orbit.utils.mdp.ObservationManager.reset_idx">[docs]</a>    <span class="k">def</span> <span class="nf">reset_idx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset the terms computation for input environment indices.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            env_ids (torch.Tensor): Indices of environment instances to reset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Might need this when dealing with history and delays.</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="ObservationManager.compute"><a class="viewcode-back" href="../../../../../../source/api/orbit.utils.mdp.html#omni.isaac.orbit.utils.mdp.ObservationManager.compute">[docs]</a>    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the observations per group.</span>
+
+<span class="sd">        The method computes the observations for each group and returns a dictionary with keys as</span>
+<span class="sd">        the group names and values as the computed observations. The observations are computed</span>
+<span class="sd">        by calling the registered functions for each term in the group. The functions are called</span>
+<span class="sd">        in the order of the terms in the group. The functions are expected to return a tensor</span>
+<span class="sd">        with shape ``(num_envs, ...)``. The tensors are then concatenated along the last dimension to</span>
+<span class="sd">        form the observations for the group.</span>
+
+<span class="sd">        If a corruption/noise model is registered for a term, the function is called to corrupt</span>
+<span class="sd">        the observation. The corruption function is expected to return a tensor with the same</span>
+<span class="sd">        shape as the observation. The observations are clipped and scaled as per the configuration</span>
+<span class="sd">        settings. By default, no scaling or clipping is applied.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dict[str, torch.Tensor]: A dictionary with keys as the group names and values as the</span>
+<span class="sd">                computed observations.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_obs_buffer</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="c1"># iterate over all the terms in each group</span>
+        <span class="k">for</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">group_term_names</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_names</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># buffer to store obs per group</span>
+            <span class="n">group_obs</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">group_term_names</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="c1"># read attributes for each term</span>
+            <span class="n">obs_terms</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span>
+                <span class="n">group_term_names</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_corruptors</span><span class="p">[</span><span class="n">group_name</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_clip_ranges</span><span class="p">[</span><span class="n">group_name</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_scales</span><span class="p">[</span><span class="n">group_name</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_params</span><span class="p">[</span><span class="n">group_name</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_functions</span><span class="p">[</span><span class="n">group_name</span><span class="p">],</span>
+            <span class="p">)</span>
+            <span class="c1"># evaluate terms: compute, add noise, clip, scale.</span>
+            <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">corruptor</span><span class="p">,</span> <span class="n">clip_range</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">obs_terms</span><span class="p">:</span>
+                <span class="c1"># compute term&#39;s value</span>
+                <span class="n">obs</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_env</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+                <span class="c1"># apply post-processing</span>
+                <span class="k">if</span> <span class="n">corruptor</span><span class="p">:</span>
+                    <span class="n">obs</span> <span class="o">=</span> <span class="n">corruptor</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">clip_range</span><span class="p">:</span>
+                    <span class="n">obs</span> <span class="o">=</span> <span class="n">obs</span><span class="o">.</span><span class="n">clip_</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="n">clip_range</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">max</span><span class="o">=</span><span class="n">clip_range</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">scale</span><span class="p">:</span>
+                    <span class="n">obs</span> <span class="o">=</span> <span class="n">obs</span><span class="o">.</span><span class="n">mul_</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>
+                <span class="c1"># TODO: Introduce delay and filtering models.</span>
+                <span class="c1"># Ref: https://robosuite.ai/docs/modules/sensors.html#observables</span>
+                <span class="c1"># add value to list</span>
+                <span class="n">group_obs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">obs</span>
+            <span class="c1"># concatenate all observations in the group together</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_return_dict_obs_in_group</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_obs_buffer</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">group_obs</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_obs_buffer</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">group_obs</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># return all group observations</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obs_buffer</span></div>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Noise models.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_add_deterministic_noise</span><span class="p">(</span><span class="n">obs</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a constant noise.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">obs</span> <span class="o">+</span> <span class="n">value</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_add_uniform_noise</span><span class="p">(</span><span class="n">obs</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">min</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">max</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a noise sampled from a uniform distribution (-min_noise, max_noise).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">obs</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand_like</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nb">max</span> <span class="o">-</span> <span class="nb">min</span><span class="p">)</span> <span class="o">+</span> <span class="nb">min</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_add_gaussian_noise</span><span class="p">(</span><span class="n">obs</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">mean</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">std</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">obs</span> <span class="o">+</span> <span class="n">mean</span> <span class="o">+</span> <span class="n">std</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn_like</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper functions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_prepare_observation_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepares a list of observation terms functions.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            AttributeError: If the observation term&#39;s function not found in the class.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># create buffers to store information for each observation group</span>
+        <span class="c1"># TODO: Make this more convenient by using data structures.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_names</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_dim</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_clip_ranges</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_scales</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_corruptors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Callable</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_functions</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Callable</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">group_cfg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># skip non-group settings (those should be read above)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">group_cfg</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="c1"># initialize list for the group settings</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_names</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_dim</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_params</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_clip_ranges</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_scales</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_corruptors</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_functions</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+            <span class="c1"># read common config for the group</span>
+            <span class="n">enable_corruption</span> <span class="o">=</span> <span class="n">group_cfg</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;enable_corruption&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="c1"># parse group observation settings</span>
+            <span class="k">for</span> <span class="n">term_name</span><span class="p">,</span> <span class="n">term_cfg</span> <span class="ow">in</span> <span class="n">group_cfg</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="c1"># skip non-obs settings (those should be read above)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">term_cfg</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                    <span class="k">continue</span>
+                <span class="c1"># read term&#39;s function</span>
+                <span class="c1"># if not specified, assume the function name is the same as the term name</span>
+                <span class="n">term_func</span> <span class="o">=</span> <span class="n">term_cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;func&quot;</span><span class="p">,</span> <span class="n">term_name</span><span class="p">)</span>
+                <span class="c1"># check if obs manager has the term</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term_func</span><span class="p">):</span>
+                    <span class="c1"># check noise settings</span>
+                    <span class="n">noise_cfg</span> <span class="o">=</span> <span class="n">term_cfg</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;noise&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">enable_corruption</span> <span class="ow">and</span> <span class="n">noise_cfg</span><span class="p">:</span>
+                        <span class="c1"># read noise parameters</span>
+                        <span class="n">noise_name</span> <span class="o">=</span> <span class="n">noise_cfg</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+                        <span class="n">noise_params</span> <span class="o">=</span> <span class="n">noise_cfg</span>
+                        <span class="c1"># create a wrapper s.t. Callable[[torch.Tensor], torch.Tensor]</span>
+                        <span class="n">noise_func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;_add_</span><span class="si">{</span><span class="n">noise_name</span><span class="si">}</span><span class="s2">_noise&quot;</span><span class="p">)</span>
+                        <span class="n">noise_func</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">noise_func</span><span class="p">,</span> <span class="o">**</span><span class="n">noise_params</span><span class="p">)</span>
+                        <span class="c1"># make string representation nicer</span>
+                        <span class="n">noise_func</span><span class="o">.</span><span class="fm">__str__</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Noise: </span><span class="si">{</span><span class="n">noise_name</span><span class="si">}</span><span class="s2">, Params: </span><span class="si">{</span><span class="n">noise_params</span><span class="si">}</span><span class="s2">&quot;</span>
+                        <span class="c1"># add function to list</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_corruptors</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">noise_func</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_corruptors</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+                    <span class="c1"># check clip_range and scale settings</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_clip_ranges</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">term_cfg</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;clip&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_scales</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">term_cfg</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;scale&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+                    <span class="c1"># check function for observation term</span>
+                    <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term_name</span><span class="p">)</span>
+                    <span class="c1"># check if term&#39;s arguments are matched by params</span>
+                    <span class="n">term_params</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">term_cfg</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+                    <span class="n">args</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getfullargspec</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="o">.</span><span class="n">args</span>
+                    <span class="c1"># ignore first two arguments for (self, env)</span>
+                    <span class="c1"># Think: Check for cases when kwargs are set inside the function?</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">(</span><span class="n">term_params</span><span class="p">):</span>
+                            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Observation term &#39;</span><span class="si">{</span><span class="n">term_name</span><span class="si">}</span><span class="s2">&#39; expects parameters: </span><span class="si">{</span><span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span><span class="si">}</span><span class="s2">, but </span><span class="si">{</span><span class="n">term_params</span><span class="si">}</span><span class="s2"> provided.&quot;</span>
+                            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                    <span class="c1"># add function to list</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_names</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">term_name</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_functions</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_params</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">term_cfg</span><span class="p">)</span>
+                    <span class="c1"># call function the first time to fill up dimensions</span>
+                    <span class="n">obs_dims</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_env</span><span class="p">,</span> <span class="o">**</span><span class="n">term_cfg</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_group_obs_term_dim</span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obs_dims</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Observation term with the name &#39;</span><span class="si">{</span><span class="n">term_name</span><span class="si">}</span><span class="s2">&#39; has no implementation.&quot;</span><span class="p">)</span></div>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Isaac Lab Project Developers.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2024, The Isaac Lab Project Developers..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Oct 11, 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
